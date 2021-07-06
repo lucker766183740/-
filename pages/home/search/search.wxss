@@ -1,0 +1,148 @@
+/* pages/home/search/search.wxss */
+.scroll_con{
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+.search_coll{
+  width: 100vw;
+  display: inline-block;
+  text-align: center;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.nothing{
+  display: inline;
+}
+.search-header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+.search-header input{
+  border: 2rpx solid #2A82E4;
+  border-radius: 30rpx;
+  padding: 8rpx  50rpx;
+}
+.icon-sousuo{
+position: relative;
+left: 50rpx;
+color: #2A82E4;
+}
+.search-header>button{
+  background-color:#2A82E4 ;
+  width: 150rpx !important;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 28rpx !important;
+  padding: 3rpx 15rpx !important; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search_title{
+  background-color: #fff;
+  line-height: 80rpx;
+padding-top: 30rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-around;
+  box-shadow:  0rpx 1rpx 0rpx #aaa;
+}
+.search_title text{
+  width: 350rpx;
+  text-align:center;
+}
+.activeborder{
+  border-bottom: 7rpx solid #333;
+}
+
+.search_details{
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+/* .search_details text{
+  color: #555;
+  font-size: 28rpx;
+  margin-top: 40%;
+  display: block;
+} */
+.search_details text{
+  color: #555;
+  font-size: 28rpx;
+  display: block;
+}
+.icon-xiaoxi1{
+  padding-top: 40rpx;
+  color: #ccc;
+  font-size: 100rpx;
+}
+.font{
+  color: #777;
+  font-size: 24rpx;
+  padding-top: 20rpx;
+}
+.search_book_container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.search_book{
+  width: 33.33%;
+  height:calc(335rpx*1.25);
+  text-align: center;
+}
+.search_book image{
+  width:100%;
+  height:calc(250rpx*1.25);
+  padding: 10rpx;
+  border-radius: 40rpx;
+  box-sizing: border-box;
+}
+.search_book text{
+  display: block;
+  text-overflow:ellipsis ;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #aaa;
+}
+.search_user_container{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-bottom: 1rpx solid #ddd;
+}
+.search_user_container image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.search_user_container text{
+  color: #aaa;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 40rpx;
+}
+.msg2{
+  margin-top: 40rpx;
+  width: 100vw;
+  display: inline-block;
+  text-align: center;
+  background-color: #fff;
+  box-sizing: border-box;
+}

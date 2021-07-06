@@ -1,0 +1,20 @@
+<!--pages/myself/integral/PointsDetails/PointsDetails.wxml-->
+<view class="container">
+  <!-- 积分头部 -->
+  <view class="header">
+    <view class="integral_detail" catchtap="bindnavgetorhowgetintegral">如何获取积分</view>
+    <view>-我的积分-</view>
+    <view class="number_count">{{integral}}</view>
+    <view>段位：{{rank}}</view>
+  </view>
+  <!-- 积分明细 -->
+  <view class="points_task">
+    <view class="points_first">积分明细</view>
+    <view class="points_text" wx:for="{{list}}" wx:key="id">
+      <text style="width:400rpx">{{item.explain}}</text>
+      <text>+{{item.score}}积分</text>
+      <view>{{item.updateDate}}</view>
+    </view>
+    <nothing wx:if="{{list.length == 0}}"></nothing>
+  </view>
+</view>

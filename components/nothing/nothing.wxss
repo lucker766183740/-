@@ -1,0 +1,19 @@
+/* components/nothing/nothing.wxss */
+@import '/style/icon.wxss';
+.nothing{
+  position: relative;
+  z-index: 100;
+  width: 100vw;
+  height: 100%;
+  margin-top: 20%;
+text-align: center;
+}
+.nothing icon{
+  font-size: 300rpx;
+  color: #ccc;
+}
+.nothing text{
+  color: #777;
+  display: block;
+  font-size: 32rpx;
+}

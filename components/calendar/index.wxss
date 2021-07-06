@@ -1,0 +1,66 @@
+/* components/calendar/index.wxss */
+@import '/style/icon.wxss';
+.container{
+  background: #f5f5f5;
+  font-size: 24rpx;
+opacity: .9;
+}
+.title{
+  position: relative;
+  text-align: center;
+  height: 70rpx;
+}
+.icon-jiantou{
+  width: 100rpx;
+  line-height:70rpx ;
+}
+.btn{
+  position: absolute;
+  top: 10rpx;
+  right: 20rpx;
+  font-size: 24rpx !important;
+}
+.title text{
+  padding: 0 50px;
+}
+.jiantou-left{
+  transform: rotate(180deg);
+}
+.week{
+  display: flex;
+  justify-content: space-around;
+  background-color: #ddd;
+  padding: 20rpx 0;
+}
+.day{
+  padding: 20rpx 0;
+}
+.day .prev_day , .day .now_day , .day .next_day{
+  display: inline-block;
+  width: calc(100% / 7);
+  text-align: center;
+
+}
+.day text{
+display: inline-block;
+margin: 10rpx 0;
+line-height: 50rpx;
+  align-items: center;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius:50% ;
+}
+
+
+
+.sign_in{
+  color: #6AEB83;
+}
+.todaySign{
+  background-color: #1ED76E;
+  color: #fff;
+}
+.today_not_sign{
+  background-color:red;
+  color: #fff;
+}

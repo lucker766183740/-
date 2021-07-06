@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "userpublish":"/components/userpublish/userpublish",
+    "likeAndcollection":"/components/likeAndcollection/likeAndcollection",
+    "nothing":"/components/nothing/nothing"
+  },
+  "enablePullDownRefresh": false
+}

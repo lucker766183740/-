@@ -1,0 +1,8 @@
+<!--pages/myself/userSet/userSet.wxml-->
+<view class="container">
+  <view class="setting" wx:for="{{setList}}" catchtap="bindnavgetorother" data-item="{{item}}"> 
+    <text>{{item}}</text>
+   <icon class="iconfont icon-jiantou"></icon>
+  </view>
+  <button  class="btn" catchtap="bindexit">退出登录</button>
+</view>

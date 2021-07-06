@@ -1,0 +1,12 @@
+<!--pages/home/swiperTopic/swiperTopic.wxml-->
+<import src="../../../utils/wxParse/wxParse.wxml"/>
+<view class="container">
+  <view class="header">
+    <text class="creator">{{data.creator}}</text>
+    <text class="date">{{data.createDate}}</text>
+  </view>
+  <!-- <rich-text nodes="{{data.content}}"></rich-text> -->
+  <veiw class="padding-d">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" ></template>
+  </veiw>
+</view>

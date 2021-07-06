@@ -1,0 +1,35 @@
+<!--pages/channel/channel.wxml-->
+<view class="container" style="padding-top:140rpx">
+  <!-- <view class="custom-tab-bar">
+    <tabbar current="{{2}}" count="{{2}}"></tabbar>
+  </view> -->
+  <view class="title " catchtap="bindactive">
+    <text data-active1="1" class="{{activeindex == 1 ? 'activeFont' : ''}}">首页</text>
+    <text data-active1="2" class="{{activeindex == 2 ? 'activeFont' : ''}}">关注</text>
+    <view class="release" catchtap="bindrelease">
+      <icon class="iconfont icon-pen-fill"></icon>
+      <text catchtap="bindrelease">发布</text>
+    </view>
+    <view class="underline {{isactive}}" ></view>
+  </view>
+  <!-- 圈子首页 -->
+  <view wx:if="{{!GZshow}}">
+    <home-swiper swiperData="{{swiperData}}"></home-swiper>
+    <listenTeam Teamlist="{{Teamlist}}"  all="{{true}}" Title="{{Title}}"></listenTeam>
+    <view class="con"></view>
+    <userpublish userPublishList="{{userPublishList}}"></userpublish>
+  </view>
+  <!-- 圈子关注页 -->
+<view wx:if="{{GZshow}}">
+  <view  wx:if="{{GZ_teamlist.length > 0}}">
+    <text class="group_all" catchtap="bindnavAllGroup">全部>></text>
+    <listenTeam Teamlist="{{GZ_teamlist}}" all="{{false}}" Title="{{GZ_Title}}"></listenTeam>
+  </view>
+  <userpublish userPublishList="{{GZ_userPublishList}}"></userpublish>
+  <view wx:if="{{GZ_teamlist.length == 0 && GZ_userPublishList.length == 0}}" class="tuijian">
+    <view class="othertopic_title">没有关注的话题小组</view>
+    <view class="other_title">为你推荐</view>
+    <userpublish userPublishList="{{userPublishList}}"></userpublish>
+  </view>
+</view>
+</view>

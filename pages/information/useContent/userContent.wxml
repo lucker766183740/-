@@ -1,0 +1,54 @@
+<!--pages/information/useContent/userContent.wxml-->
+<view class="fixed {{isshow}}" catchtap="bindlikeAndcollectionishide">
+  <likeAndcollection userdata="{{userdata}}"  bindtriggerEvent="triggerEvent" catchtap="bindnavgetdetails" data-type="4"></likeAndcollection>
+</view>
+<view class="container">
+  <!-- 用户头 -->
+  <view class="user_header">
+      <!-- 用户头像 -->
+      <image class="user_image" catchtap="bindSeeLogimg" data-url="{{userDetail.headUrl ? userDetail.headUrl : '/image/headUrl.jpg'}}" src="{{userDetail.headUrl ? userDetail.headUrl : '/image/headUrl.jpg'}}"></image>
+      <!-- 内容 -->
+      <view class="detail_content">
+        <view class="user_list">
+          <view wx:for="{{userList}}" wx:key="id" catchtap="bindnavgetdetails" data-type="{{index + 1}}" data-userId="{{item.id}}">
+            <text>{{item.num}}</text>
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+        <view class="user_btn" wx:if="{{followisshow}}">
+          <view class="btn_guanzhu {{userDetail._haveAttention ? 'active' : ''}}" data-othId="{{userDetail.id}}" catchtap="bindgzotheruser">{{userDetail._haveAttention ? '已关注' : '+ 关注'}}</view>
+          <!-- <i class="btn_xiaoxi iconfont icon-xiaoxi" catchtap="bindnavgetinformations"></i> -->
+        </view>
+      </view>
+    </view>
+<!-- 用户身份 -->
+  <view class="user_identity">
+    <view>
+      <text style="color:red;" >{{userDetail.genderName}}</text>
+      <text> | </text>
+      <text style="color:#0F81FF;" wx:if="{{userDetail.schoolName}}">{{userDetail.schoolName}}</text>
+      <text wx:if="{{userDetail.schoolName}}"> | </text>
+      <text style="color:red;" wx:if="{{userDetail.learnYear}}">{{userDetail.learnYear + '年级'}} {{userDetail.className}}</text>
+      <text wx:if="{{userDetail.learnYear}}"> | </text>
+      <text style="color:#0F81FF;">段位：{{userDetail._rankLevel}}</text>
+    </view>
+    <view>
+      <text>{{userDetail.personalMessage}}</text>
+    </view>
+  </view>
+  <!-- 笔记  收藏 -->
+  <view class="block_shoucang">
+    <text class="{{isbiji ? 'clickActive':''}}" catchtap="clickisActive1">圈子</text>
+    <!-- <text class="{{isshoucang ? 'clickActive':''}}" catchtap="clickisActive2">收藏</text> -->
+    <!-- <icon class="iconfont icon-sousuo" catchtap="bindnavgetorsearch"></icon> -->
+  </view>
+  <!-- 所有笔记 -->
+  <view class="all_notebook">
+    <text>所有圈子:{{total}}</text>
+  </view>
+  <!-- 笔记详细内容 -->
+  <view class="notebook_details">
+    <userpublish userPublishList="{{userPublishList}}" userId="{{userDetail.id}}"></userpublish>
+  </view>
+  <nothing wx:if="{{total == 0}}"></nothing>
+</view>

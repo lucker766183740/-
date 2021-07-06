@@ -1,0 +1,8 @@
+<!--pages/myself/userSet/AccountAndSecurity/AccountAndSecurity.wxml-->
+<view class="container">
+  <view class="AccountAndSecurity" wx:for="{{AccountList}}" wx:key="index" catchtap="bindnavgetordetails" data-item="{{item}}"> 
+    <text>{{item}}</text>
+   <icon class="iconfont icon-jiantou"></icon>
+  </view>
+
+</view>

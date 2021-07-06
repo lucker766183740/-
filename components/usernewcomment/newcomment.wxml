@@ -1,0 +1,13 @@
+<!--components/newcommment/newcomment.wxml-->
+<view class="container" wx:for="{{List}}" wx:key="id">
+  <view data-othId="{{item.creator}}" style="border-bottom: 1rpx solid #ddd;display:flex;padding-bottom:15rpx;" catchtap="bindnavgator">
+    <image  class="userimg" src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}"></image>
+    <view class="user-details">
+      <text class="user-name">{{item.username}}</text>
+      <text class="user-comment">{{item.content}}</text>
+      <text class="date">{{item.senderTime}}</text>
+    </view>
+    <!-- <image class="user-image" src="/image/icon/text.png"></image> -->
+  </view>
+</view>
+<nothing wx:if="{{List.length == 0}}"></nothing>

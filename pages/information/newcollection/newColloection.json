@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "newcommment":"/components/usernewcomment/newcomment"
+  },
+  "navigationBarTitleText": "收藏"
+}

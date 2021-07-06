@@ -1,0 +1,62 @@
+/* pages/myself/myfollowAndfans/myfollowAndfans.wxss */
+.container{
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+  display: block;
+  padding: 15rpx;
+}
+.title {
+    display: flex;
+    justify-content: center;
+}
+.title text{
+  margin-right: 20rpx;
+  padding: 10rpx;
+}
+.scroll{
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+.scroll_container{
+  width: 100vw;
+  display: inline-block;
+}
+.container image{
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+}
+.userdetails{
+  float: left;
+  margin-left: 20rpx;
+}
+.userdetails text{
+  display: block;
+  color: black;
+  font-size: 28rpx;
+  font-weight:bold ;
+  width: 300rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.userdetails text+text{
+  font-weight: 500;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.date{
+  font-size: 22rpx;
+  height: 80rpx;
+  width: 230rpx;
+  color: #555;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.titleActive{
+  border-bottom: 7rpx solid #222;
+  font-weight: bold;
+}

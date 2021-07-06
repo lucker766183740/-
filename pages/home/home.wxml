@@ -1,0 +1,31 @@
+<!--pages/home/home/home.wxml-->
+<view class="container">
+  <!-- <view class="custom-tab-bar">
+    <tabbar current="{{0}}"  count="{{2}}"></tabbar>
+  </view> -->
+  <view class="home-search" bindtap="bindnavgetar">
+    <view class="iconfont icon-shouye">首页</view>
+    <text  class="iconfont icon-sousuo"> 搜索图书、用户</text>
+  </view>
+  <home-swiper swiperData="{{swiperData}}"></home-swiper>
+  <view class="home-cord">
+    <block  wx:for="{{jintitle}}" wx:key="name">
+      <view class="home-label" catchtap="bindgetnavtor" data-itemId="{{item.id}}">
+        <view class="home-bgicon">
+          <icon class="iconfont {{iconlist[index]}}"></icon>
+        </view>
+        <view class="home-bgname">
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+    <!-- <cord></cord> -->
+    <cardNext cardNextTitle='{{listenList}}'></cardNext>
+    <!-- <cardNext cardNextTitle='{{cardNextTitle}}' catchtap="bindnavge"></cardNext> -->
+    <!-- audio -->
+    <view class="home-audio" wx:if="{{isshowAudio}}">
+        <home-audio bindtriggerishide="triggerishide" nowPlayaudio="{{nowPlayaudio}}" isshow="{{isPlay}}"></home-audio>
+    </view>
+    <view wx:if="{{isshowAudio}}" style="width:100%;height:100rpx"></view>
+  </view>

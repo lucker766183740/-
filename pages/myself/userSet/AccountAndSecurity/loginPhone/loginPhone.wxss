@@ -1,0 +1,24 @@
+/* pages/myself/userSet/loginPhone/loginPhone/loginPhone.wxss */
+page{
+  background-color: #eee;
+}
+.loginPhone{
+  background-color: #fff;
+  width:100%;
+  display: flex;
+  font-size: 28rpx;
+  color: #333;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eee;
+}
+.loginPhone text,.loginPhone .icon-jiantou{
+  line-height: 100rpx;
+  padding: 0 40rpx;
+}
+
+.loginPhone:first-child{
+  border-top: 20rpx solid #eee;
+}
+.loginPhone:nth-child(2n){
+  border-bottom: 20rpx solid #eee;
+}

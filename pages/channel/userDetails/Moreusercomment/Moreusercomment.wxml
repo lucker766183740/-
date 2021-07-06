@@ -1,0 +1,53 @@
+<!--pages/channel/userDetails/Moreusercomment/Moreusercomment.wxml-->
+<view class="container">
+  <!-- 被评论信息  -->
+  <view class="usercomment">
+    <view class="headUrl">
+      <image src="{{userDetail.headUrl ? userDetail.headUrl : '/image/headUrl.jpg'}}" catchtap="bindnavgetor" data-creator="{{userDetail.creator}}"></image>
+    </view>
+    <view class="content">
+      <text class="user_title">{{userDetail.userName}}</text>
+      <text class="user_content" catchtap="bindHFthiscircle">{{userDetail.content}}</text>
+      <text class="user_dateTime">{{userDetail.createDate}}</text>
+    </view>
+    <view class="user_like">
+      <icon class="iconfont {{userDetail.haveLike ? 'icon-xinaixin' : 'icon-xinaixin1'}}" style="color:{{userDetail.haveLike ? 'red' : ''}}" catchtap="bindLike" data-creator="{{userDetail.creator}}" data-commentId="{{userDetail.id}}"></icon>
+    </view>
+  </view>
+  <!-- 评论回复内容区域 -->
+  <view class="other_comment" wx:for="{{replay}}" wx:key="id">
+    <view class="headUrl other_header">
+      <image src="{{item.fromUserHeadUrl ? item.fromUserHeadUrl : '/image/headUrl.jpg'}}" catchtap="bindnavgetor" data-creator="{{item.creator}}"></image>
+    </view>
+    <view class="content">
+      <text class="user_title">{{item.fromUser}} <text style="display:inline;color:#0068B7"> 回复 </text>{{item.toUser}}</text>
+      <text class="user_content myintro {{item.if_ishide ? 'hide' : ''}}"
+        catchtap="bindothercontent"
+        data-informationId="{{item.informationId}}"
+        data-commentId="{{item.commentId}}"
+        data-userName="{{item.fromUser}}"
+        data-parentId="{{item.id}}"
+        data-touserid="{{item.fromUserId}}"
+       >{{item.content}}</text>
+       <text class="seeAll" wx:if="{{item.if_ishide}}" catchtap="bindChangeis_isshow" data-index="{{index}}">全部</text>
+      <text class="user_dateTime">{{item.createDate}}</text>
+    </view>
+    <view class="user_like">
+      <icon class="iconfont {{item.haveLike ? 'icon-xinaixin' : 'icon-xinaixin1'}}" style="color:{{item.haveLike ? 'red' : ''}}" catchtap="bindotherLike" data-creator="{{item.creator}}" data-commentId="{{item.id}}"></icon>
+    </view>
+  </view>
+  <!-- 发布评论 -->
+  <view class="pinglun-fixed" style="bottom:{{height+'px'}}">
+    <textarea 
+    type="text" fixed="{{true}}"
+    show-confirm-bar="{{false}}"
+    maxlength="200"
+    placeholder="{{touserName ? ('回复：' +  touserName + ' 限200字') : ('回复：' + userDetail.userName + ' 限200字')}}"
+     bindfocus="bindfocus" 
+     value="{{value}}"
+     bindinput="bindinput"
+     bindblur="bindblur"
+     ></textarea>
+     <view class="btn" bindtap="bindfabiao">发表</view>
+  </view>
+</view>

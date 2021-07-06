@@ -1,0 +1,19 @@
+/* pages/myself/achievement/achievement.wxss */
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.kaifa{
+  margin-top: 20%;
+}
+.icon-jianshezhong{
+  font-size: 150rpx;
+  color: #aaa;
+}
+.text{
+  text-align: center;
+  font-size: 26rpx;
+  color: #aaa;
+}

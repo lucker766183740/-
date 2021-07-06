@@ -1,0 +1,51 @@
+/* components/listenTeam/listenTeam.wxss */
+@import '../../style/icon.wxss';
+.container{
+  padding: 0 20rpx;
+}
+.icon-tubiaoshangchuanmoban{
+  color:#2A82E4 ;
+}
+.listenTeam-title{
+  width: 100%;
+  font-weight: bold;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  display: flex;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+.listenTeam-more{
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.listenTeam-body{
+  height: 200rpx;
+  display: flex;
+  white-space: nowrap;
+}
+.group_list{
+  display: inline-block;
+  width: 17.7%;
+  height: calc(750rpx / 6);
+  padding-right:20rpx;
+  /* box-sizing: border-box; */
+}
+.listenTeam-image{
+  width: 100%;
+  height: 125rpx;
+  margin-bottom: 15rpx;
+}
+.listenTeam-image>image{
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+}
+.listenTeam-name{
+  color: #333;
+  text-align: center;
+  font-size: 28rpx;
+  word-wrap: normal;
+  overflow: hidden;
+}

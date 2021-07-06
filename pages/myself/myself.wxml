@@ -1,0 +1,82 @@
+<!--pages/home/myself/myself.wxml-->
+<view class="fixed {{likeAndcollectionisshow}}" catchtap="bindisshowlikeandcollection">
+  <likeAndcollection userdata="{{userdata}}" bindtriggerEvent="triggerEvent" catchtap="bindnavgetdetails" data-type="4"></likeAndcollection>
+</view>
+<view class="container">
+  <!-- <view class="custom-tab-bar">
+    <tabbar current="{{4}}" count="{{2}}"></tabbar>
+  </view> -->
+  <view class="myself-myimg">
+    <view class="headUrl">
+      <image src="{{userdata.headUrl ? userdata.headUrl : '/image/headUrl.jpg'}}" catchtap="navgetoruserdetail"></image>
+    </view>
+    <view class="myself-follow">
+      <view >
+        <view  catchtap="bindnavgetdetails" data-type="1">
+          <text class="myself-count">{{userdata.score}}</text>
+          <text class="myself-text">积分</text>
+        </view>
+        <view  catchtap="bindnavgetdetails" data-type="2">
+          <text class="myself-count">{{userdata.attentionNum}}</text>
+          <text class="myself-text">关注</text>
+        </view>
+        <view  catchtap="bindnavgetdetails" data-type="3">
+          <text class="myself-count">{{userdata.fansNum}}</text>
+          <text class="myself-text">粉丝</text>
+        </view>
+        <view catchtap="bindnavgetdetails" data-type="4">
+          <text class="myself-count">{{userdata.likeCollectionNum}}</text>
+          <text class="myself-text">被赞与收藏</text>
+        </view>
+      </view>
+      <view class="setInformation">
+        <view class="myself-button1" catchtap="bindnavgetorediting">编辑资料</view>
+        <view class="iconfont icon-shezhi myself-button2" catchtap="bindnavgetoruserSet"></view>
+      </view>
+    </view>
+  </view>
+  <view class="myself-taggen">
+    <text style="color:red;">{{userdata.gender == 1 ? '女' : (userdata.gender == 2 ? '保密' : '男') }} </text> |
+    <text style="color:#1296db">{{userdata.realName}} </text> |
+    <text>{{userdata._rankLevel}}</text>
+  </view>
+  <view class="myself-shezhi">
+    <view catchtap="bindnavgetorintegral">
+      <icon class="iconfont icon-rili left"></icon>
+      <text>每日打卡</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+    <view catchtap="bindnavgetorachievement">
+      <icon class="iconfont icon-chengjiu left"></icon>
+      <text >个人成就</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+    <view catchtap="bindnavgetorreadlog">
+      <icon class="iconfont icon-shouting left"></icon>
+      <text>我的收听</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+
+    <view catchtap="bindnavgetorTask">
+      <icon class="iconfont icon-renwu left"></icon>
+      <text>积分任务</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+
+    <view catchtap="bindnavgetormyCollection">
+      <icon class="iconfont icon-shixinwujiaoxing left"></icon>
+      <text>我的收藏</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+    <view catchtap="bindnavgetorlistenReport">
+      <icon class="iconfont icon-baogao left"></icon>
+      <text>听吧报告</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
+    <!-- <view catchtap="bindnavgetoruserSet">
+      <icon  class="iconfont icon-shezhi left"></icon>
+      <text>设置</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view> -->
+  </view>
+</view>

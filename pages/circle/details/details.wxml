@@ -1,0 +1,71 @@
+<!--pages/circle/details/details.wxml-->
+<view class="container">
+  <block wx:for="{{listenList}}" wx:key="id">
+  <view class="details-header">
+    <image src="{{item.picture}}" catchtap="bindSeeLogimg" data-url="{{item.picture}}"  mode="heightFix"></image>
+    <view class="details-title">
+      <text class="details-name">{{item.name}}</text>
+      <text class="details-autor">作者：{{item.author}} 著</text>
+      <text class="details-toth">主播：</text>
+      <text class="details-school">班级:</text>
+      <text class="details-count">共{{item.chapterNum}}章 {{item.readNum}} 次播放</text>
+      <view class="details-shoucang">
+        <text>{{item.collectNum > 0 ? item.collectNum : '0'}}人收藏</text>
+        <view class="details-shoucang2"
+         style="background:{{Collection ? 'orange' : ''}};"
+          catchtap="bindCollection"
+          >
+          <icon class="iconfont icon-kongxinwujiaoxing"></icon>
+          <!-- <icon wx:if="{{!Collection}}" class="iconfont icon-xinaixin1"></icon> -->
+          <!-- <icon wx:else class="iconfont icon-xinaixin"></icon> -->
+          {{Collection ? '已收藏' : '收藏'}}
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class="details-body">
+    <view class="details-content" bindtap="bindtapshow">
+      <text class="{{active}}">详情</text>
+    </view>
+    <view class="details-introduce" bindtap="bindtaphide">
+      <text class="{{unactive}}">章节</text>
+    </view>
+  </view>
+  <view class="details-jianjie {{isshow}}">
+    <text class="details-jianjie-title">简介</text>
+    <text wx:if="{{!isopen}}" class="details-jianjie-text">{{item.briefIntroduction}}</text>
+    <text wx:else class="details-jianjie-text">{{item._content}}</text>
+    <text wx:if="{{!ishidden}}" class="details_label_open" bindtap="isopenAll">{{ isopen ? ' ...展开' : ' 收起'}}</text>
+  </view>
+  <view class="{{ishide}}">
+    <view class="bofangquanbu">
+      <text class="details-bofang" catchtap="bindaudioAll">播放全部</text>
+      <view class="details-sort" catchtap="bindsort">
+        <icon class="iconfont icon-paixu {{deg}}"></icon>
+        <text wx:if="{{!deg}}"> 正序</text>
+        <text wx:else> 倒序</text>
+      </view>
+    </view>
+    <view
+      class="{{nowPlayaudio == item2.id ? activeBgcolor:''}}" 
+      wx:for="{{item.chapterList}}" wx:for-item="item2" 
+      wx:for-index="index2" wx:key="id"
+       data-chapter="{{index2}}"
+       data-nowPlayaudio="{{item2.id}}"
+      catchtap="bindgetTarget"
+    >
+      <view class="details-card">
+        <view class="buyu">
+          <icon wx:if="{{activeBgcolor && nowPlayaudio == item2.id }}" class="iconfont icon-yinpin"></icon>
+          <!-- <text class="{{index2 === chapter ? activeBgcolor:''}}">{{deg ?  "" : index2+1}}</text> -->
+          <!-- <image wx:if="{{activeBgcolor && index2 == chapter}}" class="details-gif" src="/image/tiaodong.gif"></image> -->
+          <text class="{{nowPlayaudio == item2.id  ? activeBgcolor:''}}"> {{item2.chapterName}}</text>
+          <view class="bofang" wx:if="{{activeBgcolor && nowPlayaudio == item2.id }}">播 放</view>
+        </view>
+        <!-- <text class="bofangdate {{index2==chapter ? activeBgcolor:''}}">总时长</text> -->
+      </view>
+    </view>
+  </view>
+</block>
+</view>

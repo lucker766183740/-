@@ -1,0 +1,107 @@
+/* pages/home/myself/myself.wxss */
+.myself-myimg{
+  width: 100%;
+  display: flex;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.headUrl {
+  width: 100rpx;
+  height: 90rpx;
+}
+.headUrl image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.myself-follow>view{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+}
+.myself-follow>view>view{
+  text-align: center;
+  margin-left: 20rpx;
+}
+.myself-follow{
+  width: 100%;
+}
+.myself-count{
+  color: #333;
+  font-size: 28rpx;
+  display: block;
+}
+.myself-text{
+  color: #999;
+  font-size: 24rpx;
+}
+.myself-button1{
+  width: 200rpx;
+  padding:5rpx 50rpx;
+margin: 15rpx 0;
+  color:#333;
+  font-size: 28rpx;
+  font-weight: 400;
+  border-radius: 30rpx;
+  border: 2rpx solid #ddd;
+}
+.myself-button2{
+  align-items: center;
+  display: flex;
+  color: #999;
+  margin: 15rpx 0;
+  justify-content: center;
+  width: 100rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #ddd;
+}
+.myself-taggen{
+  color: #333;
+  font-size: 28rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+.myself-shezhi>view{
+width: 100%;
+line-height: 100rpx;
+padding: 0 50rpx;
+box-sizing: border-box;
+color: #333;
+border-bottom: 1rpx solid #eee;
+}
+.myself-shezhi>view icon{
+ float: right;
+ font-size: 28rpx;
+}
+.myself-shezhi>view .left{
+  float: left;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.fixed{
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  display: none;
+}
+.isshow{
+  display: block;
+}
+.setInformation{
+  line-height: 50rpx;
+  margin: 25rpx 0;
+}
+
+
+.icon-shouting , .icon-rili , .icon-baogao ,  .icon-shezhi{
+  color: #1296db;
+}
+.icon-chengjiu , .icon-renwu{
+  color: red;
+}
+.icon-shixinwujiaoxing{
+  color: orange;
+}

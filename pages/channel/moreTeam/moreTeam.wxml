@@ -1,0 +1,17 @@
+<!--pages/channel/moreTeam/moreTeam.wxml-->
+<view class="container">
+<view class="team" wx:for="{{Teamlist}}" wx:key="id"
+catchtap="bindnacgetoruserDetails"
+data-teamId="{{item.id}}"
+>
+  <view class="team-id {{index<3 ? active : ''}}">{{index+1}}</view>
+  <view class="team-image"><image src="{{item.image}}"></image></view>
+  <view class="team-details">
+    <text class="team-name">{{item.name}}</text>
+    <text class="team-people">{{item.attentionNum}}成员</text>
+  </view>
+  <view class="team-guanzhu">
+    <text class="{{item.haveAttention ? 'Activetext' : ''}}" catchtap="bindAttention" data-AttenId="{{item.id}}">{{item.haveAttention ? '已关注' :'+ 关注'}}</text>
+  </view>
+</view>
+</view>

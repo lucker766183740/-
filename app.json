@@ -1,0 +1,108 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/channel/channel",
+    "pages/myself/myself",
+    "pages/circle/circle",
+    "pages/information/information",
+    "components/cord/cord",
+    "components/cardNext/cardNext",
+    "pages/swiper/swiper",
+    "components/cardSchool/cardSchool",
+    "components/swiper/swiper",
+    "components/listenTeam/listenTeam",
+    "components/userpublish/userpublish",
+    "components/audio/audio",
+    "pages/home/audio/audio",
+    "pages/home/search/search",
+    "pages/circle/details/details",
+    "pages/circle/moreSchool/moreSchool",
+    "components/simple/simple",
+    "pages/channel/teamDetails/teamDetails",
+    "pages/channel/userDetails/userDetails",
+    "pages/channel/moreTeam/moreTeam",
+    "components/userComment/userrComment",
+    "pages/information/informationDetails/informationDetails",
+    "components/usernewcomment/newcomment",
+    "pages/channel/release/release",
+    "pages/information/PraiseAndCollection/PraiseAndCollection",
+    "pages/information/CommentsReceived/CommentsReceived",
+    "pages/information/NewsConcerns/NewConcerns",
+    "pages/information/useContent/userContent",
+    "pages/channel/scenery/scenery",
+    "pages/myself/editingMaterials/editingMaterials",
+    "pages/myself/userSet/userSet",
+    "pages/myself/integral/integral",
+    "pages/myself/myCollection/myCollection",
+    "pages/myself/listenReport/listenReport",
+    "pages/myself/editingMaterials/PersonalProfile/PersonalProfile",
+    "pages/myself/integral/PointsDetails/PointsDetails",
+    "pages/register/register",
+    "pages/home/interest/interest",
+    "pages/myself/readlog/readlog",
+    "pages/myself/userSet/AccountAndSecurity/AccountAndSecurity",
+    "pages/myself/userSet/Instructions/Instructions",
+    "pages/myself/userSet/ServiceAndHelp/Service",
+    "pages/myself/userSet/settingPrivacy/settingPrivacy",
+    "pages/myself/userSet/TeenModel/TeenModel",
+    "pages/myself/userSet/AccountAndSecurity/loginPhone/loginPhone",
+    "pages/myself/userSet/AccountAndSecurity/updatePassword/updatePassword",
+    "pages/myself/userSet/AccountAndSecurity/updatePassword/Forgetpassword/Forgetpassword",
+    "pages/channel/userDetails/Moreusercomment/Moreusercomment",
+    "pages/home/swiperTopic/swiperTopic",
+    "pages/myself/myfollowAndfans/myfollowAndfans",
+    "pages/login/userAgreement/userAgreement",
+    "custom-tab-bar/index",
+    "pages/myself/integral/howGetIntegral/howGetIntegral",
+    "pages/myself/achievement/achievement",
+    "pages/myself/integralTask/integralTask"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "少年听吧",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#ff2d55",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/image/icon/shouye.png",
+        "selectedIconPath": "/image/icon/shouye1.png"
+      },
+      {
+        "pagePath": "pages/circle/circle",
+        "text": "频道",
+        "iconPath": "/image/icon/pindao.png",
+        "selectedIconPath": "/image/icon/pindao1.png"
+      },
+      {
+        "pagePath": "pages/channel/channel",
+        "text": "圈子",
+        "iconPath": "/image/icon/quanzi.png",
+        "selectedIconPath": "/image/icon/quanzi1.png"
+      },
+      {
+        "pagePath": "pages/information/information",
+        "text": "消息",
+        "iconPath": "/image/icon/msg.png",
+        "selectedIconPath": "/image/icon/msg1.png"
+      },
+      {
+        "pagePath": "pages/myself/myself",
+        "text": "我的",
+        "iconPath": "/image/icon/wo-de.png",
+        "selectedIconPath": "/image/icon/wo-de-red.png"
+      }
+    ]
+  }
+}

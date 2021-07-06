@@ -1,0 +1,5 @@
+/* pages/home/swiper/swiper.wxss */
+swiper-item>image{
+  width: 750rpx;
+  height: 350rpx;
+}

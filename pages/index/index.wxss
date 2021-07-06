@@ -1,0 +1,35 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  margin-top: 40%;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* align-items: center; */
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.userinfo-nickname {
+  width: 100%;
+  color: #aaa;
+}
+
+.usermotto {
+  color: #F64241 ;
+  font-weight: bold;
+margin-top: 100rpx;
+text-align: center;
+}
+.listen{
+  text-align: center;
+  color: #F64241;
+  font-weight: bold;
+  line-height: 300rpx;
+}

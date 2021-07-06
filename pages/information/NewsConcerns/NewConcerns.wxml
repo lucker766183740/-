@@ -1,0 +1,14 @@
+<!--components/newcommment/newcomment.wxml-->
+
+<view class="container" wx:for="{{List}}" wx:key="item.id">
+  <view data-othId="{{item.id}}" catchtap="bindnavgetoruseContent" style="border-bottom: 1rpx solid #ddd;display:flex;padding-bottom:15rpx;">
+    <image  class="userimg" src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}"></image>
+    <view class="user-details">
+      <text class="user-name">{{item.username}}</text>
+      <text class="user-comment">{{item.content}}</text>
+      <text class="date">{{item.senderTime}}</text>
+    </view>
+    <view class="iconfont icon-tianjiahaoyou {{item.haveAttention ? 'active' : ''}}" catchtap="bindhg" data-otherId="{{item.id}}">{{item.haveAttention ? '已关注' : '回关'}}</view>
+  </view>
+</view>
+<nothing wx:if="{{List.length == 0}}"></nothing>

@@ -1,0 +1,88 @@
+/* pages/channel/scenery/scenery.wxss *//* pages/channel/teamDetails/teamDetails.wxss */
+
+
+.header-icon{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 130rpx;
+  z-index: 999;
+}
+.title{
+  position: absolute;
+  top: 70rpx;
+  left: 20%;
+  font-weight: bold;
+  color: #555;
+}
+.icon-jiantou{
+margin: 70rpx 0 0 15rpx;
+font-weight: bold;
+ transform: rotate(180deg);
+}
+.details-headerImage{
+  position: relative;
+  width: 750rpx;
+  height: 375rpx;
+  align-items: center;
+  display: flex;
+}
+.bg_color{
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(242,132,53,.5);
+}
+.details-headerImage>image{
+  position: absolute;
+  z-index: 100;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+.details_text{
+  position: absolute;
+  z-index: 100;
+  margin-left: 200rpx;
+/* padding-left: 20rpx;
+width: 500rpx;
+position: absolute;
+bottom: 30rpx; */
+}
+.details_text text{
+  display:block;
+  color: #fff;
+  line-height: 50rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 5rpx 1rpx black;
+}
+.details_text text+text{
+  font-size: 28rpx;
+}
+
+.btn_guanzhu{
+ position: absolute;
+ z-index: 100;
+  bottom: 30rpx; 
+  font-size: 28rpx;
+  right: 100rpx;
+  width: 130rpx; 
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 30rpx;
+}
+.details-publish{
+  margin-top: 10rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.havegz{
+  background-color: red !important;
+  color: #fff !important;
+}

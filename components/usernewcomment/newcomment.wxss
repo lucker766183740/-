@@ -1,0 +1,36 @@
+/* components/newcommment/newcomment.wxss */
+.container{
+  background-color: #fff;
+  padding: 10rpx 40rpx;
+  box-sizing: border-box;
+}
+.userimg{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  padding: 10rpx;
+}
+.user-details{
+  width:480rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.user-name{
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.user-comment, .date{
+  font-size: 24rpx;
+  color: #555;
+  
+}
+.date{
+  margin-left:30rpx;
+}
+.user-image{
+  width: 80rpx;
+  height: 80rpx;
+  padding: 10rpx;
+}

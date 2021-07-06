@@ -1,0 +1,7 @@
+<!--pages/myself/userSet/settingPrivacy/settingPrivacy.wxml-->
+<view class="container">
+  <view class="kaifa">
+    <icon class="iconfont icon-jianshezhong"></icon>
+    <view class="text">建设中...</view>
+  </view>
+</view>

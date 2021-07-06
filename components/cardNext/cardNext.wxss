@@ -1,0 +1,43 @@
+/* components/cardNext/cardNext.wxss */
+@import "/style/icon.wxss";
+.card-cantainer{
+  width: 100%;
+  height: 450rpx;
+  overflow: hidden;
+  border-bottom: 15rpx solid #eee;
+}
+.card-like{
+  display: inline;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.icon-zuihuo{
+  padding-left: 10rpx;
+  color: red;
+}
+.card-shuaxin{
+  /* display: inline; */
+  font-size: 30rpx;
+  float: right;
+  padding:0  15rpx;
+  box-sizing: border-box;
+}
+.card-image{
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  margin-top: 20rpx;
+}
+.card-image>view{
+  margin: 10rpx;
+}
+.card-image>view image{
+  width: 230rpx;
+  height: 287rpx;
+  border-radius: 10rpx;
+}
+.card-image text{
+  text-align:center;
+  font-size: 30rpx;
+  display: block;
+}

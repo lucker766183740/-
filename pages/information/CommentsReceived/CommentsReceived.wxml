@@ -1,0 +1,5 @@
+
+<!-- 评论和@ -->
+<view class="NewConcerns">
+  <newcommment List="{{List}}"></newcommment>
+</view>

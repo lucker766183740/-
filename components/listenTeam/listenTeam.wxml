@@ -1,0 +1,25 @@
+<!--components/listenTeam/listenTeam.wxml-->
+<view class="container">
+  <view class="listenTeam-title">
+    <view>
+        <icon class="iconfont icon-tubiaoshangchuanmoban"></icon>
+        <text >{{Title}}</text>
+    </view>
+    <view class="listenTeam-more">
+      <text  catchtap="bindnavgetormoreTeam" wx:if="{{all}}">全部>></text>
+    </view>
+  </view>
+  <scroll-view class="listenTeam-body" scroll-x>
+    <view class="group_list" wx:for="{{Teamlist}}" wx:key="id" 
+      catchtap="bindnavgetorTeamDetails"
+      data-teamId="{{item.id}}"
+    >
+    <view class="listenTeam-image">
+      <image  src="{{item.image}}"></image>
+    </view>
+    <view class="listenTeam-name">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  </scroll-view>
+</view>

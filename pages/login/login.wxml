@@ -1,0 +1,51 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <image class="bg_image" src="../../image/login_bg.jpg" ></image>
+  <view class="login-container2">
+    <!-- <view class="login_title"></view> -->
+    <!-- 手机号输入框 -->
+  <view class="login-account">
+    <text>{{inputNameCon.usernameType}}</text>
+    <input type="text" 
+    value="{{username}}"
+    placeholder="{{inputNameCon.usernameType_placeholder}}" 
+    maxlength="16"  
+    placeholder-class="input-placeholder" 
+    bindinput="bindblurAccount"
+    />
+  </view>
+  <!-- 密码输入框 -->
+  <view class="login-password">
+    <text>{{inputPasswordCon.passwordInput}}</text>
+    <view>
+      <input type="{{inputPasswordCon.passwordtype}}" 
+      placeholder="{{inputPasswordCon.password_placeholder}}" 
+      maxlength="18" 
+      value="{{password}}"
+      placeholder-class="input-placeholder"
+      bindinput="bindblurPassword"
+      />
+      <!-- 获取验证码 -->
+      <text wx:if="{{codeisshow}}" catchtap="bindgetvercode">{{inputPasswordCon.vercode != '获取验证码' ? inputPasswordCon.vercode + 's' : inputPasswordCon.vercode}}</text>
+    </view>
+  </view>
+  <view class="otherlogintype">
+    <text catchtap="bindmobileType">{{mobileType}}</text>
+    <text catchtap="bindnavgetorupdate">忘记密码？</text>
+  </view>
+  <view class="btn1" bindtap="navdgatorNext">登录</view>
+  <view class="register"> 
+    <text>如果你还没有账号，请先注册</text>
+    <text class="btn"  catchtap="bindnavgetorregister">立即注册</text>
+  </view>
+  <!-- <view class="register" style="line-height:20rpx;"> 
+    <text class="btn" catchtap="bindvisSign">游客登录</text>
+    <text>非西八里学区用户，请点击游客登陆</text>
+  </view> -->
+</view>
+<view class="act_text">
+  <view>北京市海淀区八里庄学区教育教学资源共享平台</view>
+  <view>注册登录代表你已同意<navigator class="navigator" url="./userAgreement/userAgreement?userAgreement=1">用户协议</navigator>和<navigator class="navigator" url="./userAgreement/userAgreement?userAgreement=2">隐私协议</navigator> </view>
+</view>
+
+</view>

@@ -1,0 +1,4 @@
+<!--pages/information/newcollection/newColloection.wxml-->
+<view class="container">
+  <newcommment List="{{List}}"></newcommment>
+</view>

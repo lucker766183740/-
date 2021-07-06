@@ -1,0 +1,36 @@
+<!--pages/channel/teamDetails/teamDetails.wxml-->
+<view class="container">
+  <view class="header-icon" style="background-image:url({{bgactive ? teamDetails.image : ''}})">
+    <icon class="iconfont icon-jiantou" catchtap="bingdnavgeback"></icon>
+    <text class="title" wx:if="{{bgactive}}">{{teamDetails.name}}</text>
+  </view>
+  <view class="details-headerImage" style="background-image:url({{teamDetails.image}})">
+    <view class="bg_color"></view>
+    <image src="{{teamDetails.image}}" catchtap="bindSeeLogimg" data-url="{{teamDetails.image}}"></image>
+    <view class="details_group">{{teamDetails.name}}</view>
+    <text class="details-buttons {{teamDetails.haveAttention ? 'Activetext' : ''}}" catchtap="bindAttention" data-AttentId="{{teamDetails.id}}">{{teamDetails.haveAttention ? '已关注' : '+ 关注'}}</text>
+
+      
+    <view class="details-image-text">
+      <view class="details-countsData">
+        <view style="margin-left:40rpx;">
+          <text>阅读  </text>
+          <text>{{teamDetails.readNum > 9999 ? '9999+' : teamDetails.readNum}}</text>
+        </view>
+        <view>
+          <text>圈子  </text>
+          <text>{{teamDetails.publishNum >9999 ? '9999+' : teamDetails.publishNum}}</text>
+        </view>
+        <view>
+          <text>成员  </text>
+          <text>{{teamDetails.attentionNum >9999 ? '9999+' : teamDetails.attentionNum}}</text>
+        </view>
+      </view>
+  
+    </view>
+  </view>
+  <nothing wx:if="{{teamDetails.publishList.length == 0}}"></nothing>
+  <view class="details-publish" >
+    <userpublish userPublishList="{{teamDetails.publishList}}"></userpublish>
+  </view>
+</view>

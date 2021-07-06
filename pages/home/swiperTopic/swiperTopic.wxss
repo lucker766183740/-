@@ -1,0 +1,69 @@
+/* pages/home/swiperTopic/swiperTopic.wxss */
+@import "../../../utils/wxParse/wxParse.wxss";
+.container{
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.header{
+  margin-bottom: 80rpx;
+  text-align: end;
+}
+.creator , .date{
+  display: block;
+}
+.creator{
+  font-weight: bold;
+  margin-right: 60rpx;
+}
+.date{
+  font-size: 24rpx;
+  color: #333;
+  margin-right: 10rpx;
+}
+page {
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time text {
+  font-size: 28rpx;
+  color: #aaaaaa;
+}
+
+.title {
+  font-size: 48rpx;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+}
+
+.padding-d {
+  padding: 40rpx;
+}
+
+.WxEmojiView {
+  word-break: normal;
+  text-align: justify;
+}
+
+.wxParse-hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+}
+/* video{
+  height: 230px !important;
+} */

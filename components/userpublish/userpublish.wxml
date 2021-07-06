@@ -1,0 +1,63 @@
+<!--components/userpublish/userpublish.wxml-->
+<view class="container">
+  <block wx:for="{{userPublishList}}" wx:key="id">
+    <view class="user-name" catchtap="bindnavgetoruser" data-creator="{{item.authorId}}">
+      <image src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}"></image>
+      <text>{{item.authorName}}</text>
+      <view class="iconfont icon-user" catchtap="bindnavgetor"
+      data-teamId="{{item.groupId}}"
+      style="font-size:28rpx"
+      >{{item.groupName}}</view>
+    </view>
+    <view class="user-details">
+      <text wx:if="{{item._isshow}}" catchtap="bindnavgetorteamdetails" 
+      data-publishId="{{item.id}}"
+      data-tenantCode="{{item.tenantCode}}"
+      >{{item.content}}</text>
+      <text wx:else catchtap="bindnavgetorteamdetails" 
+      data-publishId="{{item.id}}"
+      data-tenantCode="{{item.tenantCode}}"
+      >{{item._content}}</text>
+      <view class="user-card"  
+      catchtap="bindnavgetorjingseDetails"
+      wx:for="{{item.topicName}}" 
+      wx:for-item="item2" 
+      wx:for-index="index2"
+      wx:key="topicId"
+      data-topicId="{{item.topicId[index2]}}"
+      >#{{item2}}#</view>
+      <text wx:if="{{item._isopen}}" class="zhankai_show" bindtap="isopenAll" data-pubId="{{item.id}}">{{item._isshow ? '收起' : ' ...展开'}}</text>
+      <view class="detail_image" >
+        <image wx:if="{{item.imageUrl.length == 1}}" src="{{item2}}"  mode="heightFix" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2" ></image>
+        <view style="background-image:url({{item2}})" class="moreImg"  wx:if="{{item.imageUrl.length > 1}}" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2" ></view>
+      </view>
+    </view>
+    <view class="user-Fabulous">
+      <view class="user_pinglun">
+        <icon  class="iconfont icon-xiaoxi"
+          catchtap="bindnavgetorteamdetails" 
+          data-publishId="{{item.id}}"
+          data-tenantCode="{{item.tenantCode}}"></icon>
+        <text> {{item.commentNum >9999  ? '9999+' : item.commentNum}}</text>
+      </view> 
+          <view class="user_pinglun">
+        <icon  class="iconfont icon-xinaixin {{item.haveLike ? 'pub_zhanshi' : ''}}"
+        catchtap="bindchannerLike"
+          data-id="{{item.id}}"
+          data-authorId="{{item.authorId}}"
+          data-tenantCode="{{item.tenantCode}}"></icon>
+        <text> {{item.likeNum >9999  ? '9999+' : item.likeNum}}</text>
+      </view>
+      <view class="user_dianzan">
+        <icon class="iconfont icon-{{item.haveCollect ? 'shixinwujiaoxing' : 'kongxinwujiaoxing'}}"
+        bindtap="bindchannerComment"
+        data-informationId="{{item.id}}"
+        data-collection="{{item.haveCollect}}"
+        ></icon>
+        <text> {{item.collectNum > 9999 ? '9999+' : item.collectNum}}</text>
+      </view>
+    </view>
+  <view class="con"></view>
+</block>
+</view>
+

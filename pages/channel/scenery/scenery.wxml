@@ -1,0 +1,20 @@
+<!--pages/channel/teamDetails/teamDetails.wxml-->
+<view class="container" wx:for="{{scenData}}"  wx:for-item="item" wx:for-index="index" wx:key="id">
+  <view class="header-icon" style="background-image:url({{bgactive ? item.image : ''}})">
+    <icon class="iconfont icon-jiantou" catchtap="bingdnavgeback"></icon>
+    <text class="title" wx:if="{{bgactive}}">@{{item.name}}</text>
+  </view>
+  <view class="details-headerImage" style="background-image:url({{item.image}}) ; background-size: cover; margin-top: 130rpx;">
+    <view class="bg_color"></view>
+    <image src="{{item.headImage}}" catchtap="bindSeeLogimg" data-url="{{item.headImage}}" ></image>
+    <view class="details_text">
+      <text style="font-weight:bold;">@{{item.name}}</text>
+      <text>{{item.content}}</text>
+      <text>{{item.joinNum}}人参与{{item.readNum}}次浏览</text>
+    </view>
+    <!-- <view class="btn_guanzhu {{haveAttention ? 'havegz' : ''}}" catchtap="bindgzhave">{{haveAttention ? '已关注' : '+ 关注'}}</view> -->
+  </view>
+<view class="details-publish" >
+  <userpublish userPublishList="{{userPublishList}}"></userpublish>
+</view>
+</view>

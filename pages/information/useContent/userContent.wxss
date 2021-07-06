@@ -1,0 +1,113 @@
+/* pages/information/useContent/userContent.wxss */
+.user_header{
+  display: flex;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.user_image{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.detail_content{
+  width: 600rpx;
+
+}
+.user_list{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.detail_content text{
+  display:block;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 30rpx;
+}
+.detail_content text+text{
+  color: #555;
+}
+.user_btn{
+  display: flex;
+  justify-content: space-around;
+  padding: 40rpx;
+}
+.btn_guanzhu,.btn_xiaoxi{
+  font-size: 24rpx;
+  border-radius: 50rpx;
+  line-height: 20rpx;
+}
+.btn_guanzhu{
+padding: 17rpx 120rpx;
+color: #fff;
+background-color: #ddd;
+}
+.active{
+background-color: #FF2365;
+}
+.btn_xiaoxi{
+padding: 10rpx 20rpx;
+color: #555;
+border: 1rpx solid #555;
+}
+.user_identity{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.user_identity text{
+  font-size: 28rpx;
+  color: #555;
+  line-height: 40rpx;
+}
+.block_shoucang{
+  line-height: 80rpx;
+  border-top: 1rpx solid #ddd;
+  border-bottom: 1rpx solid #ddd;
+  text-align: center;
+}
+.block_shoucang text{
+
+  color: #333;
+  margin: 0 30rpx;
+  padding-bottom: 7rpx;
+}
+.icon-sousuo{
+ position: relative;
+ right: -200rpx;
+ color: #555;
+}
+
+.clickActive{
+  font-weight: bold;
+  border-bottom: 4rpx solid #FF2365;
+}
+.all_notebook{
+  width: 100%;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.all_notebook text{
+  font-size: 28rpx;
+  background-color: #ddd;
+  padding: 5rpx 60rpx;
+  border-radius: 50rpx;
+}
+.notebook_details{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.fixed{
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  display: none;
+}
+.isshow{
+  display: block;
+}

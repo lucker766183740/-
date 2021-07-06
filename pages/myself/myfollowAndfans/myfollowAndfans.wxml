@@ -1,0 +1,39 @@
+<!--pages/myself/myfollowAndfans/myfollowAndfans.wxml-->
+
+<!-- 关注话题  用户  pagetype = 2-->
+<block wx:if="{{pagetype == 2}}">
+    <view class="title">
+      <text class="{{type == 0 ? 'titleActive' : ''}}" catchtap="bindtitleactive" data-tname="0">用户</text>
+      <text class="{{type == 1 ? 'titleActive' : ''}}" catchtap="bindtitleactive" data-tname="1">听吧小组</text>
+    </view>
+  <scroll-view scroll-x scroll-into-view="{{toView}}" 
+  scroll-with-animation bindtouchstart="bindstart" 
+  bindtouchend="bindend" class="scroll">
+    <view class="scroll_container" wx:for="{{title}}" wx:key="item"  id="group_{{index}}">
+      <view class="container" wx:for="{{dataList}}" wx:key="index" bindtap="binduserdetais" data-othId="{{item.attentionUser}}">
+        <image src="{{item.attentionImage ? item.attentionImage : '/image/headUrl.jpg'}}"></image>
+        <view class="userdetails">
+          <text>{{item.attentionName}}</text>
+          <text>{{item.attentionMessage}}</text>
+        </view>
+        <view class="date">{{item.createDate}}</view>
+      </view>
+      <nothing wx:if="{{dataList.length == 0}}"></nothing>
+    </view>
+  </scroll-view>
+</block>
+
+
+<!-- 粉丝  pagetype = 3-->
+<block wx:if="{{pagetype == 3}}">
+  <view class="container" wx:for="{{dataList}}" wx:key="index" bindtap="binduserdetais" data-othId="{{item.userId}}">
+    <image src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}">头像</image>
+    <view class="userdetails">
+      <text>{{item.userName}}</text>
+      <text>{{item.personalMessage}}</text>
+    </view>
+    <view class="date">{{item.createDate}}</view>
+  </view>
+<nothing wx:if="{{dataList.length == 0}}"></nothing>
+
+</block>

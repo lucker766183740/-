@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "home-swiper":"/components/swiper/swiper",
+    "listenTeam":"/components/listenTeam/listenTeam",
+    "userpublish":"/components/userpublish/userpublish"
+
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true
+}

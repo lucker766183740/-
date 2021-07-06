@@ -1,0 +1,17 @@
+<!--pages/myself/readlog/readlog.wxml-->
+<view class="container" wx:for="{{readlogList}}" wx:key="id"
+  catchtap="bindnavgetorAudio"
+  data-nowPlayaudio="{{item.chapterId}}"
+>
+  <view class="read_image">
+    <image src="{{item.picture}}"></image>
+  </view>
+
+  <view class="read_body">
+    <text class="title">{{item.bookName}}</text>
+    <text class="chapter">{{item.chapterName}}</text>
+    <text class="time">{{item.timeNode}}</text>
+  </view>
+  <view class="read_footer">{{item.readTime}}</view>
+</view>
+<nothing wx:if="{{readlogList.length == 0}}"></nothing>

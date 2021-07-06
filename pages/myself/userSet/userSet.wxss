@@ -1,0 +1,43 @@
+/* pages/myself/userSet/userSet.wxss */
+page{
+  background-color: #eee;
+}
+.setting{
+  background-color: #fff;
+  width:100%;
+  display: flex;
+  font-size: 28rpx;
+  color: #333;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eee;
+}
+.setting text,.setting .icon-jiantou{
+  line-height: 100rpx;
+  padding: 0 40rpx;
+}
+.icon-jiantou{
+  color: #555;
+  font-size: 26rpx;
+}
+.setting:first-child{
+  border-top: 20rpx solid #eee;
+}
+.setting:nth-child(2n){
+  border-bottom: 20rpx solid #eee;
+}
+.btn{
+  position: fixed;
+  bottom: 300rpx;
+  left: 50%;
+  transform: translate(-50%);
+  /* text-align: center; */
+  color: red;
+}
+.nav{
+  background-color: #fff;
+  border: 1rpx solid #ddd;
+  padding: 20rpx 100rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}

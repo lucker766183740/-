@@ -1,0 +1,19 @@
+<!--components/cardNext/cardNext.wxml-->
+<view class="card-cantainer" wx:for="{{cardNextTitle}}" wx:key="name">
+  <view class="card-like">
+    <icon class="iconfont icon-zuihuo"></icon>
+    <text>{{item.name}}</text>
+  </view>
+  <view class="card-shuaxin" catchtap="bindchangeData" data-subjectId="{{item.id}}" data-subindex="{{index}}">
+    <text>换一换</text>
+    <icon class="iconfont icon-shuaxin1"></icon>
+  </view>
+  <view class="card-image">
+    <view wx:for="{{item.subList}}" wx:for-item="item2" wx:for-index="index2" wx:key="picture"
+      catchtap="bindnavgetordetails" data-bookdetailId="{{item2.bookId}}">
+      <image src="{{item2.picture}}"></image>
+      <!-- 图片长宽比例1.25 -->
+      <text>{{item2.name}}</text>
+    </view>
+  </view>
+</view>

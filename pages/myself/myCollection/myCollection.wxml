@@ -1,0 +1,27 @@
+<!--pages/myself/myCollection/myCollection.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="header_title " wx:for="{{titleList}}" wx:key="item" catchtap="bindisactive" data-isindex="{{index}}">
+      <text class="{{index==isindex ? 'isactive':''}}">{{item}}</text>
+      <view class="{{index==isindex ? 'spanactive':''}}"></view>
+    </view>
+  </view>
+<!-- <view class="details">
+ <view class="details_image" wx:for="{{10}}">
+    <image src="/image/icon/text.png"></image>
+    <view>海底两万里</view>
+  </view> 
+  <simple bookList="{{bookList}}" isindex="{{isindex}}"></simple>
+  <nothing></nothing>
+</view> -->
+<scroll-view class="all-scroll"
+scroll-x  scroll-into-view="{{toView}}"
+scroll-with-animation
+bindtouchstart="touchstart" bindtouchend="touchend"
+>
+  <view class="all-container" wx:for="{{titleList}}" wx:key="id" id="view_{{index}}">
+    <simple bookList="{{bookList}}" isindex="{{isindex}}"></simple>
+    <nothing wx:if="{{bookList.length == 0}}"></nothing>
+  </view>
+</scroll-view>
+</view>

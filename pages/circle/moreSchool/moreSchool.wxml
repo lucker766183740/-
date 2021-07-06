@@ -1,0 +1,4 @@
+<!--pages/circle/moreSchool/moreSchool.wxml-->
+<view class="container">
+<simple bookList="{{bookList}}" isindex = "{{0}}"></simple>
+</view>

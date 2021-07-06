@@ -1,0 +1,24 @@
+
+@import "../../../utils/wxParse/wxParse.wxss";
+page{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.padding-d {
+  padding:20rpx;
+}
+.WxEmojiView {
+  word-break: normal;
+  text-align: justify;
+}
+.wxParse-hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+}

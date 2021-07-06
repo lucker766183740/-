@@ -1,0 +1,68 @@
+<!--pages/channel/userDetails/userDetails.wxml-->
+<view class="container">
+  <block wx:for="{{userDetailsList}}" wx:key="id">
+  <view class="header-icon">
+    <icon class="iconfont icon-jiantou" catchtap="bingnavgetorblock"></icon>
+    <image src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}"></image>
+    <text>{{item.authorName}}</text>
+    <view wx:if="{{item.authorId != userId}}" class="user-guanzhu {{item.haveAttention ? 'userActive-guanzhu' : ''}}" catchtap="bindAttention" data-AttentId="{{item.authorId}}">{{item.haveAttention ? '已关注':'+关注'}}</view>
+  </view>
+  <view class="user-body" style="margin-top:140rpx">
+    <image wx:if="{{item.imageUrl.length == 1}}" mode="widthFix" src="{{item2}}" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="imageUrl" ></image>
+    <view wx:if="{{item.imageUrl.length > 1}}" class="moreImg" style="background-image:url({{item2}})" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="imageUrl" ></view>
+    <view style="display:block;margin:20rpx 0"> 
+      <view class="user-label" wx:for="{{item.topicName}}" wx:for-item="item2" wx:for-index="index2" wx:key="topicName">
+      <text>#</text>
+      <text>{{item2}}</text>
+    </view>
+    </view>
+
+    <view style="padding: 0 30rpx;border-bottom:2rpx solid #ddd;">
+      <view class="user-titlename">{{item.title}}</view>
+      <view class="user-content" catchtap="bindHFthiscircle">{{item.content}}</view>
+      <view class="user-update">更新于 {{item.createDate}}</view>
+    </view>
+  </view>
+  </block>
+    <!-- 评论区域 -->
+    <view class="user-body">
+      <view class="user-pinglunTotal">共{{total}}条评论</view>
+    <!-- <view class="user-pinglun">
+      <view class="user-input">
+        <input type="text" placeholder="说点什么把" placeholder-style="z-index:0" />
+      </view>
+    </view> -->
+    <userComment userCommentList="{{userCommentList}}" id="comment" bindgetcommentData="getcommentData"></userComment>
+  </view>
+  <!-- <view wx:if="{{ishideMoreComment}}" class="Active_dianzan" catchtap="bindhideMoreComment">{{_MoreComment ? '展示更多评论 ...' : '收起更多评论'}} </view> -->
+  <!-- 发表评论 -->
+  <view class="pinglun-fixed" style="bottom:{{height + 'px'}}">
+    <textarea class="{{focustext}}" 
+    type="{{inputtype}}" fixed="{{true}}"
+    value="{{value}}"
+    show-confirm-bar="{{false}}"
+    maxlength="200"
+    placeholder="{{type == 0  && comment.touserName  ? '回复:' +  comment.touserName : '发表评论'}}"
+     bindfocus="bindfocus" 
+     bindblur="bindblur"
+     bindinput="bindinput"
+     ></textarea>
+   <view class="pinlun_icon {{isshowFabiao}}">
+    <view class="pinglun-count">
+      <icon class="iconfont icon-xinaixin {{userDetailsList[0].haveLike ? 'Active_dianzan' :''}}"  bindtap="bindLike"></icon>
+      <text>{{userDetailsList[0].likeNum>9999 ? '9999+' : userDetailsList[0].likeNum}}</text>
+    </view>
+    <view class="pinglun-count">
+      <icon class="iconfont {{userDetailsList[0].haveCollect ? 'icon-shixinwujiaoxing':'icon-kongxinwujiaoxing'}}"
+      bindtap="bindshoucang"
+      ></icon>
+      <text>{{userDetailsList[0].collectNum>9999 ? '9999+' : userDetailsList[0].collectNum}}</text>
+    </view>
+    <view class="pinglun-count">
+      <icon class="iconfont icon-xiaoxi"></icon>
+      <text>{{userDetailsList[0].commentNum>9999 ? '9999+' : userDetailsList[0].commentNum}}</text>
+    </view>
+  </view>
+  <text class="isshowFabiao {{fabiao}}" bindtap="bindFabiao">发表</text>
+  </view>
+</view>
