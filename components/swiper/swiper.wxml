@@ -1,8 +1,0 @@
-<swiper 
-  indicator-dots indicator-color="#f8f8f8" 
-  indicator-active-color="red" autoplay circular
-  class="swiper">
-  <swiper-item class="swiper_item" wx:for="{{swiperData}}" wx:key="imageUrl" catchtap="navgetorswiperTopic" data-id="{{item.id}}">
-    <image src="{{item.imageUrl}}"></image>
-  </swiper-item>
-  </swiper>

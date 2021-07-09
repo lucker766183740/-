@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "userpublish":"/components/userpublish/userpublish"
-  },
-  "navigationStyle": "custom",
-  "enablePullDownRefresh": true
-}

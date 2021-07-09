@@ -1,7 +1,0 @@
-<!--pages/myself/userSet/AccountAndSecurity/loginPhone/loginPhone.wxml-->
-<view class="container">
-  <view class="loginPhone"> 
-    <text>登录手机号</text>
-    <text>{{phone}}</text>
-  </view>
-</view>

@@ -1,6 +1,0 @@
-<!--pages/login/userAgreement/userAgreement.wxml-->
-<!-- <import src="../../../utils/wxParse/wxParse.wxml"/>
-<veiw class="padding-d">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}" ></template>
-  </veiw> -->
-  <nothing></nothing>

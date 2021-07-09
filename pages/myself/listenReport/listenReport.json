@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "ec-echarts":"/echars/ec-canvas/ec-canvas"
-  },
-  "navigationBarTitleText": "听吧报告"
-}

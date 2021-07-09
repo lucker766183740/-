@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "newcommment":"/components/usernewcomment/newcomment",
-    "nothing":"/components/nothing/nothing"
-  },
-  "navigationBarTitleText": "新增关注"
-}

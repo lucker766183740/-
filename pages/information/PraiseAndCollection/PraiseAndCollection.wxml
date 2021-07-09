@@ -1,7 +1,0 @@
-<!--pages/information/PraiseAndCollection/PraiseAndCollection.wxml-->
-<!--pages/information/NewsConcerns/NewConcerns.wxml-->
-<!-- 赞和收藏 -->
-<view class="NewConcerns">
-  <newcommment List="{{List}}" ></newcommment>
-</view>
-

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "userComment":"/components/userComment/userrComment"
-  },
-  "navigationStyle": "custom",
-  "enablePullDownRefresh": false
-}

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "simple":"/components/simple/simple"
-  },
-  "enablePullDownRefresh": false
-}

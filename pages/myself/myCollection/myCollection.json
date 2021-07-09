@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "simple":"/components/simple/simple",
-    "nothing":"/components/nothing/nothing"
-  },
-  "navigationBarTitleText": "我的收藏"
-}

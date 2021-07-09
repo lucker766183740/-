@@ -1,5 +1,0 @@
-<!--components/nothing/nothing.wxml-->
-<view class="nothing">
-  <icon class="iconfont icon-xiaoxi1"></icon>
-  <text> 还很干净哟~</text>
-</view>

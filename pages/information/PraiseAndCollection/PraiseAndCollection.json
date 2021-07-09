@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "newcommment":"/components/usernewcomment/newcomment"
-  },
-  "navigationBarTitleText": "点赞"
-}

@@ -1,6 +1,0 @@
-Component({
-  data:{
-
-  },
-  methods:{}
-})
