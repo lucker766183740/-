@@ -33,7 +33,6 @@ Page({
     let title
     let type = this.data.type
     let url
-    console.log(pagetype , type)
       // type =0 关注话题 ; type =1 关注用户
     this.setData({pagetype})
     if(pagetype == 1){

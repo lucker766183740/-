@@ -36,6 +36,7 @@ Component({
       let likeType = e.currentTarget.dataset.liketype
       let userCommentList = this.properties.userCommentList
       let publishUser = e.currentTarget.dataset.publishuser
+      let informationId = e.currentTarget.dataset.informationid
       this.haveLike = false
       userCommentList.forEach((item,index)=>{
         if(likeType === "0" ){
@@ -55,7 +56,8 @@ Component({
       }
       })
       this.setData({userCommentList})
-      App.userComment(likeId,likeType,this.haveLike,publishUser)
+      console.log(userCommentList)
+      App.userComment(likeId,likeType,this.haveLike,publishUser,informationId)
     },
     //点击展示更多评论回复
  bindisshowMoreComment(e){

@@ -49,8 +49,10 @@ Page({
       appInstance.globalData.musicInte = setInterval(() => {
         let duration = appInstance.globalData.musicTimeTotal
         let current = appInstance.globalData.currentTime
+        let isshow = appInstance.globalData.isPlay
        let Time =  this.comporentent(current,duration)
        this.setData({
+         isshow,
           duration : Time.newtotalTime , 
           currentTime : Time.newTime,
           width:Time.width + ''     
@@ -61,7 +63,6 @@ Page({
       //   position:  (audioDuration / 100) * value,
       // })
     }
-    console.log('拖动  1  次' , appInstance.globalData.currentTime   , this.data.good)
   },
   // 滑块拖动中...
   eventhandle(e){
@@ -100,7 +101,6 @@ Page({
   good(){
     clearInterval(appInstance.globalData.musicInte)
     appInstance.globalData.musicInte = null
-    console.log('start' , appInstance.globalData.currentTime)
     // wx.getBackgroundAudioManager().pause()
     this.setData({isshow:false , good:false})
   },
@@ -116,8 +116,10 @@ Page({
       appInstance.globalData.musicInte = setInterval(() => {
         let duration = appInstance.globalData.musicTimeTotal
         let current = appInstance.globalData.currentTime
+        let isshow = appInstance.globalData.isPlay
        let Time =  this.comporentent(current,duration)
        this.setData({
+         isshow,
           duration : Time.newtotalTime , 
           currentTime : Time.newTime,
           width:Time.width + ''     
@@ -128,7 +130,6 @@ Page({
       //   position:  this.currentTime,
       // })
     }
-   console.log('end',appInstance.globalData.currentTime , this.data.good)
   },
   // 控制播放/暂停icon
   bindTap() {
@@ -144,14 +145,14 @@ Page({
     let id = this.options.nowPlayaudio
     let isxinshow = !this.data.isxinshow
     this.setData({isxinshow})
-    appInstance.userCollection(id,type,isxinshow)
+    console.log(this.data.audioList)
+    appInstance.userCollection(id,type,isxinshow,null)
   },
   // 点击播放列表播放选中章节
   bindPlay(e){
     let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
     let { musicId } = wx.getStorageSync('musicId')
     this.setData({isshow:true})
-    console.log(nowPlayaudio , musicId )
     if(nowPlayaudio !=  musicId){
       getApp().globalData.currentTime = 0
       this.getAudioBackgroundManager({nowPlayaudio})
@@ -384,6 +385,7 @@ Page({
           wx.setStorageSync('musicId', {})
           appInstance.globalData.isPlay = false
           appInstance.getAudioBackMusic(false)
+          wx.stopBackgroundAudio()
           wx.switchTab({
             url: '/pages/home/home',
           })
@@ -414,25 +416,28 @@ Page({
     let isshow = getApp().globalData.isPlay
     this.setData({isshow})
      // 定时器  -- 定时获取首页currentTime数据然后更新到页面上
-     if(appInstance.globalData.musicInte){
-       clearInterval(appInstance.globalData.musicInte)
-     }
+     if(!appInstance.globalData.musicInte){
       appInstance.globalData.musicInte = setInterval(() => {
         let duration = appInstance.globalData.musicTimeTotal
         let current = appInstance.globalData.currentTime
+        let isshow = appInstance.globalData.isPlay
        let Time =  this.comporentent(current,duration)
        this.setData({
+          isshow,
           duration : Time.newtotalTime , 
           currentTime : Time.newTime,
           width:Time.width + ''     
         })
       }, 300);
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    clearInterval(appInstance.globalData.musicInte )
+    appInstance.globalData.musicInte = null
   },
 
   /**

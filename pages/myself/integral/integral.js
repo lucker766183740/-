@@ -38,7 +38,6 @@ Page({
       let url = listen.appUrl + 'integralManagement/api/dayIntegral/'+ date
       let countScore = 0
       listen.request_n_get( url , {} , res =>{
-        console.log(res)
         if(res.data.code == 0){
           let list = res.data.data
           list.forEach((v,i)=>{

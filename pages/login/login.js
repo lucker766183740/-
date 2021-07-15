@@ -282,7 +282,6 @@ Page({
   },
   // 授权
   getuserinfo(){
-    console.log('开始授权')
     wx.getUserProfile({
       desc: '提高用户体验', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {

@@ -56,14 +56,10 @@ const intervalTime = ( start, delay ) => {
   let startTime = new Date( start ); // 开始时间
   let endTime = new Date( startTime + ( delay * 60 * 1000 ) ); // 结束时间
   let delayTime = ( endTime - startTime ) / ( 60 * 1000 )
-  console.log( 'startTime:', startTime )
-  console.log( 'endTime:', endTime )
-  console.log( 'delayTime:', delayTime )
+
   if( delayTime > delay && delayTime < ( delay*1 + 0.2 ) ){
     console.log( startTime, endTime )
   }
-
-
   // console.log(endTime - startTime); // 毫秒数
   // console.log(Math.floor((endTime - startTime) / 1000)); // 秒数
   // console.log(Math.floor((endTime - startTime) / 1000 / 60)); // 分钟

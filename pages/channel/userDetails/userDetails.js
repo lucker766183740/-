@@ -230,11 +230,12 @@ Page({
   //收藏圈子
   bindshoucang(){
     let userDetailsList = this.data.userDetailsList
+    console.log(userDetailsList)
     let type = 2
     userDetailsList[0].haveCollect = !userDetailsList[0].haveCollect
     let iscollection = userDetailsList[0].haveCollect
     if(iscollection){userDetailsList[0].collectNum++}else{userDetailsList[0].collectNum--}
-    getApp().userCollection(userDetailsList[0].id,type,iscollection)
+    getApp().userCollection(userDetailsList[0].id,type,iscollection,userDetailsList[0].authorId)
     this.setData({userDetailsList})
   },
   //关注 ， 取消关注 用户

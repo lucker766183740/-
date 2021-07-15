@@ -13,11 +13,11 @@
       <text wx:if="{{item._isshow}}" catchtap="bindnavgetorteamdetails" 
       data-publishId="{{item.id}}"
       data-tenantCode="{{item.tenantCode}}"
-      >{{item.content}}</text>
+      >{{item.title}}</text>
       <text wx:else catchtap="bindnavgetorteamdetails" 
       data-publishId="{{item.id}}"
       data-tenantCode="{{item.tenantCode}}"
-      >{{item._content}}</text>
+      >{{item._title}}</text>
       <view class="user-card"  
       catchtap="bindnavgetorjingseDetails"
       wx:for="{{item.topicName}}" 
@@ -52,9 +52,13 @@
         <icon class="iconfont icon-{{item.haveCollect ? 'shixinwujiaoxing' : 'kongxinwujiaoxing'}}"
         bindtap="bindchannerComment"
         data-informationId="{{item.id}}"
+        data-authorId="{{item.authorId}}"
         data-collection="{{item.haveCollect}}"
         ></icon>
         <text> {{item.collectNum > 9999 ? '9999+' : item.collectNum}}</text>
+      </view>
+      <view class="user_delete" wx:if="{{item.authorId == loginId}}" catchtap="deleteTheChannel">
+        <icon class="iconfont icon-delete"></icon>
       </view>
     </view>
   <view class="con"></view>

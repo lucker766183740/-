@@ -1,6 +1,7 @@
 import listen , { appUrl }  from '../../utils/request'
 let App = getApp()
 Component({
+  timer:null,
   properties:{
     nowPlayaudio:Array,
     isshow:Boolean
@@ -25,18 +26,20 @@ pageLifetimes: {
 },
   methods:{
     getdata(){
-      setInterval(() => {
-        let newMusicId = wx.getStorageSync('musicId').musicId
-      let url = appUrl + 'chapter/app/info?id=' + newMusicId + '&userId=' + App.globalData.userId
-        if(newMusicId != this.data.oldMusicId){
-          listen.request_n_get(url,{},(res)=>{
-            if (res.statusCode === 200 && res.data.code === 0) {
-            let audioList = res.data.data
-            this.setData({nowPlayaudio : [audioList]})
-            }
-          })
-        }
-      }, 500);
+      if(!this.timer){
+        this.timer =  setInterval(() => {
+           let newMusicId = wx.getStorageSync('musicId').musicId
+         let url = appUrl + 'chapter/app/info?id=' + newMusicId + '&userId=' + App.globalData.userId
+           if(newMusicId != this.data.oldMusicId){
+             listen.request_n_get(url,{},(res)=>{
+               if (res.statusCode === 200 && res.data.code === 0) {
+               let audioList = res.data.data
+               this.setData({nowPlayaudio : [audioList] , oldMusicId:newMusicId})
+               }
+             })
+           }
+         }, 500);
+      }
     },
     // 点击获取播放/切换播放状态
     bindshow(){
@@ -202,6 +205,9 @@ pageLifetimes: {
           wx.setStorageSync('musicId', {})
           App.globalData.isPlay = false
           App.getAudioBackMusic(false)
+          clearInterval(this.timer)
+          this.timer = null
+          wx.stopBackgroundAudio()
           wx.switchTab({
             url: '/pages/home/home',
           })

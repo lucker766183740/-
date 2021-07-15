@@ -148,7 +148,6 @@ Page({
       maxDuration: 30,
       camera: 'back',
       success (res) {
-        console.log(res)
         if(res.type == 'image'){
           // tempFilePath可以作为img标签的src属性显示图片
           let tempFilePaths = res.tempFiles
@@ -197,7 +196,6 @@ Page({
       }
       // 上传图片到服务
   if(imageUrl.length > 0){
-    console.log(imageUrl)
     // for(let i = 0; i<imageUrl.length;i++){
     //   let file = imageUrl[i].tempFilePath
     //   this.upimageFile(file)

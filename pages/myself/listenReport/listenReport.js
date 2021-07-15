@@ -432,7 +432,7 @@ Page({
      let seriesData = data.data.seriesData
      let yData = data.data.yData
      let arr = []
-     if(yData.length == 0){this.setData({filData:false});console.log(123456789)}else{this.setData({filData:true})}
+     if(yData.length == 0){this.setData({filData:false});}else{this.setData({filData:true})}
     yData.forEach(v=>{
       arr.push(v.substring(5,7)+'月')
     })

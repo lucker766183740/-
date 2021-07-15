@@ -18,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (  options ) {
+    console.log(options)
     // debugger
     // 先检查token要是没有的话直接返回登录页
     let { username } = wx.getStorageSync('token')
@@ -68,11 +69,13 @@ Page({
       let url = appUrl + 'readlog/app/getLastChapter?userId=' + getApp().globalData.userId
       listen.request_n_get( url , {} , res=>{
         if(res.data.code == 0 ){
-          getApp().globalData.currentTime = res.data.data.timeNode
-          wx.setStorageSync('musicId' , {musicId:res.data.data.chapterId})
+          if(res.data.data){
+            getApp().globalData.currentTime = res.data.data.timeNode
+            wx.setStorageSync('musicId' , {musicId:res.data.data.chapterId})
+          }else{
+            getApp().globalData.currentTime = 0
+          }
         }
-        console.log('续播=====',res.data.data)
-        console.log('currentTime' , getApp().globalData.currentTime)
       })
     },
   //控制首页audio浮窗显示
@@ -84,7 +87,6 @@ Page({
     }
     listen.request_n_get( url , {} , res =>{
         let list = res.data.data
-        console.log(list)
         if(list){
           wx.setStorageSync('musicId', {musicId:list.chapterId})
           this.setData({isshowAudio:true})
@@ -203,7 +205,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

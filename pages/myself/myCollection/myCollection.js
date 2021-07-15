@@ -44,7 +44,6 @@ Page({
     listen.request_n_get(url,{},({data})=>{
       let bookList = data.data
       this.setData({bookList})
-      console.log(bookList )
     })
   },
   /**

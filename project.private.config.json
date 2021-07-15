@@ -83,6 +83,17 @@
           "pathName": "components/nothing/nothing",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "带shareTicker群0",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": 1044,
+          "shareInfo": {
+            "groupName": "测试模拟群0",
+            "shareName": "5EV4hCCS0CQWmVZkqXaLM1hva_ZMapH3bWVRTKSpdOo@cr4dev",
+            "shareKey": "aTTAfzaj_gMnf8clqtR0ntsr6LTsLt7j6YdmpTVY3Qf7UHqn7en6GX6ORlt-hKhYomUKgNLx6l74KcZPfbgTMQ~~"
+          }
         }
       ]
     }

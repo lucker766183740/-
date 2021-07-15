@@ -64,7 +64,8 @@ bindLike(e){
   let islike = !userDetail.haveLike
   userDetail.haveLike = islike
   this.setData({userDetail})
-  App.userComment(commentId , type , islike , creator)
+  console.log(userDetail)
+  App.userComment(commentId , type , islike , creator , userDetail.informationId)
 },
 // 评论回复喜欢
 bindotherLike(e){
@@ -73,13 +74,15 @@ bindotherLike(e){
   let type = 1
   let replay = this.data.replay
   let islike = null
+  let informationId = null
   replay.forEach(v=>{
     if(commentId === v.id){
       islike = !v.haveLike
       v.haveLike = islike
+      informationId = v.informationid
     }
   }) 
-  App.userComment(commentId , type , islike , creator)
+  App.userComment(commentId , type , islike , creator ,informationId)
   this.setData({replay})
 },
 bindfocus(e){
@@ -156,14 +159,12 @@ bindnavgetor(e){
 if_ishide(){
     let that = this
     let replay = that.data.replay
-    console.log(replay)
     let query = wx.createSelectorQuery()
     wx.showLoading({
       title: '加载中...',
     })
     setTimeout(() => {
       query.selectAll('.myintro').boundingClientRect(function(rect){
-        console.log(rect) 
         if(rect){
           rect.forEach((v,i)=>{
             if(v.height > 40){
@@ -182,7 +183,6 @@ if_ishide(){
     bindChangeis_isshow(e){
       let { index } = e.currentTarget.dataset
       let replay = this.data.replay
-      console.log(replay)
       replay[index].if_ishide = !replay[index].if_ishide
       this.setData({replay})
     },

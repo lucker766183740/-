@@ -18,8 +18,9 @@
       <view class="user-dianzan">
         <icon wx:if="{{!item.haveLike}}" 
         class="iconfont icon-xinaixin1"
-          bindtap="isAndnoLike" 
-          data-likeindex="{{index}}"
+        bindtap="isAndnoLike" 
+        data-likeindex="{{index}}"
+        data-informationId="{{item.informationId}}"
         data-likeId="{{item.id}}"
         data-publishUser="{{item.creator}}"
         data-likeType='0'
@@ -27,6 +28,7 @@
         <icon wx:else
         class="iconfont icon-xinaixin"
           bindtap="isAndnoLike" 
+          data-informationId="{{item.informationId}}"
           data-publishUser="{{item.creator}}"
           data-likeindex="{{index}}"
         data-likeId="{{item.id}}"
@@ -59,6 +61,7 @@
       <icon wx:if="{{!item2.haveLike}}" 
         class="iconfont icon-xinaixin1"
         bindtap="isAndnoLike"
+        data-informationId="{{item2.informationId}}"
         data-likeindex="{{index2}}"
         data-likeId="{{item2.id}}"
         data-publishUser="{{item2.creator}}"
@@ -67,6 +70,7 @@
       <icon wx:else 
       class="iconfont icon-xinaixin"
       bindtap="isAndnoLike" 
+      data-informationId="{{item2.informationId}}"
       data-likeindex="{{index2}}"
         data-likeId="{{item2.id}}"
         data-publishUser="{{item2.creator}}"

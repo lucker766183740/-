@@ -13,7 +13,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('首次进入myself页面')
   },
     // 登陆成功后获取用户信息
     getuserdata(){

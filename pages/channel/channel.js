@@ -66,10 +66,10 @@ Page({
           if(item.topicName){item.topicName = (item.topicName.split(','))}
           if(item.topicId){ item.topicId = (item.topicId.split(','))}
           if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
-          item._content = item.content 
+          item._title = item.title 
           item._isshow = false
-          if((item.content.length + item.topicName.toString().length) > 55){
-            item._content = (item._content + item.topicName.toString()).slice(0,55)
+          if((item.title.length + item.topicName.toString().length) > 20){
+            item._title = (item._title + item.topicName.toString()).slice(0,20)
             item._isopen = true
           }else{
             item._isopen = false
@@ -79,6 +79,7 @@ Page({
         let userPublishList = this.data.userPublishList
         userPublishList.push(..._userPublishList)
       this.setData({userPublishList,Title,total})
+
     })
   },
   //获取话题小组数据
@@ -126,10 +127,10 @@ Page({
         if(item.topicName){item.topicName = (item.topicName.split(','))}
         if(item.topicId){ item.topicId = (item.topicId.split(','))}
         if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
-        item._content = item.content
+        item._title = item.title
         item._isshow = false
-        if((item.content.length + item.topicName.toString().length) > 55){
-          item._content = (item.content + item.topicName.toString()).slice(0,55)
+        if((item.title.length + item.topicName.toString().length) > 55){
+          item._title = (item.title + item.topicName.toString()).slice(0,55)
           item._isopen = true
         }else{
           item._isopen = false

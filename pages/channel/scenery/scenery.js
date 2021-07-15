@@ -50,10 +50,10 @@ Page({
        if(item.topicName){item.topicName = (item.topicName.split(','))}
        if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
        if(item.topicId){ item.topicId = (item.topicId.split(','))}
-       item._content = item.content 
+       item._title = item.title 
        item._isshow = false
-       if((item.content.length + item.topicName.toString().length) > 55){
-         item._content = (item.content + item.topicName.toString()).slice(0,55)
+       if((item.title.length + item.topicName.toString().length) > 55){
+         item._title = (item.title + item.topicName.toString()).slice(0,55)
          item._isopen = true
        }else{
          item._isopen = false

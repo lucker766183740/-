@@ -48,7 +48,7 @@
   </view>
   <!-- 笔记详细内容 -->
   <view class="notebook_details">
-    <userpublish userPublishList="{{userPublishList}}" userId="{{userDetail.id}}"></userpublish>
+    <userpublish userPublishList="{{userPublishList}}" userId="{{userDetail.id}}" loginId="{{userId}}"></userpublish>
   </view>
   <nothing wx:if="{{total == 0}}"></nothing>
 </view>

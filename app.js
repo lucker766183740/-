@@ -1,9 +1,9 @@
 //app.js
 import listen, { appUrl} from './utils/request'
-
 App({
   userduration:0,
   onLaunch: function () {
+    this.onShareAppMessage()
     // 用户在线时长统计
    this.userTimer =  setInterval(()=>{
       this.userduration++
@@ -54,22 +54,34 @@ App({
   },
   onShow(e){
     this.getPlayaudioList()
+    console.log(e)
+    if(e && e.shareTicket){
+    wx.getShareInfo({
+      withCredentials:true,
+      shareTicket:e.shareTicket,
+      timeout:3000,
+      success:res=>{
+        console.log( '通过别人分享链接进入的' , res)
+      }
+    })
+    }
+
   },
   // 背景音乐播放接口t
   getAudioBackMusic(isPlay, data, fn ) {
-    console.log(data)
     let that = this
-    let url = appUrl + 'chapter/app/info?id=' + data.id + '&userId=' + this.globalData.userId
-    let obj = null
+    // let url = appUrl + 'chapter/app/info?id=' + data.id + '&userId=' + this.globalData.userId
+    // let obj = null
     let audio = wx.getBackgroundAudioManager()
     audio.startTime = that.globalData.currentTime*1
     new Promise(function(resolve , reject){
-      listen.request_n_get(url,{},({data})=>{
-        obj = data.data
-        resolve(obj)
-    })
+    //   listen.request_n_get(url,{},({data})=>{
+    //     obj = data.data
+    //     console.log(obj)
+    //     resolve(obj)
+    // })
+    resolve(data)
   }).then(function(obj){
-    console.log(obj.audioUrl)
     if(!obj.audioUrl){
       audio.pause()
       wx.showToast({
@@ -102,7 +114,6 @@ App({
       // 音乐跳转播放的位置 单位s
       let currentTime = that.globalData.currentTime
       // 播放跳转的位置
-      console.log('global -- currentTime' , currentTime )
     } else {
       audio.pause()
       that.globalData.timeisok = true
@@ -130,8 +141,8 @@ App({
       audio.onError((err) => {
         clearInterval(that.globalData.musicInte)
         that.globalData.musicInte = null
-        console.log(err)
         getApp().globalData.isPlay = false
+        console.log(err)
 
       })
       audio.onWaiting(()=>{
@@ -143,6 +154,7 @@ App({
         wx.hideLoading()
       })
     }).catch((err)=>{
+      getApp().globalData.isPlay = false
       console.log(err)
     })
     if (fn) {
@@ -248,7 +260,7 @@ App({
     })
   },
   //用户收藏 , 取消收藏
-  userCollection(id, type, iscollection) {
+  userCollection(id, type, iscollection , publishUser) {
     let token = wx.getStorageSync('token')
     if(!token){
       wx.showModal({
@@ -268,7 +280,8 @@ App({
       creator: this.globalData.userId,
       informationId: id,
       type: type, // 分类：0:书目；1:章节；2:圈子动态,
-      tenantCode: this.globalData.tenantCode
+      tenantCode: this.globalData.tenantCode,
+      publishUser
     }
     if (iscollection) {
       let url = appUrl + 'collection' //收藏状态
@@ -276,6 +289,7 @@ App({
         creator: this.globalData.userId,
         informationId: id,
         type: type,
+        publishUser,
         tenantCode: this.globalData.tenantCode
       }, res => {
    
@@ -287,6 +301,7 @@ App({
         creator: this.globalData.userId,
         informationId: id,
         type: type,
+        publishUser,
         tenantCode: this.globalData.tenantCode
       }, res => {
         console.log('用户 <<取消收藏>> 接口调用成功', res)
@@ -294,7 +309,7 @@ App({
     }
   },
   //用户喜欢评论，取消喜欢评论接口
-  userComment(id, type, islike , publishUser) {
+  userComment(id, type, islike , publishUser , informationId) {
     let token = wx.getStorageSync('token')
     if(!token){
       wx.showModal({
@@ -315,7 +330,8 @@ App({
       creator: this.globalData.userId, //登录用户id,
       tenantCode: this.globalData.tenantCode, //租户编码,
       publishUser, // 圈子发布者ID ， 评论发布者id ， 评论护回复者ID creator
-      type: type //类型： 0：评论, 1：回复 ，2:圈子
+      type: type, //类型： 0：评论, 1：回复 ，2:圈子
+      informationId
     }
     if (islike) {
       let url = appUrl + 'like/saveLike'
@@ -324,6 +340,7 @@ App({
         creator: this.globalData.userId, //用户id,
         tenantCode: this.globalData.tenantCode, //租户编码,
         publishUser,
+        informationId,
         type: type //类型： 0：评论, 1：回复，2:圈子
       }, res => {
   
@@ -335,6 +352,7 @@ App({
         commentId: id, //信息、评论id,
         creator: this.globalData.userId, //用户id,
         publishUser,
+        informationId,
         tenantCode: this.globalData.tenantCode, //租户编码,
         type: type //类型： 0：评论, 1：回复
       }, res => {
@@ -488,7 +506,7 @@ App({
       console.log('修改消息状态成功',res)
     })
   },
-  //小程序挂起 、 退出时调用的函数  duration: 时长，creator: 用户id
+  //小程序挂起 、 退出时调用的函数  duration: 时长，creator: 用户id ， 在线时间统计
   userexitApp(){
     let url = listen.appUrl + 'onlinetime'
     // let userduration = this.userduration
@@ -563,16 +581,29 @@ rankLevel(rank){
       // if (!data.isOverShare) {
         // data.isOverShare = true
         view.onShareAppMessage = () => { //重写分享配置
-          console.log('分享成功')
+          wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
+          let url = appUrl + 'share/shareNum'
+          // 首次分享获取积分  // shareId:"页面id",type:'0:好友，1 群，2 朋友圈',shareUser:'分享人'
+          listen.request_n_post(url , {
+            shareId:view.route,
+            type:0,
+            shareUser:this.globalData.userId
+          } , res=>{
+            console.log('转发成功',res)
+          })
           return {
             title: '少年听吧',
-            path: view.route, //若无path 默认跳转分享页
-            //imageUrl:'/image/login_bg.jpg' //若无imageUrl 截图当前页面
+            path: view.route + '?userId=' +  this.globalData.userId, //若无path 默认跳转分享页
           }
         }
       // }
     })
   },
+
+
   // 获取未读消息数
    getinformationsdataList(){ 
     let count1 = 0
@@ -600,22 +631,17 @@ rankLevel(rank){
         }
         }) 
     }).catch(err=>{
-      console.log()
+      console.log(err)
     })
     return promise
   },
-  //监听属性值函数
-  watch:function(obj,val,method){
-    Object.defineProperty(obj,val,{
-      configurable:true,
-      enumerable:true,
-      set:function(nval){
-          val = nval;
-          method(nval)
-      },
-      get:function(){
-        return val
-      }
-    })
-  },
+// 设置监听器
+watch: function (ctx, obj) {
+  Object.keys(obj).forEach(key => {
+   this.observer(ctx.data, key, ctx.data[key], function (value) {
+    obj[key].call(ctx, value)
+   })
+  })
+ },
+
 })

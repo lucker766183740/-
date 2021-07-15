@@ -84,7 +84,7 @@ Page({
         v.collectNum--
       }
     })
-    App.userCollection(id, 0, Collection)
+    App.userCollection(id, 0, Collection,null)
     if (Collection) {
       wx: wx.showToast({
         title: '已收藏',

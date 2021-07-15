@@ -3,6 +3,7 @@ Component({
   properties:{
     userPublishList:Array,
     userId:String || Number,
+    loginId:String || Number
   },
   data:{},
   attached(){
@@ -71,14 +72,15 @@ Component({
         if(!item.haveLike && item.id === id){
           item.likeNum-- 
         }
-  
       })
-      getApp().userComment(id,type,islike , authorId)
+      console.log(userPublishList)
+      getApp().userComment(id,type,islike , authorId ,id)
       this.setData({userPublishList})
     },
     // 圈子收藏
     bindchannerComment(e){
       let informationId = e.currentTarget.dataset.informationid
+      let authorId = e.currentTarget.dataset.authorid
       let type = 2
       let collection = !e.currentTarget.dataset.collection
       let userPublishList = this.properties.userPublishList  
@@ -90,9 +92,8 @@ Component({
         if(!item.haveCollect && item.id ===informationId){
           item.collectNum-- 
         }
-  
       })
-      getApp().userCollection(informationId , type , collection)
+      getApp().userCollection(informationId , type , collection , authorId)
       this.setData({userPublishList})
     },
     // 跳转用户详情页
@@ -103,6 +104,20 @@ Component({
       }
       wx.navigateTo({
         url: '/pages/information/useContent/userContent?othId=' + creator,
+      })
+    },
+    deleteTheChannel(){
+      wx.showModal({
+        content:'确定要删除这条圈子吗？',
+        success(res){
+          if(res.confirm){
+            wx.showToast({
+              title: '功能正在建设中...',
+              duration:3000,
+              icon:'none'
+            })
+          }
+        }
       })
     }
   }

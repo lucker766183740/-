@@ -23,7 +23,8 @@ Page({
     limit:10,
     total:0,
     userdata:{},
-    isshow:''
+    isshow:'',
+    userId:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -31,6 +32,7 @@ Page({
   onLoad: function (options) {
     this.options.othId = options.othId
     this.getuserDetailData(options.othId)
+    this.setData({userId:App.globalData.userId})
   },
 //查询某用户信息详情（参数  searchUser：被查询用户id，userId："登录人id"）
   getuserDetailData(id){
@@ -57,7 +59,6 @@ Page({
       wx.hideNavigationBarLoading()
       wx.stopPullDownRefresh()
       if(data.code == 0){
-        console.log(data)
         let userDetail = data.data.data
       userDetail._rankLevel = getApp().rankLevel(userDetail.score)
       userDetail._haveAttention = data.data.haveAttention
@@ -82,10 +83,10 @@ Page({
          if(item.topicName){item.topicName = (item.topicName.split(','))}
          if(item.topicId){ item.topicId = (item.topicId.split(','))}
          if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
-         item._content = item.content 
+         item._title = item.title 
          item._isshow = false
-         if((item.content.length + item.topicName.toString().length) > 55){
-           item._content = (item.content + item.topicName.toString()).slice(0,55)
+         if((item.title.length + item.topicName.toString().length) > 55){
+           item._title = (item.title + item.topicName.toString()).slice(0,55)
            item._isopen = true
          }else{
            item._isopen = false
