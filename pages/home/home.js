@@ -80,14 +80,11 @@ Page({
     },
   //控制首页audio浮窗显示
   isshowAudio(){
-    let { musicId } = wx.getStorageSync('musicId') 
+    let musicId  = wx.getStorageSync('musicId') || {}
     let url = appUrl + 'readlog/api/position'
-    if(musicId){
-     url = appUrl + 'readlog/api/position'
-    }
     listen.request_n_get( url , {} , res =>{
-        let list = res.data.data
-        if(list){
+      if(res.data.code == 0  && res.data.data){
+          let list = res.data.data
           wx.setStorageSync('musicId', {musicId:list.chapterId})
           this.setData({isshowAudio:true})
         }else{

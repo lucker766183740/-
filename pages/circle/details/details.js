@@ -149,6 +149,8 @@ Page({
     }, (res) => {
       console.log('成功添加图书', res)
       if(res.data.code == 0){
+      let  { musicId } =  wx.getStorageSync('musicId')
+      if(musicId != listenList[0].chapterList[0].id){ App.globalData.currentTime = 0 }
         wx.navigateTo({
           url: '../../home/audio/audio?nowPlayaudio=' + listenList[0].chapterList[0].id,
         })
@@ -181,6 +183,8 @@ Page({
       chapter,
       activeBgcolor:'details-bgpink'
     })
+    let { musicId } = wx.getStorageSync('musicId')
+    if(musicId != nowPlayaudio){ App.globalData.currentTime = 0 }
     wx.navigateTo({
       url: '/pages/home/audio/audio?nowPlayaudio=' + nowPlayaudio,
     })

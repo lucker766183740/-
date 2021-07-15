@@ -1,4 +1,5 @@
 // components/userpublish/userpublish.js
+import listen from '../../utils/request'
 Component({
   properties:{
     userPublishList:Array,
@@ -106,15 +107,40 @@ Component({
         url: '/pages/information/useContent/userContent?othId=' + creator,
       })
     },
-    deleteTheChannel(){
+    //删除圈子
+    deleteTheChannel(e){
+      console.log(this.data.userPublishList)
+      let that = this
+      let id = e.currentTarget.dataset.id
+      let authorId = e.currentTarget.dataset.authorid
+      let url = listen.appUrl+ 'informationpublish/app/delete?id=' + id
       wx.showModal({
         content:'确定要删除这条圈子吗？',
         success(res){
           if(res.confirm){
-            wx.showToast({
-              title: '功能正在建设中...',
-              duration:3000,
-              icon:'none'
+            wx.showLoading({
+              title: '正在删除...'
+            })
+            listen.request_n_get(url,{},res=>{
+              wx.hideLoading()
+              if(res.data.code == 0){
+                wx.showToast({
+                  title: '删除成功',
+                })
+                let userPublishList = that.data.userPublishList
+                let arr = []
+                userPublishList.forEach((v,i)=>{
+                  if(v.id !== id){
+                    arr.push(v)
+                  }
+                })
+                that.setData({userPublishList:arr})
+              }else{
+                wx.showToast({
+                  title: res.data.msg,
+                  icon:'none'
+                })
+              }
             })
           }
         }

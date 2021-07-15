@@ -207,7 +207,6 @@ pageLifetimes: {
           App.getAudioBackMusic(false)
           clearInterval(this.timer)
           this.timer = null
-          wx.stopBackgroundAudio()
           wx.switchTab({
             url: '/pages/home/home',
           })

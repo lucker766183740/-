@@ -30,8 +30,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.options.othId = options.othId
-    this.getuserDetailData(options.othId)
+    this.options = options.othId 
+    this.getuserDetailData(this.options)
     this.setData({userId:App.globalData.userId})
   },
 //查询某用户信息详情（参数  searchUser：被查询用户id，userId："登录人id"）
@@ -179,6 +179,9 @@ Page({
   bindlikeAndcollectionishide(){
     this.setData({isshow:''})
   },
+  upcomponentsDate(e){
+    this.getuserDetailData(this.options)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -211,7 +214,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.getuserDetailData(this.options.othId)
+    this.getuserDetailData(this.options)
   },
 
   /**
@@ -224,7 +227,7 @@ Page({
     if( page*limit <= total ){
       page++
       this.setData({page})
-    this.getuserDetailData(this.options.othId)
+    this.getuserDetailData(this.options)
     }else{
       wx.showToast({
         title: '没有更多了~',

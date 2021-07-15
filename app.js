@@ -73,7 +73,10 @@ App({
     // let url = appUrl + 'chapter/app/info?id=' + data.id + '&userId=' + this.globalData.userId
     // let obj = null
     let audio = wx.getBackgroundAudioManager()
+    let oldmusicId = wx.getStorageSync('musicId').musicId
+    if(oldmusicId != data.id ) that.globalData.currentTime = 0
     audio.startTime = that.globalData.currentTime*1
+    if(!isPlay)  return audio.stop()
     new Promise(function(resolve , reject){
     //   listen.request_n_get(url,{},({data})=>{
     //     obj = data.data

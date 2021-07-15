@@ -154,9 +154,9 @@ Page({
     let { musicId } = wx.getStorageSync('musicId')
     this.setData({isshow:true})
     if(nowPlayaudio !=  musicId){
+      wx.getBackgroundAudioManager().pause()
       getApp().globalData.currentTime = 0
       this.getAudioBackgroundManager({nowPlayaudio})
-      wx.getBackgroundAudioManager().seek(0)
     }
  
   },
@@ -385,7 +385,6 @@ Page({
           wx.setStorageSync('musicId', {})
           appInstance.globalData.isPlay = false
           appInstance.getAudioBackMusic(false)
-          wx.stopBackgroundAudio()
           wx.switchTab({
             url: '/pages/home/home',
           })

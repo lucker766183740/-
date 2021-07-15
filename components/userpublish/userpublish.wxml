@@ -57,7 +57,7 @@
         ></icon>
         <text> {{item.collectNum > 9999 ? '9999+' : item.collectNum}}</text>
       </view>
-      <view class="user_delete" wx:if="{{item.authorId == loginId}}" catchtap="deleteTheChannel">
+      <view class="user_delete" wx:if="{{item.authorId == loginId}}" catchtap="deleteTheChannel" data-id="{{item.id}}" data-authorId="{{item.authorId}}">
         <icon class="iconfont icon-delete"></icon>
       </view>
     </view>
