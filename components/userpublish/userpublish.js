@@ -135,6 +135,7 @@ Component({
                   }
                 })
                 that.setData({userPublishList:arr})
+                that.triggerEvent('totalRedu')
               }else{
                 wx.showToast({
                   title: res.data.msg,
