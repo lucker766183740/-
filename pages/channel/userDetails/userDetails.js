@@ -134,6 +134,7 @@ Page({
       fabiao:'fabiao',
       height
     })
+    console.log(e)
   },
   // 评论框失去焦点时
   bindblur(){

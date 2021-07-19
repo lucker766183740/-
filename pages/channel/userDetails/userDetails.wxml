@@ -36,11 +36,12 @@
   </view>
   <!-- <view wx:if="{{ishideMoreComment}}" class="Active_dianzan" catchtap="bindhideMoreComment">{{_MoreComment ? '展示更多评论 ...' : '收起更多评论'}} </view> -->
   <!-- 发表评论 -->
-  <view class="pinglun-fixed" style="bottom:{{height + 'px'}}">
+  <view class="pinglun-fixed" style="bottom:{{height}}px">
     <textarea class="{{focustext}}" 
     type="{{inputtype}}" fixed="{{true}}"
     value="{{value}}"
     show-confirm-bar="{{false}}"
+    adjust-position="{{false}}"
     maxlength="200"
     placeholder="{{type == 0  && comment.touserName  ? '回复:' +  comment.touserName : '发表评论'}}"
      bindfocus="bindfocus" 

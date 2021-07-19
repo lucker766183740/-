@@ -37,10 +37,11 @@
     </view>
   </view>
   <!-- 发布评论 -->
-  <view class="pinglun-fixed" style="bottom:{{height+'px'}}">
+  <view class="pinglun-fixed" style="bottom:{{height}}px">
     <textarea 
     type="text" fixed="{{true}}"
     show-confirm-bar="{{false}}"
+    adjust-position="{{false}}"
     maxlength="200"
     placeholder="{{touserName ? ('回复：' +  touserName + ' 限200字') : ('回复：' + userDetail.userName + ' 限200字')}}"
      bindfocus="bindfocus" 

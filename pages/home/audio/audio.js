@@ -176,83 +176,17 @@ Page({
       this.setData({audioList:audioList , isxinshow: data.data.haveCollect })
     // 播放音乐
     appInstance.getAudioBackMusic(isshow,audioList,(e)=>{
-    e.onPlay(()=>{
-      let { musicId } = wx.getStorageSync('musicId')
-      this.setData({isshow:true})
-      appInstance.globalData.isPlay = true
-      this.getNowPlay(musicId)
-    })
-    e.onPause(()=>{
-      this.setData({isshow:false})
-      appInstance.globalData.isPlay = false
-      appInstance.savePlay(data, 0 , 0)
-    })
-      // e.onPlay(()=>{
-
-      // getApp().globalData.startRead = e.currentTime
-      //   // 点击上一曲 ， 下一曲 ， 播放结束后从0开始播放
-      //   if(this.data.chufa){
-      //     e.currentTime = 0
-      //     this.setData({chufa:false})
-      //   }
-      //   this.setData({isshow:true , audioDuration:e.duration})
-      // })
-      // e.onTimeUpdate(()=>{
-      //   //全局保存播放状态
-      // appInstance.globalData.currentTime = e.currentTime
-      //   // 音频的总时长a
-      //   let duration = parseInt(e.duration)
-      //   let aall = parseInt(duration/60)
-      //   let ball = duration - aall*60
-      //   if(aall<10)(aall = '0' + aall)
-      //   if(ball<10){ball = '0' + ball}
-      //   let totalTime = aall + ':' + ball
-      // // 音频播放的位置
-      //   let currentTime =  parseInt(e.currentTime)
-      //   let a = parseInt(currentTime/60)
-      //   let b = parseInt(currentTime)
-      //   if(a<10){a = '0' + a}
-      //   if(b<10){b = '0' + b}
-      //  if(b>59){ 
-      //     b = parseInt(currentTime) - a*60
-      //       if(b<10){b = '0' + b}
-      //   }
-      //   let time = a + ':' + b
-      // // 进行中的进度条
-      // let slider =  (100/duration)*currentTime
-      // // if(this.data.good){
-      //   this.setData({
-      //     currentTime:time,
-      //     duration:totalTime,
-      //     width:slider,
-      //   })
-      // // }
-      // })
-      // e.onPause(()=>{
-      //   getApp().globalData.endRead = e.currentTime
-      //   getApp().savePlay(audioList , 0 , 0)
-      //   this.setData({isshow:false})
-      // })
-      // e.onStop(()=>{
-      //   this.setData({isshow:false})
-      //   getApp().globalData.endRead = e.currentTime
-      //   getApp().globalData.isPlay = false
-      //   getApp().savePlay(audioList , 0 , 0)
-      // })
-      // e.onEnded(()=>{
-      //   this.setData({isshow:false})
-      //   getApp().globalData.isPlay = false
-      //   getApp().savePlay(audioList , 0 , 0)
-      //   wx.pauseBackgroundAudio()
-      //   getApp().globalData.currentTime = 0
-      //   getApp().globalData.readTimes = 0
-      //   getApp().globalData.endRead = e.currentTime
-      //   this.bindNextsong()
-      // })
-      // e.onError((error) => {
-      //   getApp().globalData.isPlay = false
-
-      // })
+      e.onPlay(()=>{
+        let { musicId } = wx.getStorageSync('musicId')
+        this.setData({isshow:true})
+        appInstance.globalData.isPlay = true
+        this.getNowPlay(musicId)
+      })
+      e.onPause(()=>{
+        this.setData({isshow:false})
+        appInstance.globalData.isPlay = false
+        appInstance.savePlay(data, 0 , 0)
+      })
     })
     })
   },

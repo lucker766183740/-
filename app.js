@@ -76,7 +76,7 @@ App({
     let oldmusicId = wx.getStorageSync('musicId').musicId
     if(oldmusicId != data.id ) that.globalData.currentTime = 0
     audio.startTime = that.globalData.currentTime*1
-    if(!isPlay)  return audio.stop()
+    if(!isPlay)  return audio.pause()
     new Promise(function(resolve , reject){
     //   listen.request_n_get(url,{},({data})=>{
     //     obj = data.data

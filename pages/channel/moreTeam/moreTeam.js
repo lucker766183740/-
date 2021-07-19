@@ -32,6 +32,11 @@ Page({
       if(AttenId === item.id){
         item.haveAttention = !item.haveAttention
         isAtten = item.haveAttention
+        if(item.haveAttention){
+          item.attentionNum++
+        }else{
+          item.attentionNum > 0 ? item.attentionNum-- : item.attentionNum
+        }
       }
     })
     getApp().userFollow(AttenId,type,isAtten)
