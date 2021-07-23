@@ -18,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (  options ) {
-    console.log(options)
     // debugger
     // 先检查token要是没有的话直接返回登录页
     let { username } = wx.getStorageSync('token')
@@ -72,7 +71,9 @@ Page({
           if(res.data.data){
             getApp().globalData.currentTime = res.data.data.timeNode
             wx.setStorageSync('musicId' , {musicId:res.data.data.chapterId})
+            this.setData({isshowAudio:true})
           }else{
+            this.setData({isshowAudio:false})
             getApp().globalData.currentTime = 0
           }
         }
@@ -80,17 +81,18 @@ Page({
     },
   //控制首页audio浮窗显示
   isshowAudio(){
-    let musicId  = wx.getStorageSync('musicId') || {}
-    let url = appUrl + 'readlog/api/position'
-    listen.request_n_get( url , {} , res =>{
-      if(res.data.code == 0  && res.data.data){
-          let list = res.data.data
-          wx.setStorageSync('musicId', {musicId:list.chapterId})
-          this.setData({isshowAudio:true})
-        }else{
-          this.setData({isshowAudio:false})
-        }
-    })
+    // let musicId  = wx.getStorageSync('musicId') || {}
+    // let url = appUrl + 'readlog/api/position'
+    // listen.request_n_get( url , {} , res =>{
+    //   console.log(res.data)
+    //   if(res.data.code == 0  && res.data.data){
+    //       let list = res.data.data
+    //       wx.setStorageSync('musicId', {musicId:list.chapterId})
+    //       this.setData({isshowAudio:true})
+    //     }else{
+    //       this.setData({isshowAudio:false})
+    //     }
+    // })
   },
   triggerishide(e){
     this.setData({isshowAudio:false})
@@ -177,10 +179,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //控制首页audio悬浮窗是否显示
-    this.isshowAudio()
     // 续播
     this.Continuation()
+    //控制首页audio悬浮窗是否显示
+    this.isshowAudio()
     // 获取轮播图数据
     this.getswiperImage()
     // 获取专题数据

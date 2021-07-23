@@ -24,7 +24,7 @@
 <!-- 用户身份 -->
   <view class="user_identity">
     <view>
-      <text style="color:red;" >{{userDetail.genderName}}</text>
+      <text style="color:red;">{{userDetail.genderName  ? userDetail.genderName : '未知'}}</text>
       <text> | </text>
       <text style="color:#0F81FF;" wx:if="{{userDetail.schoolName}}">{{userDetail.schoolName}}</text>
       <text wx:if="{{userDetail.schoolName}}"> | </text>
@@ -33,7 +33,7 @@
       <text style="color:#0F81FF;">段位：{{userDetail._rankLevel}}</text>
     </view>
     <view>
-      <text>{{userDetail.personalMessage}}</text>
+      <text wx:if="{{userDetail.personalMessage}}">{{userDetail.personalMessage}}</text>
     </view>
   </view>
   <!-- 笔记  收藏 -->

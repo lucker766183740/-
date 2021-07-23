@@ -36,7 +36,7 @@
     </view>
   </view>
   <view class="myself-taggen">
-    <text style="color:red;">{{userdata.gender == 1 ? '女' : (userdata.gender == 2 ? '保密' : '男') }} </text> |
+    <text style="color:red;">{{userdata.gender == 0 ? '男' : (userdata.gender == 1 ? '女' : '未知')}} </text> |
     <text style="color:#1296db">{{userdata.realName}} </text> |
     <text>{{userdata._rankLevel}}</text>
   </view>

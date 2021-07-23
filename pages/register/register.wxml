@@ -44,7 +44,7 @@
       catchblur="getinputValue" 
       style="color:{{item.redcolor ? 'red': '#000'}}"
      />
-     <text class="zc_yanzheng" style="background:{{codeisok ? '#2A82E4' : '#aaa'}}" catchtap="bindVerification" wx:if="{{index == 6}}">{{codemsg}}</text>
+     <text class="zc_yanzheng" style="background:{{codeisok ? '#2A82E4' : '#aaa'}}" catchtap="bindVerification" wx:if="{{index == 5}}">{{codemsg}}</text>
     </view>
     <icon class="iconfont {{item.icon}}"></icon>
   </view>

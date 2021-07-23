@@ -25,6 +25,7 @@
       <scroll-view class="scrollview" scroll-y>
         <view class="audio_detail" wx:for="{{PlayList}}" wx:key="id" 
         catchtap="bindgetPlayaudio" data-nowPlayaudio="{{item.chapterId}}"
+        data-bookId="{{item.booklistId}}"
         >
           <view>
           <icon wx:if="{{item.chapterId === nowPlayaudio[0].id}}" class="iconfont icon-yinpin"></icon>

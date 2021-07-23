@@ -31,6 +31,7 @@ App({
   globalData: {
     userInfo: null,
     musicId:'',
+    playbackRate:1,//音乐播放速度 ， 默认为 1
     isPlay: false, //播放状态
     itemId:0,//home页面参数传递circle页面需要的参数
     PlayList:[],//保存全局的播放列表数据
@@ -54,7 +55,6 @@ App({
   },
   onShow(e){
     this.getPlayaudioList()
-    console.log(e)
     if(e && e.shareTicket){
     wx.getShareInfo({
       withCredentials:true,
@@ -74,8 +74,12 @@ App({
     // let obj = null
     let audio = wx.getBackgroundAudioManager()
     let oldmusicId = wx.getStorageSync('musicId').musicId
-    if(oldmusicId != data.id ) that.globalData.currentTime = 0
+    if(data && oldmusicId != data.id ) {
+      that.globalData.currentTime = 0
+      console.log('音乐不一样了 ， ----------------------')
+    }
     audio.startTime = that.globalData.currentTime*1
+    audio.playbackRate = that.globalData.playbackRate
     if(!isPlay)  return audio.pause()
     new Promise(function(resolve , reject){
     //   listen.request_n_get(url,{},({data})=>{
@@ -99,14 +103,16 @@ App({
     }
     that.globalData.isPlay = isPlay
     if (isPlay) {
-      audio.play()
       // 正在播放时间 -- 时间戳
-      that.globalData.startTime = (new Date()).getTime()
+      that.globalData.startTime = new Date().getTime()
       // 播放的时候章节阅读记录+1
       if(that.globalData.musicId != obj.id){
         that.readBookchapter(obj.id)
         that.savePlay(obj , 0 ,0 )
+        // that.globalData.currentTime = 0
       }
+      audio.play()
+
       // 获取调用 接口的间隔时间
       that.statisticInterval(obj , 0 ,0)
       //每次播放都保存播放音乐的Id
@@ -115,7 +121,7 @@ App({
       audio.src = obj.audioUrl
       audio.title = obj.chapterName
       // 音乐跳转播放的位置 单位s
-      let currentTime = that.globalData.currentTime
+      // let currentTime = that.globalData.currentTime
       // 播放跳转的位置
     } else {
       audio.pause()
@@ -126,11 +132,12 @@ App({
     }
       audio.onTimeUpdate((e)=>{
       that.globalData.musicTimeTotal = audio.duration
-      that.globalData.currentTime = audio.currentTime
+      // 因为 onstop 后会赋值 0 ，所以做这个判断
+      if(audio.currentTime  > 0) that.globalData.currentTime = audio.currentTime
       })
       audio.onStop(()=>{
-        clearInterval(that.globalData.musicInte)
-        that.globalData.musicInte = null
+        // clearInterval(that.globalData.musicInte)
+        // that.globalData.musicInte = null
         that.globalData.isPlay = false
         that.savePlay(data , 0 , 0)
       })

@@ -2,6 +2,8 @@ import listen , { appUrl }  from '../../utils/request'
 let App = getApp()
 Component({
   timer:null,
+  timeout:null,
+  timeStamp:0,
   properties:{
     nowPlayaudio:Array,
     isshow:Boolean
@@ -55,41 +57,7 @@ pageLifetimes: {
         this.setData({nowPlayaudio : [audioList]})
          // 播放音乐
       App.getAudioBackMusic(isshow,audioList,(e)=>{
-        // e.onPlay(()=>{
-        //   this.setData({isshow:true})
-        //   getApp().globalData.isPlay = true
-        //   getApp().globalData.startRead = e.currentTime
-        // })
-        // e.onTimeUpdate(()=>{
-        //   getApp().globalData.currentTime = e.currentTime
-        // })
-        // e.onPause(()=>{
-        //   getApp().globalData.endRead = e.currentTime
-        //   this.setData({isshow:false})
-        //   getApp().globalData.isPlay = false
-        // getApp().savePlay(audioList , 0 , 0 )
-
-        // })
-        // e.onStop(()=>{
-        //   getApp().globalData.endRead = e.currentTime
-        //   this.setData({isshow:false})
-        //   getApp().globalData.isPlay = false
-        // getApp().savePlay(audioList , 1 , 0)
-
-        // })
-        // e.onEnded(()=>{
-        //   getApp().globalData.endRead = e.currentTime
-        //   this.setData({isshow:false})
-        //   wx.pauseBackgroundAudio()
-        //   getApp().savePlay(audioList , 1 , 0)
-        //   getApp().globalData.isPlay = false
-        //   getApp().globalData.currentTime = 0
-        //   getApp().globalData.readTimes = 0
-        //   this.nextPlay(id)
-        // })
-        // e.onError((error) => {
-        //   getApp().globalData.isPlay = false
-        // })
+       
       })
     }
       })
@@ -224,15 +192,31 @@ pageLifetimes: {
    },
     // 获取正在播放章节id
     bindgetPlayaudio(e){
-      let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
-      let { musicId } = wx.getStorageSync('musicId')
-      if(musicId != nowPlayaudio){
-        App.globalData.currentTime = 0
-        wx.getBackgroundAudioManager().seek(0)
+      // 判定单双击事件
+      if(e.timeStamp - this.timeStamp < 500){
+        let id = e.currentTarget.dataset.bookid
+        clearTimeout(this.timeout)
+        this.timeout = null
+        console.log(this.data.PlayList)
+        wx.navigateTo({
+          url: '/pages/circle/details/details?id=' + id,
+        })
+      }else {
+        this.timeout = setTimeout(() => {
+          let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
+          // let { musicId } = wx.getStorageSync('musicId')
+          // if(musicId != nowPlayaudio){
+          //   App.globalData.currentTime = 0
+          //   wx.getBackgroundAudioManager().seek(0)
+          // }
+          wx.navigateTo({
+            url: '/pages/home/audio/audio?nowPlayaudio=' + nowPlayaudio,
+          })
+        }, 500);
+        
       }
-      wx.navigateTo({
-        url: '/pages/home/audio/audio?nowPlayaudio=' + nowPlayaudio,
-      })
+      this.timeStamp = e.timeStamp
+
     },
   },
 })

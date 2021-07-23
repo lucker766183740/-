@@ -1,8 +1,8 @@
 <!--pages/home/swiperTopic/swiperTopic.wxml-->
-<import src="../../../utils/wxParse/wxParse.wxml"/>
+<import src="../../../utils/wxParse/wxParse.wxml" />
 <view class="container">
   <view class="header">
-    <text class="creator">{{data.creator}}</text>
+    <text class="creator">{{data.createName}}</text>
     <text class="date">{{data.createDate}}</text>
   </view>
   <!-- <rich-text nodes="{{data.content}}"></rich-text> -->

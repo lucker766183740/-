@@ -5,6 +5,8 @@ Page({
   /**
    * 页面的初始数据
    */
+  timeStamp:0,
+  timeout:null,
   data: {
     isclose:'none',
     PlayList:appInstance.globalData.PlayList,
@@ -19,6 +21,7 @@ Page({
     backOff:0,
     good:true,//痛殴懂得时候不允许更新进度条
     chufa:false, // 是否触发播放位置清零
+    playbackRate:1,//音频播放倍数
   },
   /**
    * 生命周期函数--监听页面加载
@@ -145,19 +148,32 @@ Page({
     let id = this.options.nowPlayaudio
     let isxinshow = !this.data.isxinshow
     this.setData({isxinshow})
-    console.log(this.data.audioList)
     appInstance.userCollection(id,type,isxinshow,null)
   },
   // 点击播放列表播放选中章节
   bindPlay(e){
-    let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
-    let { musicId } = wx.getStorageSync('musicId')
-    this.setData({isshow:true})
-    if(nowPlayaudio !=  musicId){
-      wx.getBackgroundAudioManager().pause()
-      getApp().globalData.currentTime = 0
-      this.getAudioBackgroundManager({nowPlayaudio})
+    let id = e.currentTarget.dataset.bookid
+    // 判断是单机事件还是双击事件
+    if(e.timeStamp - this.timeStamp < 500){
+      wx.navigateTo({
+        url: '/pages/circle/details/details?id=' + id,
+      })
+      clearTimeout(this.timeout)
+      this.timeout = null
+    }else {
+      this.timeout = setTimeout(() => {
+        let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
+        let { musicId } = wx.getStorageSync('musicId')
+        this.setData({isshow:true})
+        if(nowPlayaudio !=  musicId){
+          // wx.getBackgroundAudioManager().pause()
+          getApp().globalData.currentTime = 0
+          this.getAudioBackgroundManager({nowPlayaudio})
+        }
+      }, 500);
     }
+    this.timeStamp = e.timeStamp
+
  
   },
   // 请求正在播放的音乐--需要接受其他页面传递的书本章节id--改名为nowPlayaudio
@@ -289,6 +305,7 @@ Page({
         // 如果删除的时正在播放的章节就播放下一个章节
         if( PlayList[index].chapterId == musicId ) {
            this.bindNextsong()
+
          }
         PlayList.splice(index,1)
         if(PlayList.length == 0){ 
@@ -329,11 +346,33 @@ Page({
             this.setData({PlayList})
          }
        }
-      })
-
-      
+      }) 
     },
-
+    //前进15s
+    bindqianjin(){ 
+      wx.getBackgroundAudioManager().seek(appInstance.globalData.currentTime + 15)
+    },
+    //后退15s
+    bindhoutui(){ 
+      wx.getBackgroundAudioManager().seek(appInstance.globalData.currentTime - 15)
+    },
+    //播放速度
+    bindplaybackRate(){
+      let playbackRate = appInstance.globalData.playbackRate
+      let { musicId } = wx.getStorageSync('musicId')
+      wx.getBackgroundAudioManager().stop()
+      if(playbackRate == 1){
+        appInstance.globalData.playbackRate = 1.5
+      }else if (playbackRate == 1.5){
+        appInstance.globalData.playbackRate = 2
+      }else if (playbackRate == 2){
+        appInstance.globalData.playbackRate = 1
+      }
+      this.setData({
+        playbackRate:appInstance.globalData.playbackRate,
+    })
+      this.getAudioBackgroundManager({nowPlayaudio:musicId})
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -347,7 +386,10 @@ Page({
    */
   onShow: function () {
     let isshow = getApp().globalData.isPlay
-    this.setData({isshow})
+    this.setData({
+      isshow,
+      playbackRate:appInstance.globalData.playbackRate,
+    })
      // 定时器  -- 定时获取首页currentTime数据然后更新到页面上
      if(!appInstance.globalData.musicInte){
       appInstance.globalData.musicInte = setInterval(() => {

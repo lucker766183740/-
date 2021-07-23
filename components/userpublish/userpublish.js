@@ -74,7 +74,6 @@ Component({
           item.likeNum-- 
         }
       })
-      console.log(userPublishList)
       getApp().userComment(id,type,islike , authorId ,id)
       this.setData({userPublishList})
     },
@@ -109,7 +108,6 @@ Component({
     },
     //删除圈子
     deleteTheChannel(e){
-      console.log(this.data.userPublishList)
       let that = this
       let id = e.currentTarget.dataset.id
       let authorId = e.currentTarget.dataset.authorid

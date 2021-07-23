@@ -64,7 +64,6 @@ bindLike(e){
   let islike = !userDetail.haveLike
   userDetail.haveLike = islike
   this.setData({userDetail})
-  console.log(userDetail)
   App.userComment(commentId , type , islike , creator , userDetail.informationId)
 },
 // 评论回复喜欢

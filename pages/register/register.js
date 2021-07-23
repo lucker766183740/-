@@ -16,7 +16,7 @@ Page({
     ParentsList:[
       {type:'学生教育ID', username:'请输入教育ID',value:'',redcolor:false,maxLength:'18',tt:'text',icon:''},
       {type:'家长姓名', username:'请输入家长姓名',value:'',redcolor:false,maxLength:'10',tt:'text',icon:''},
-      {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
+      // {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
       {type:'密码', username:'请输入密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'确认密码', username:'确认密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'家长手机号码', username:'手机号码',value:'',redcolor:false,maxLength:'11',tt:'number',icon:''},
@@ -24,7 +24,7 @@ Page({
     ],
     teacherList:[
       {type:'教师姓名', username:'请输入姓名',value:'',redcolor:false,maxLength:'10',tt:'text',icon:''},
-      {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
+      // {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
       {type:'密码', username:'请输入密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'确认密码', username:'确认密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'教师手机号码', username:'手机号码',value:'',redcolor:false,maxLength:'11',tt:'number',icon:''},
@@ -33,7 +33,7 @@ Page({
     studentList:[
       {type:'学生教育ID', username:'请输入教育ID',value:'',redcolor:false,maxLength:'18',tt:'text',icon:''},
       {type:'学生姓名', username:'请输入姓名',value:'',redcolor:false,maxLength:'10',tt:'text',icon:''},
-      {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
+      // {type:'身份证号码', username:'请输入身份证号',value:'',redcolor:false,maxLength:'18',tt:'idCard',icon:''},
       {type:'密码', username:'请输入密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'确认密码', username:'确认密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
     ],

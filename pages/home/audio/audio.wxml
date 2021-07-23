@@ -24,10 +24,11 @@
        <text>{{duration}}</text>
   </view>
   <!-- 前进、后退、以及收藏按钮 -->
-  <view class="audio-icon-button1">
-    <!-- <icon class="iconfont icon-houtui" catchtap="bindhoutui"></icon> -->
-    <!-- <icon class="iconfont icon-qianjin" catchtap="bindqianjin"></icon> -->
-  </view>
+  <!-- <view class="audio-icon-button1">
+    <icon class="iconfont icon-houtui" catchtap="bindhoutui"></icon> 
+    <view catchtap="bindplaybackRate" style="display: flex;align-items: center;"><text class="speed" style="border-color:{{playbackRate > 1 ? '#2596CF' : ''}};color:{{playbackRate > 1 ? '#2596CF' : ''}}">倍速 x{{playbackRate}}</text></view>
+    <icon class="iconfont icon-qianjin" catchtap="bindqianjin"></icon>
+  </view> -->
   <!-- 上一曲、下一曲、播放、暂停、展开播放列icon -->
   <view class="audio-icon-button2">
     <icon style="color:{{isxinshow ? 'orange' : ''}}" bindtap="bindxinisshow" class="iconfont icon-{{isxinshow ? 'shixinwujiaoxing' : 'kongxinwujiaoxing'}}"></icon>
@@ -55,6 +56,7 @@
       <scroll-view class="scrollview" scroll-y>
         <view class="audio_detail" wx:for="{{PlayList}}" wx:key="id"
           data-nowPlayaudio="{{item.chapterId}}"
+          data-bookId="{{item.booklistId}}"
           catchtap="bindPlay"
         >
           <view>

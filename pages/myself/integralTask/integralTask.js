@@ -53,7 +53,7 @@ Page({
             if(v._maxScore == 0 || v.dailyLimit == 0){ 
               v._maxScore = 'max'
               // 100积分就算完成
-              v._progress = v.completeScore + '%'
+              v._progress = v.completeScore > 100 ? '100%' : (v.completeScore+'%')
             }
             if(v.subdata != null ){
               v.subdata = JSON.parse(v.subdata)

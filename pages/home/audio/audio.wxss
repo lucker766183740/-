@@ -181,3 +181,9 @@
   width: 100%;
   height: 20rpx;
 }
+.speed{
+  color: #777;
+  font-size: 28rpx;
+  border: 1rpx solid #777;
+  padding: 3rpx 10rpx;
+}

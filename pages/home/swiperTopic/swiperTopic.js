@@ -28,7 +28,7 @@ Page({
       wx.hideLoading()
       if(res.data.code == 0){
         let data = res.data.data
-        data.content = data.content.replace(/2em/g,"2.5rem")
+        data.content = data.content.replace(/2em/g,"2rem")
         WxParse.wxParse('article', 'html', data.content, _this, 15);
         this.setData({data})
         wx.setNavigationBarTitle({

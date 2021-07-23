@@ -231,7 +231,6 @@ Page({
   //收藏圈子
   bindshoucang(){
     let userDetailsList = this.data.userDetailsList
-    console.log(userDetailsList)
     let type = 2
     userDetailsList[0].haveCollect = !userDetailsList[0].haveCollect
     let iscollection = userDetailsList[0].haveCollect

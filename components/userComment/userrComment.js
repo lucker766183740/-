@@ -56,7 +56,6 @@ Component({
       }
       })
       this.setData({userCommentList})
-      console.log(userCommentList)
       App.userComment(likeId,likeType,this.haveLike,publishUser,informationId)
     },
     //点击展示更多评论回复
