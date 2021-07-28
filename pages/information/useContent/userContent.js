@@ -85,7 +85,7 @@ Page({
          if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
          item._title = item.title 
          item._isshow = false
-         if((item.title.length + item.topicName.toString().length) > 55){
+         if(item.topicName && (item.title.length + item.topicName.toString().length) > 55){
            item._title = (item.title + item.topicName.toString()).slice(0,55)
            item._isopen = true
          }else{

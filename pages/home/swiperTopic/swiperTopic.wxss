@@ -1,7 +1,7 @@
 /* pages/home/swiperTopic/swiperTopic.wxss */
 @import "../../../utils/wxParse/wxParse.wxss";
 .container{
-  padding: 0 20rpx;
+  /* padding: 0 20rpx; */
   box-sizing: border-box;
 }
 .header{
@@ -43,8 +43,9 @@ page {
   text-align: left;
 }
 
-.padding-d {
-  padding: 40rpx;
+.padding-d .wxParse-p[style="text-indent: 2rem;"]{
+  padding: 0 40rpx ;
+  display: block;
 }
 
 .WxEmojiView {

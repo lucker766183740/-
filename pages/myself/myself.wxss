@@ -96,10 +96,10 @@ border-bottom: 1rpx solid #eee;
 }
 
 
-.icon-shouting , .icon-rili , .icon-baogao ,  .icon-shezhi{
+.icon-shouting , .icon-rili , .icon-baogao ,  .icon-shezhi {
   color: #1296db;
 }
-.icon-chengjiu , .icon-renwu{
+.icon-chengjiu , .icon-renwu , .icon-quanzi2{
   color: red;
 }
 .icon-shixinwujiaoxing{

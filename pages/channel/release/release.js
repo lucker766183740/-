@@ -4,13 +4,17 @@ const App = getApp()
 Page({
   index:0, //上传图片数标记
   length:0, // 上传图片总数
+  videoUrl:'', //音频名称
   /**
    * 页面的初始数据
    */
   data: {
-    isshow1:false,
-    isshow2:false,
+    isshow1:false, //话题
+    isshow2:false, //小组
+    iconJiaIsshow:true,
     viewshow:true,
+    isplay:false, //音乐播放状态
+    upType:'image',
     imageUrl2:[],
     groupName:'',
     imageIndex:0,
@@ -22,12 +26,14 @@ Page({
     topicList:[], //话题数据
     topicId:[], //选中的话题名称
     groupId:'', //选中的小组名称 , 只能选择一个
+    src:'', //web-view 网址
   },
     /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getTeamAlldate()
+    this.getotherData(options)
   },
   //获取话题和小组数据
   getTeamAlldate(){
@@ -138,19 +144,42 @@ Page({
     this.setData({groupList , groupId:Id,groupName})
 
   },
+  //选择上传的圈子类型 , 点击 + icon
+  bindchoice(){
+    let that = this
+    if(that.data.imageurllist.length > 0){
+      that.bindaddimage()
+      return
+    }
+    wx.showActionSheet({
+      itemList: ['视频或图片', '音频'],
+      success (res) {
+        if(res.tapIndex == 0){ // 视频或图片
+          that.bindaddimage()
+        }else if(res.tapIndex == 1){ //音频
+          wx.navigateTo({
+            url: './webview/webview',
+          })
+        }
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
   // 点击选择上传的图片
-  bindaddiamge(){
+  bindaddimage(){
     var that = this
     wx.chooseMedia({
       count: 9,
-      mediaType: ['image'],
+      mediaType: that.data.imageurllist.length > 0 ?['image'] : ['image','video'],
       sourceType: ['album', 'camera'],
-      maxDuration: 30,
       camera: 'back',
       success (res) {
+        console.log(res)
+        let tempFilePaths = res.tempFiles
         if(res.type == 'image'){
           // tempFilePath可以作为img标签的src属性显示图片
-          let tempFilePaths = res.tempFiles
           tempFilePaths.map((item,index)=>{
             // 选择图片超出时提示用户弹窗
             if(that.data.imageurllist.length >= 9){
@@ -163,8 +192,15 @@ Page({
             }
           })
          that.setData({
-          imageurllist:that.data.imageurllist
+          imageurllist:that.data.imageurllist,
+          upType:'image'
          })
+        }else if(res.type == 'video'){
+          that.setData({
+            upType:'video',
+            iconJiaIsshow:false,
+            imageurllist:tempFilePaths
+          })
         }
       }
     })
@@ -194,6 +230,18 @@ Page({
         })
         return
       }
+      if(imageUrl[0].name){
+        this.videoUrl = imageUrl[0].name
+        let reg = imageUrl[0].name.split(/\./g)
+        let extension = reg[reg.length - 1]
+        console.log(reg , extension)
+       if(extension == 'm4a' || extension == 'aac' || extension == 'mp3' || extension == 'wav'){ 
+        this.data.imageUrl2 = imageUrl[0].tempFilePath
+         this.fabu(2)
+        return 
+      }
+      }
+  
       // 上传图片到服务
   if(imageUrl.length > 0){
     // for(let i = 0; i<imageUrl.length;i++){
@@ -203,24 +251,25 @@ Page({
     this.length =  imageUrl.length
     this.upimageFile( this.data.imageurllist , this.length )
   }else{
-    this.fabu()
+    this.fabu(0)
   }
   },
   
-  // 上传图片函数
+  // 上传图片函数或视频
   upimageFile( imageurllist , length ){
     if(length == 0){
       return
     }
     let file = imageurllist[this.index].tempFilePath
     wx.showLoading({
-      title: '上传图片中...',
+      title: '上传中...',
     })
     let that = this
     let url = listen.appUrl2 + 'oss/file/uploadFiles'
     let imageUrl2 = that.data.imageUrl2
     let imageUrl = that.data.imageurllist
     let { token } = wx.getStorageSync('token')
+    console.log(file)
     wx.uploadFile({
       filePath:file,
       name: 'file',
@@ -230,7 +279,7 @@ Page({
         "Authorization": token
       },
       formData:{
-        'fileType':'image'
+        'fileType':'file'
       },
       success (res){
         wx.hideLoading()
@@ -239,7 +288,11 @@ Page({
           imageUrl2.push(data.data.url)
           that.setData({imageUrl2})
           if(imageUrl2.length === imageUrl.length){
-            that.fabu()
+            if(that.data.upType == 'image'){
+              that.fabu(0)
+            }else if(that.data.upType == 'video'){
+              that.fabu(1)
+            }
           }
           that.index++
           that.length--
@@ -253,8 +306,41 @@ Page({
       },
     })
   },
+  //上传音频文件
+  // upaudioFile(){
+  //   let imageurllist = this.data.imageurllist
+  //   console.log(imageurllist)
+    
+  //   let { token } = wx.getStorageSync('token')
+  //   console.log(imageurllist)
+  //   let url = listen.appUrl2 + 'oss/file/uploadFiles'
+  //   wx.showLoading({
+  //     title:'上传中...'
+  //   })
+  //   console.log(imageurllist , imageurllist[0].tempFilePath)
+  //   wx.uploadFile({
+  //     filePath:imageurllist[0].tempFilePath,
+  //     name: 'file',
+  //     url: url,
+  //     header:{
+  //       "Content-Type":"application/json",
+  //       "Authorization": token
+  //     },
+  //     formData:{
+  //       'fileType':'file'
+  //     },
+  //     success (res){
+  //       wx.hideLoading()
+  //       console.log(res)
+  //     },
+  //     fail(err){
+  //       wx.hideLoading()
+  //       console.log(err)
+  //     }
+  //   })
+  // },
   // 发布函数
-  fabu(){
+  fabu(type){
     wx.showLoading({
       title: '发布中...',
     })
@@ -265,6 +351,7 @@ Page({
     let title =that.data.title
     let imageUrl2 = that.data.imageUrl2.toString()
     let url = appUrl + 'informationpublish'
+    let videoUrl = this.videoUrl
     listen.request_n_post(url,{
      authorId:App.globalData.userId,// 用户id,
      content:value,// 内容,
@@ -273,8 +360,9 @@ Page({
      status:App.globalData.status,// 0,
      title:title,// 标题,
      topicId:topicId,// 话题id,
-     type:0,// 0,
+     type:type,// 0, image , 1 video  , 2  audio
      visible:1,// 1,
+     videoUrl:videoUrl,
      tenantCode:App.globalData.tenantCode,// 租户编码
      },res=>{
        wx.hideLoading()
@@ -308,6 +396,30 @@ Page({
     let imageurllist = this.data.imageurllist
     imageurllist.splice(index , 1)
     this.setData({imageurllist})
+  },
+  // 获取web-view数据
+  getotherData(options){
+    // accept="audio/m4a, audio/aac, audio/mp3, audio/wav"
+    if(options && options.file){
+      let file = JSON.parse(options.file)
+      let val = file.name.split(/\./g) 
+      let extension = val[val.length - 1]
+      if(extension == 'm4a' || extension == 'aac' || extension == 'mp3' || extension == 'wav'){   
+        file.tempFilePath = file.url 
+        this.setData({
+          iconJiaIsshow:false,
+          imageurllist:[file],
+          upType:'audio'
+        })
+        console.log(this.data.imageurllist)
+      }else{
+        wx.showModal({
+          content:'请选择正确的音频格式，可选择 m4a/aac/mp3/wav 格式',
+          confirmText:'知道了',
+          showCancel:false
+        })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

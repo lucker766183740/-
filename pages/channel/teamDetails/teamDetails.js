@@ -44,13 +44,14 @@ Page({
      let teamDetails = data.data
      let _teamDetails = teamDetails.publishList
      // topicName / topicId / imageUrl
+     console.log(data)
      _teamDetails.forEach((item,index)=>{
        if(item.topicName){item.topicName = (item.topicName.split(','))}
        if(item.topicId){ item.topicId = (item.topicId.split(','))}
        if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
        item._title = item.title
        item._isshow = false
-       if((item.title.length + item.topicName.toString().length) > 55){
+       if( item.topicName && (item.title.length + item.topicName.toString().length) > 55){
          item._title = (item.content + item.topicName.toString()).slice(0,55)
          item._isopen = true
        }else{

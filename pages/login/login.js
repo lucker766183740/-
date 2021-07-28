@@ -76,6 +76,7 @@ Page({
         username , password , grant_type,login_type,uuid: "",captcha: this.data.password,
       },res=>{
         wx.hideLoading()
+        console.log(res)
         if(res.data.code == 0){
           let token = wx.getStorageSync('token')
            token = 'Bearer' + res.data.access_token

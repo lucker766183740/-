@@ -41,6 +41,11 @@
     <text>{{userdata._rankLevel}}</text>
   </view>
   <view class="myself-shezhi">
+    <view catchtap="navgetoruserdetail">
+      <icon class="iconfont icon-quanzi2 left"></icon>
+      <text >我的圈子</text>
+      <icon class="iconfont icon-jiantou"></icon>
+    </view>
     <view catchtap="bindnavgetorintegral">
       <icon class="iconfont icon-rili left"></icon>
       <text>每日打卡</text>

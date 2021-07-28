@@ -35,7 +35,7 @@ background: transparent;
   height: 100%;
   position: absolute;
   z-index: 99;
-  background-color:rgba(204, 119, 247, .5);
+  /* background-color:rgba(100, 100, 100, .1); */
 }
 .details_group{
   width: 300rpx;
@@ -47,6 +47,8 @@ background: transparent;
   margin-left: 200rpx;
   font-weight: bold;
   color: #fff;
+  text-shadow: 5rpx 1rpx black;
+
 }
 .details-headerImage>image{
   position: absolute;
@@ -76,6 +78,8 @@ width: 180rpx;
   font-weight: 600;
   color: #fff;
   font-size: 24rpx;
+  text-shadow: 5rpx 1rpx black;
+
 }
 
 .details-buttons{

@@ -9,7 +9,6 @@
  * for: 微信小程序富文本解析
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
-
  .wxParse{
     margin: 0 5px;
     font-family: Helvetica,sans-serif;
@@ -101,7 +100,7 @@ view{
     /* left: 3px;
     bottom: 3px; */
     box-shadow: 0px 0px 10px #888;
-    transform: scale(0.95);
+    transform: scale(1);
 }
 
 .wxParse-blockquote {

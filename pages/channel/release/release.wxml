@@ -1,11 +1,17 @@
 <!--pages/channel/release/release.wxml-->
 <view class="container">
     <view class="release-addimage">
-      <view class="up_image"  wx:for="{{imageurllist.length}}" wx:key="item">
+      <view wx:if="{{upType == 'image'}}" class="up_image"  wx:for="{{imageurllist.length}}" wx:key="item">
         <image  src="{{imageurllist[index].tempFilePath}}"></image>
         <text class="removeimg" data-index="{{index}}" catchtap="bindremoveimage">×</text>
       </view>
-      <view wx:if="{{imageurllist.length < 9}}" class="release-icon" catchtap="bindaddiamge" ><icon class="iconfont icon-jia"></icon></view>
+      <view wx:if="{{upType == 'video'}}" class="up_video">
+        <video src="{{imageurllist[0].tempFilePath}}"></video>
+      </view>
+      <view wx:if="{{upType == 'audio'}}" class="up_audio">
+        <audio src="{{imageurllist[0].tempFilePath}}" name="{{imageurllist[0].name}}" poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" controls></audio>
+      </view>
+      <view wx:if="{{imageurllist.length < 9 && iconJiaIsshow}}" class="release-icon" catchtap="bindchoice" ><icon class="iconfont icon-jia"></icon></view>
     </view>
 
   <view style="margin-bottom:180rpx">

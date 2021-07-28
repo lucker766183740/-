@@ -8,22 +8,33 @@
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  padding: 10rpx;
+  margin: 10rpx;
 }
 .user-details{
   width:480rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  font-size: 24rpx;
+
 }
 .user-name{
   display: block;
   font-size: 28rpx;
   font-weight: bold;
+
+}
+.user-contime{
+  display: block;
+  font-size: 24rpx;
+  color: #555;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .user-comment, .date{
   font-size: 24rpx;
   color: #555;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   
 }
 .date{
@@ -33,4 +44,23 @@
   width: 80rpx;
   height: 80rpx;
   padding: 10rpx;
+  border-radius: 50%;
+}
+.detailsImg{
+  width: 80rpx;
+  height: 80rpx;
+  padding: 10rpx;
+  border-radius: 5rpx;
+}
+.textContent{
+  display: block;
+  color: #999;
+}
+.textContent::before{
+  content: '';
+  background-color: rgb(200, 200, 200);
+  display: inline-block;
+  width: 10rpx;
+  height: 12rpx;
+  margin-right: 15rpx;
 }

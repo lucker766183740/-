@@ -4,9 +4,9 @@
     <icon class="iconfont icon-jiantou" catchtap="bingdnavgeback"></icon>
     <text class="title" wx:if="{{bgactive}}">{{teamDetails.name}}</text>
   </view>
-  <view class="details-headerImage" style="background-image:url({{teamDetails.image}})">
+  <view class="details-headerImage" style="background-image:url({{teamDetails.image}});    background-size: cover;">
     <view class="bg_color"></view>
-    <image src="{{teamDetails.image}}" catchtap="bindSeeLogimg" data-url="{{teamDetails.image}}"></image>
+    <image src="{{teamDetails.headImage}}" catchtap="bindSeeLogimg" data-url="{{teamDetails.headImage}}"></image>
     <view class="details_group">{{teamDetails.name}}</view>
     <text class="details-buttons {{teamDetails.haveAttention ? 'Activetext' : ''}}" catchtap="bindAttention" data-AttentId="{{teamDetails.id}}">{{teamDetails.haveAttention ? '已关注' : '+ 关注'}}</text>
 

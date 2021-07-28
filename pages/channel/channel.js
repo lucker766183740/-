@@ -61,6 +61,7 @@ Page({
        let total = data.data.total
       //  Teamlist = Teamlist.splice(10)
        let _userPublishList = data.data.list
+       console.log(_userPublishList)
         // topicName / topicId / imageUrl
         _userPublishList.forEach((item,index)=>{
           if(item.topicName){item.topicName = (item.topicName.split(','))}
@@ -68,7 +69,7 @@ Page({
           if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
           item._title = item.title 
           item._isshow = false
-          if((item.title.length + item.topicName.toString().length) > 20){
+          if(item.topicName && (item.title.length + item.topicName.toString().length) > 20){
             item._title = (item._title + item.topicName.toString()).slice(0,20)
             item._isopen = true
           }else{

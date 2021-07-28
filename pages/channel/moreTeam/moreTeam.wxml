@@ -5,7 +5,7 @@ catchtap="bindnacgetoruserDetails"
 data-teamId="{{item.id}}"
 >
   <view class="team-id {{index<3 ? active : ''}}">{{index+1}}</view>
-  <view class="team-image"><image src="{{item.image}}"></image></view>
+  <view class="team-image"><image src="{{item.headImage}}"></image></view>
   <view class="team-details">
     <text class="team-name">{{item.name}}</text>
     <text class="team-people">{{item.attentionNum}}成员</text>

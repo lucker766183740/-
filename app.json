@@ -57,7 +57,8 @@
     "custom-tab-bar/index",
     "pages/myself/integral/howGetIntegral/howGetIntegral",
     "pages/myself/achievement/achievement",
-    "pages/myself/integralTask/integralTask"
+    "pages/myself/integralTask/integralTask",
+    "pages/channel/release/webview/webview"
   ],
   "requiredBackgroundModes": [
     "audio"

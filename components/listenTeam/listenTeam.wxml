@@ -15,7 +15,7 @@
       data-teamId="{{item.id}}"
     >
     <view class="listenTeam-image">
-      <image  src="{{item.image}}"></image>
+      <image  src="{{item.headImage}}"></image>
     </view>
     <view class="listenTeam-name">
       <text>{{item.name}}</text>

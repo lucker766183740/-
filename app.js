@@ -65,7 +65,6 @@ App({
       }
     })
     }
-
   },
   // 背景音乐播放接口t
   getAudioBackMusic(isPlay, data, fn ) {
