@@ -1,9 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-
     "likeAndcollection":"/components/likeAndcollection/likeAndcollection"
-
   },
-  "navigationBarTitleText": "我的"
+  "navigationStyle": "custom"
+
 }

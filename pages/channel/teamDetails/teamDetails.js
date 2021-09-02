@@ -44,7 +44,7 @@ Page({
      let teamDetails = data.data
      let _teamDetails = teamDetails.publishList
      // topicName / topicId / imageUrl
-     console.log(data)
+    //  console.log(data)
      _teamDetails.forEach((item,index)=>{
        if(item.topicName){item.topicName = (item.topicName.split(','))}
        if(item.topicId){ item.topicId = (item.topicId.split(','))}

@@ -107,19 +107,20 @@ Page({
   // 章节与详情点击切换
   bindtapshow() {
     this.setData({
-      isshow: "active_show",
-      ishide: "active_hide",
-      active: 'active',
-      unactive: ''
-    })
-  },
-  // 章节与详情点击切换
-  bindtaphide() {
-    this.setData({
       isshow: "active_hide",
       ishide: "active_show",
       active: '',
       unactive: "active"
+    })
+
+  },
+  // 章节与详情点击切换
+  bindtaphide() {
+    this.setData({
+      isshow: "active_show",
+      ishide: "active_hide",
+      active: 'active',
+      unactive: ''
     })
   },
   // 点击排序
@@ -147,7 +148,7 @@ Page({
       bookListId: listenList[0].id,
       userId: App.globalData.userId
     }, (res) => {
-      console.log('成功添加图书', res)
+      // console.log('成功添加图书', res)
       if(res.data.code == 0){
       let  { musicId } =  wx.getStorageSync('musicId')
       if(musicId != listenList[0].chapterList[0].id){ App.globalData.currentTime = 0 }

@@ -63,7 +63,7 @@ border: 10rpx solid #fff;
 box-sizing: border-box;
 }
 .moreImg{
-  width:32.2% !important;
+  width:32% !important;
   height: calc(750rpx / 3) !important;
   background-size: cover;
   border: 5rpx solid #fff;

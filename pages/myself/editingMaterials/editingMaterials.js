@@ -32,7 +32,7 @@ Page({
         username
       },res=>{
         wx.hideLoading()
-        console.log('获取用户信息接口',res.data.data)
+        // console.log('获取用户信息接口',res.data.data)
         if(res.data.code == 0){
           let userdata = res.data.data
           this.setData({ temFilePaths:userdata.headUrl ? userdata.headUrl : '/image/headUrl.jpg',})
@@ -137,7 +137,7 @@ wx.chooseImage({
     },res=>{
       wx.hideLoading()
       if(res.data.code == 0){
-        console.log('用户信息修改成功',res)
+        // console.log('用户信息修改成功',res)
         wx.showToast({
           title: '头像上传成功',
           icon:'success'

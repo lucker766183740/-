@@ -73,8 +73,9 @@
 }
 
 .audio-icon-button1 {
+  position: relative;
   margin: 0 auto;
-  width: 600rpx;
+  width: 730rpx;
   display: flex;
   justify-content: space-around;
 }
@@ -125,6 +126,9 @@
 .PlaypageClose{
   text-align: end;
   margin: 35rpx 40rpx 0 0 ;
+}
+.icon-houtui:active , .icon-qianjin:active , .icon-bofang:active , .icon-bofang2:active , .icon-next-right:active , .icon-next-left:active{
+  color: #2596CF;
 }
 .playList{
   font-weight: bold;
@@ -186,4 +190,15 @@
   font-size: 28rpx;
   border: 1rpx solid #777;
   padding: 3rpx 10rpx;
+}
+.musicIntervalText{
+ position: absolute;
+ right: -10rpx;
+ bottom: 0;
+}
+
+/* 定时器弹窗 */
+
+.contaioner-timeOut{
+  background-color: #fff;
 }

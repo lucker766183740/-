@@ -3,6 +3,9 @@
   <likeAndcollection userdata="{{userdata}}" bindtriggerEvent="triggerEvent" catchtap="bindnavgetdetails" data-type="4"></likeAndcollection>
 </view>
 <view class="container">
+  <view class="header"  style="margin-bottom:20rpx">
+    <view style="font-size:32rpx;">我的</view>
+  </view>
   <!-- <view class="custom-tab-bar">
     <tabbar current="{{4}}" count="{{2}}"></tabbar>
   </view> -->

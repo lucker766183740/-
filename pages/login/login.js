@@ -39,20 +39,6 @@ Page({
       },
     })
   },
-  // 如果用户登录成功了，下次可自动登录
-  // getStorageusertoken(){
-  //   let token = wx.getStorageSync('token')
-  //   let userList = wx.getStorageSync('userList')
-  //   if(token && userList){
-  //     App.globalData.userId = userList.id
-  //     let username = token.username
-  //     let password = token.password
-  //     this.setData({
-  //       username,password
-  //     })
-  //     this.navdgatorNext()
-  //   }
-  // },
   // 点击登录后跳转页面
   navdgatorNext(){
     // 兴趣标签
@@ -72,16 +58,17 @@ Page({
       if(codeisshow){
         password = 'SMS_KSssdS1D145Sd4S'
       }
+      // 获取token
       listen.request_n_post_token(url,{
         username , password , grant_type,login_type,uuid: "",captcha: this.data.password,
       },res=>{
         wx.hideLoading()
-        console.log(res)
+        // console.log(res)
         if(res.data.code == 0){
-          let token = wx.getStorageSync('token')
-           token = 'Bearer' + res.data.access_token
+          // let token = wx.getStorageSync('token')
+          let  token = 'Bearer' + res.data.access_token
           wx.setStorageSync('token',{ token,password,username } )
-          console.log('res.data:返回的token' , res.data)
+          // console.log('res.data:返回的token' , res.data)
           //获取用户信息及修改用户全局数据
           this.getloginuserdetails()
         }else{
@@ -118,7 +105,7 @@ Page({
     let userList = wx.getStorageSync('userList') 
     let url = listen.appUrl2 + 'sys/user/getByOpenId'
     listen.request_n_get(url,{ username } , res =>{
-      console.log('获取用户信息',res)
+      // console.log('获取用户信息',res)
       if(res.data.code == 0 && res.data.data){
         let userinfo = res.data.data
         if(!userinfo.openId){
@@ -132,7 +119,7 @@ Page({
           url: '/pages/home/home',
         })
       }
-      console.log('全局变量globalData', getApp().globalData)
+      // console.log('全局变量globalData', getApp().globalData)
     })
   },
   // 手机号、学籍号输入框
@@ -241,7 +228,7 @@ Page({
         phone:username
       },res=>{
         if(res.data.code == 0){
-          console.log('验证码获取成功',res)
+          // console.log('验证码获取成功',res)
         }else{
           inputPasswordCon.vercode = '获取验证码'
           codeDisable = true
@@ -273,6 +260,12 @@ Page({
       fail (res) {
         console.log(res.errMsg)
       }
+    })
+  },
+  // 游客登陆
+  bindnavtourist(){
+    wx.navigateTo({
+      url: '/pages/register/register?index=3',
     })
   },
   // 忘记密码

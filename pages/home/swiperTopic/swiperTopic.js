@@ -28,6 +28,7 @@ Page({
       wx.hideLoading()
       if(res.data.code == 0){
         let data = res.data.data
+        // console.log(data)
         data.content = data.content.replace(/2em/g,"2rem")
         WxParse.wxParse('article', 'html', data.content, _this, 15);
         this.setData({data})
@@ -36,6 +37,16 @@ Page({
         })
       }
     })
+  },
+  //点击用户名跳转用户详情页
+  navigatorUserDetail(e){
+    let othId = e.currentTarget.dataset.id
+    if(othId){
+      wx.navigateTo({
+        url: '/pages/information/useContent/userContent?othId='+othId,
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

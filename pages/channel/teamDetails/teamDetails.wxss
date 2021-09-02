@@ -47,7 +47,7 @@ background: transparent;
   margin-left: 200rpx;
   font-weight: bold;
   color: #fff;
-  text-shadow: 5rpx 1rpx black;
+  text-shadow: 1rpx 1rpx #aaa;
 
 }
 .details-headerImage>image{
@@ -78,7 +78,7 @@ width: 180rpx;
   font-weight: 600;
   color: #fff;
   font-size: 24rpx;
-  text-shadow: 5rpx 1rpx black;
+  text-shadow: 1rpx 1rpx #aaa;
 
 }
 

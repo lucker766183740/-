@@ -1,4 +1,4 @@
 <!--pages/information/newcollection/newColloection.wxml-->
 <view class="container">
-  <newcommment List="{{List}}"></newcommment>
+  <newcommment List="{{List}}" Type="4"></newcommment>
 </view>

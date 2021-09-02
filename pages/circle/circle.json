@@ -1,9 +1,7 @@
 {
   "usingComponents": {
-
     "cardSchool":"/components/cardSchool/cardSchool"
-
   },
-  "navigationBarTitleText": "频道",
+  "navigationStyle": "custom",
   "enablePullDownRefresh": false
 }

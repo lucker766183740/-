@@ -1,7 +1,8 @@
 // components/newcommment/newcomment.js
 Component({
   properties:{
-    List:Array
+    List:Array,
+    Type:String || Number
   },
   data:{},
   attached(){},
@@ -15,6 +16,7 @@ Component({
   },
   //点击图片跳转至其他页面
   bindnavigator(e){
+    // console.log(e)
     let id = e.currentTarget.dataset.informationid
     let userId = getApp().globalData.userId
     wx.navigateTo({

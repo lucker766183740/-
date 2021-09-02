@@ -29,13 +29,16 @@ pageLifetimes: {
   methods:{
     getdata(){
       if(!this.timer){
+        let newMusicId = ''
+        let url = ''
+        let audioList = {}
         this.timer =  setInterval(() => {
-           let newMusicId = wx.getStorageSync('musicId').musicId
-         let url = appUrl + 'chapter/app/info?id=' + newMusicId + '&userId=' + App.globalData.userId
+            newMusicId = wx.getStorageSync('musicId').musicId
+          url = appUrl + 'chapter/app/info?id=' + newMusicId + '&userId=' + App.globalData.userId
            if(newMusicId != this.data.oldMusicId){
              listen.request_n_get(url,{},(res)=>{
                if (res.statusCode === 200 && res.data.code === 0) {
-               let audioList = res.data.data
+                audioList = res.data.data
                this.setData({nowPlayaudio : [audioList] , oldMusicId:newMusicId})
                }
              })
@@ -142,7 +145,7 @@ pageLifetimes: {
       }
       listen.request_n_get(url,{id},res=>{
         if (res.statusCode === 200 && res.data.code === 0) {
-        console.log('删除单个章节',res)
+        console.log('删除单个章节调用成功',res)
         }
       })
       PlayList.splice(index,1)
@@ -197,13 +200,14 @@ pageLifetimes: {
         let id = e.currentTarget.dataset.bookid
         clearTimeout(this.timeout)
         this.timeout = null
-        console.log(this.data.PlayList)
+        // console.log(this.data.PlayList)
         wx.navigateTo({
           url: '/pages/circle/details/details?id=' + id,
         })
       }else {
+        let nowPlayaudio = ''
         this.timeout = setTimeout(() => {
-          let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
+           nowPlayaudio = e.currentTarget.dataset.nowplayaudio
           // let { musicId } = wx.getStorageSync('musicId')
           // if(musicId != nowPlayaudio){
           //   App.globalData.currentTime = 0

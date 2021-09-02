@@ -364,7 +364,7 @@ Page({
         endTime
       }, ({ data }) => {
         wx.hideLoading();
-        console.log("听书时长统计:", data);
+        // console.log("听书时长统计:", data);
         let seriesData = data.data.seriesData;
         let yData = data.data.yData;
         if (yData.length == 0) { this.setData({ ecData: false }); } else { this.setData({ ecData: true }); }
@@ -399,7 +399,7 @@ Page({
        endTime
      },({data})=>{
        wx.hideLoading()
-       console.log('听书爱好统计:',data)
+      //  console.log('听书爱好统计:',data)
        let seriesData = data.data.seriesData
        let yData = data.data.yData
        if(yData.length == 0){this.setData({interData:false})}else{this.setData({interData:true})}
@@ -428,7 +428,7 @@ Page({
      endTime
    },({data})=>{
      wx.hideLoading()
-     console.log("听书完成量统计:",data)
+    //  console.log("听书完成量统计:",data)
      let seriesData = data.data.seriesData
      let yData = data.data.yData
      let arr = []

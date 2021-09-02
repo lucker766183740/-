@@ -1,7 +1,7 @@
-//  const appUrl = 'http://192.168.2.56:9080/listen/'
-//  const appUrl2 = 'http://192.168.2.56:9080/' 
- const appUrl = 'https://jcxm.xahrhz.com/lis/listen/'
- const appUrl2 = 'https://jcxm.xahrhz.com/lis/' 
+ const appUrl = 'http://192.168.2.56:9080/listen/'
+ const appUrl2 = 'http://192.168.2.56:9080/' 
+//  const appUrl = 'https://jcxm.xahrhz.com/lis/listen/'
+//  const appUrl2 = 'https://jcxm.xahrhz.com/lis/' 
 //  const appUrl = 'http://192.168.2.24:9080/listen/'
 //  const appUrl2 = 'http://192.168.2.24:9080/' 
 //  登录

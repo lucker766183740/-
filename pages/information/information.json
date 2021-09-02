@@ -3,6 +3,6 @@
   "usingComponents": {
     "nothing":"/components/nothing/nothing"
   },
-  "navigationBarTitleText": "消息",
+  "navigationStyle": "custom",
   "enablePullDownRefresh": false
 }

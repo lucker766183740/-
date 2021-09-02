@@ -25,10 +25,11 @@ Page({
     let userList = wx.getStorageSync('userList') 
     let url = listen.appUrl2 + 'sys/user/getByOpenId'
     listen.request_n_get(url,{ username } , res =>{
-      if(res.data.code == 0){
-        console.log('获取用户信息',res)
-      }else if(res.data.code == 401){
-        wx.clearStorageSync(token)
+      // work  401代表什么 、 delete
+      // console.log(res.data)
+      if(res.data.code == 0 && res.data.data){
+        // console.log('获取用户信息成功',res)
+      }else{
         wx.showModal({
           title:'提示',
           content:'您的身份认证已过期，请重新登录',
@@ -36,32 +37,16 @@ Page({
           confirmText:'重新登录',
           success(res){
             if(res.confirm){
-              wx.navigateTo({
+              wx.clearStorageSync(token)
+              wx.reLaunch({
                 url: '/pages/login/login',
               })
             }
           }
         })
-        return
-      }else{
-        wx.clearStorageSync(token)
       }
     })
-    if(!token && !userList){
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-      return
-    }
   getApp().globalData.userId = userList.id
-    // // 续播
-    // this.Continuation()
-    // // 获取轮播图数据
-    // this.getswiperImage()
-    // // 获取专题数据
-    // this.getThemeData()
-    // //获取功能按钮数据
-    // this.getchannelData()  
   },
     //续播
     Continuation(){

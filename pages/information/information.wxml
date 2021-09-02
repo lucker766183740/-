@@ -3,6 +3,9 @@
   <!-- <view class="custom-tab-bar">
     <tabbar current="{{3}}"   count="{{2}}"></tabbar>
   </view> -->
+  <view class="header"  style="margin-bottom:20rpx">
+    <view class="h_message" >消息</view>
+  </view>
   <view class="inform-title">
     <view  style="text-align:center;" bindtap="bindnavgetorPraiseAndCollection">
       <view class="inform-bg">

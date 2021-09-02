@@ -3,8 +3,9 @@
   <!-- <view class="custom-tab-bar">
     <tabbar current="{{1}}"  count="{{2}}"></tabbar>
   </view> -->
-  <view class="circle-text" catchtap="bindnavgetorsearch">
-    <text >请输入</text>
+  <view class="circle-text" style="margin-bottom:20rpx">
+    <view style="color:#f8f8f8;font-size:32rpx;">频道</view>
+    <text class="iconfont icon-sousuo "  catchtap="bindnavgetorsearch">搜索图书</text>
   </view>
   <view class="circle-container2">
     <scroll-view class="circle-left" scroll-y >

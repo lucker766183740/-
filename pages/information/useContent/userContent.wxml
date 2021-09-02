@@ -1,5 +1,5 @@
 <!--pages/information/useContent/userContent.wxml-->
-<view class="fixed {{isshow}}" catchtap="bindlikeAndcollectionishide">
+<view class="fixed {{isshow}}" wx:if="{{userdata}}" catchtap="bindlikeAndcollectionishide">
   <likeAndcollection userdata="{{userdata}}"  bindtriggerEvent="triggerEvent" catchtap="bindnavgetdetails" data-type="4"></likeAndcollection>
 </view>
 <view class="container">
@@ -16,7 +16,7 @@
           </view>
         </view>
         <view class="user_btn" wx:if="{{followisshow}}">
-          <view class="btn_guanzhu {{userDetail._haveAttention ? 'active' : ''}}" data-othId="{{userDetail.id}}" catchtap="bindgzotheruser">{{userDetail._haveAttention ? '已关注' : '+ 关注'}}</view>
+          <view class="btn_guanzhu {{userDetail.haveAttention ? 'active' : ''}}" data-othId="{{userDetail.id}}" catchtap="bindgzotheruser">{{userDetail.haveAttention ? '已关注' : '+ 关注'}}</view>
           <!-- <i class="btn_xiaoxi iconfont icon-xiaoxi" catchtap="bindnavgetinformations"></i> -->
         </view>
       </view>

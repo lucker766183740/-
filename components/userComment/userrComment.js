@@ -90,7 +90,7 @@ Component({
     },({data})=>{
       wx.hideLoading()
       let replay = data.data.list
-      console.log('评论回复',replay)
+      // console.log('评论回复',replay)
       this.setData({replay})
           })
   },
@@ -108,11 +108,12 @@ Component({
       title:'加载中...'
     })
     let query = wx.createSelectorQuery().in(this)
+    let userCommentList = []
     setTimeout(()=>{
-     let userCommentList = that.data.userCommentList
+      userCommentList = that.data.userCommentList
       // 第一层级 （评论）
       query.selectAll('.myintro').boundingClientRect(function (rect){
-        console.log(rect)
+        // console.log(rect)
         if(rect){
           rect.forEach((v,i)=>{
             if(v.height > 40){

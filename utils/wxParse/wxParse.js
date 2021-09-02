@@ -117,14 +117,27 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     // console.log("autoWidth" + autoWidth);
     autoHeight = (autoWidth * originalHeight) / originalWidth;
     // console.log("autoHeight" + autoHeight);
-    results.imageWidth = autoWidth;
-    // results.imageWidth = 375;
+    // results.imageWidth = autoWidth;
+    results.imageWidth = 370;
     results.imageheight = autoHeight;
   } else {//否则展示原来的数据
-    results.imageWidth = originalWidth;
+    results.imageWidth = 370;
+    let jj =  originalWidth / originalHeight
+    // 按照图片宽度计算比例
+    let a = gcd(originalWidth , originalHeight)
+    // results.imageheight =  (375 - originalWidth)*a + originalHeight;
+    // results.imageWidth = originalWidth;
     results.imageheight = originalHeight;
   }
   return results;
+}
+
+/*** 求最大公约数 ***/
+function gcd($a, $b) {
+  if($a % $b)
+    return gcd($b, $a % $b);
+  else
+    return $b;
 }
 
 function wxParseTemArray(temArrayName,bindNameReg,total,that){

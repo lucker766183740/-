@@ -13,8 +13,8 @@ Page({
    */
   onLoad: function (options) {
     let { token } = wx.getStorageSync('token')
-    this.setData({url:'https://jcxm.xahrhz.com/youthListen/upAudioDate.html?t=' + token})
-    console.log( this.data.url)
+    this.setData({url:'https://esol.xahrhz.com/upAudioDate.html?t=' + token})
+    // console.log( this.data.url)
   },
 
   /**

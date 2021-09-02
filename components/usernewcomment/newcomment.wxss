@@ -37,6 +37,25 @@
   text-overflow: ellipsis;
   
 }
+.ping_addContent{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.newContent{
+  font-size: 28rpx;
+  font-weight: bold;
+  margin: 10rpx 0;
+}
+.oldContent::before{
+  content:'';
+  display: inline-block;
+  width:7rpx;
+  height: 33rpx;
+  background-color: #ddd;
+  margin-right: 10rpx;
+  margin-bottom: -6rpx;
+}
 .date{
   margin-left:30rpx;
 }

@@ -54,7 +54,6 @@
     "pages/home/swiperTopic/swiperTopic",
     "pages/myself/myfollowAndfans/myfollowAndfans",
     "pages/login/userAgreement/userAgreement",
-    "custom-tab-bar/index",
     "pages/myself/integral/howGetIntegral/howGetIntegral",
     "pages/myself/achievement/achievement",
     "pages/myself/integralTask/integralTask",

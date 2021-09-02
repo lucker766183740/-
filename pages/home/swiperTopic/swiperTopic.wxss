@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 .header{
-  margin-bottom: 40rpx;
+  /* margin-bottom: 40rpx; */
   text-align: end;
 }
 .creator , .date{

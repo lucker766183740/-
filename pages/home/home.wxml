@@ -3,8 +3,8 @@
   <!-- <view class="custom-tab-bar">
     <tabbar current="{{0}}"  count="{{2}}"></tabbar>
   </view> -->
-  <view class="home-search" bindtap="bindnavgetar">
-    <view class="iconfont icon-shouye">首页</view>
+  <view class="home-search" bindtap="bindnavgetar" style="margin-bottom:20rpx">
+    <view class="h_index">首页</view>
     <text  class="iconfont icon-sousuo"> 搜索图书、用户</text>
   </view>
   <home-swiper swiperData="{{swiperData}}"></home-swiper>

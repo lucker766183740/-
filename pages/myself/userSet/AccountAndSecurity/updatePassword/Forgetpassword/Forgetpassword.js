@@ -82,7 +82,7 @@ Page({
         phone,
         password,
       },res=>{
-        console.log('修改密码接口调用成功',res)
+        // console.log('修改密码接口调用成功',res)
         if(res.data.code == 0){
           wx.showToast({
             title: '修改成功',

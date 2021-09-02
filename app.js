@@ -45,6 +45,7 @@ App({
     startTime:0 ,//开始播放的时间 -- 时间戳
     timeisok:true , //此时可以调用定时器 timeOut
     readTimes:0, //持续累加时间
+    switchTimeOut:{}, // 保存定时关闭数据
   },
   onHide(){
     this.userexitApp()
@@ -75,7 +76,7 @@ App({
     let oldmusicId = wx.getStorageSync('musicId').musicId
     if(data && oldmusicId != data.id ) {
       that.globalData.currentTime = 0
-      console.log('音乐不一样了 ， ----------------------')
+      // console.log('音乐不一样了 ， ----------------------')
     }
     audio.startTime = that.globalData.currentTime*1
     audio.playbackRate = that.globalData.playbackRate
@@ -86,9 +87,11 @@ App({
     //     console.log(obj)
     //     resolve(obj)
     // })
+    console.log(data)
     resolve(data)
   }).then(function(obj){
-    if(!obj.audioUrl){
+    console.log(obj)
+    if(obj && !obj.audioUrl){
       audio.pause()
       wx.showToast({
         title: '该章节无音频，将自动播放下一曲',
@@ -117,6 +120,7 @@ App({
       //每次播放都保存播放音乐的Id
       wx.setStorageSync('musicId', {musicId : obj.id})
       that.globalData.musicId = obj.id
+      // console.log(obj)
       audio.src = obj.audioUrl
       audio.title = obj.chapterName
       // 音乐跳转播放的位置 单位s
@@ -169,16 +173,17 @@ App({
     if (fn) {
       fn(audio)
     }
+    console.log('playlist:' , this.globalData.PlayList)
   },
-  // 获取播放列表
-  getPlayaudioList(){
-    let userList = wx.getStorageSync('userList')
-    let userId = userList.id
-    let url = appUrl + 'chapterplay/app/list?userId=' + userId
-    listen.request_n_get(url,{},({data})=>{
-     this.globalData.PlayList = data.data
-    })
-  },
+    // 获取播放列表
+    getPlayaudioList(){
+      let userList = wx.getStorageSync('userList')
+      let userId = userList.id
+      let url = appUrl + 'chapterplay/app/list?userId=' + userId
+      listen.request_n_get(url,{},({data})=>{
+        this.globalData.PlayList = data.data
+      })
+    },
   //点击播放下一曲 、 上一曲 （down  / top）
   bindNext(id , topOrdown){
     // if(this.globalData.isPlay){
@@ -258,6 +263,7 @@ App({
   },
   // 单个添加播放章节函数
   addchapterplay(id) {
+    let that = this
     let url = appUrl + 'chapterplay'
     // 单个添加至播放列表
     listen.request_n_post(url, {
@@ -266,6 +272,7 @@ App({
       tenantCode: 0
     }, (res) => {
       console.log(' 单曲添加成功 ', res)
+      that.getPlayaudioList()
     })
   },
   //用户收藏 , 取消收藏
@@ -414,7 +421,7 @@ App({
           icon:'none'
         })
       }
-      console.log(isfollow ? ('关注' + '接口调用成功') : ('取消关注' + '接口调用成功') , res)
+      // console.log(isfollow ? ('关注' + '接口调用成功') : ('取消关注' + '接口调用成功') , res)
     })
   },
   //用户发表评论接口
@@ -487,7 +494,7 @@ App({
         tenantCode: this.globalData.tenantCode, //租户编码
       }, res => {
         wx.hideLoading()
-        console.log('评论接口调用成功', res)
+        // console.log('评论接口调用成功', res)
         if(res.data.code == 0){
           wx.showModal({
             title:'提示',
@@ -530,7 +537,7 @@ App({
     },res=>{
       clearInterval(this.userTimer)
       this.userduration = 0
-      console.log('统计用户在线时长接口调用',res)
+      // console.log('统计用户在线时长接口调用',res)
     })
   },
   // 验证用户token ， 如果没有登录必须先登录
@@ -581,7 +588,7 @@ rankLevel(rank){
 // 小程序全局分享
   onShareAppMessage(){
     wx.onAppRoute(() =>{
-      console.log('当前页面路由发生变化 触发该事件onShareAppMessage')
+      // console.log('当前页面路由发生变化 触发该事件onShareAppMessage')
       const pages = getCurrentPages() //获取加载的页面
       const view = pages[pages.length - 1] //获取当前页面的对象
       if(!view)  return false  //如果不存在页面对象 则返回

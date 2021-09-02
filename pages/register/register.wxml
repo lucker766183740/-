@@ -77,10 +77,9 @@
       catchblur="getinputValue" 
       style="color:{{item.redcolor ? 'red': '#000'}}"
      />
-                                                                                                                                                                                                                                                                    </view>
+    </view>
     <icon class="iconfont {{item.icon}}"></icon>
   </view>
-
   <view class="zc_shenf" catchtap="bindnavgetorprofile">    
     <text >个性签名</text> 
     <text class="qm" style="color:{{Signature ? '#000' : ''}}">{{Signature ? Signature : '留下你得个性签名把~'}}</text>
@@ -90,4 +89,27 @@
   <button type="primary" bindtap="bindRegistration">注册</button>
 </view>
 
+
+<!-- 游客注册 -->
+
+<view class="container" wx:if="{{activePage == 3}}">
+  <view class="zc_title">游客注册</view>
+  <view class="user_content" wx:for="{{tourist}}" >
+    <view>{{item.type}}</view>
+    <view class="input">
+      <input type="{{item.tt}}"
+      maxlength="{{item.maxLength}}"
+      data-userWhite="{{item.type}}"
+      placeholder="{{item.username}}"
+      placeholder-style="font-weight:400;"
+      catchblur="getinputValue" 
+      style="color:{{item.redcolor ? 'red': '#000'}}"
+     />
+     <text class="zc_yanzheng" style="background:{{codeisok ? '#2A82E4' : '#aaa'}}" catchtap="bindVerification" wx:if="{{index == 1}}">{{codemsg}}</text>
+    </view>
+    <icon class="iconfont {{item.icon}}"></icon>
+  </view>
+  <!-- <view class="btn" bindtap="bindRegistration">注册</view> -->
+  <button type="primary" style="margin-top:100rpx" bindtap="bindRegistration">注册</button>
+</view>
  

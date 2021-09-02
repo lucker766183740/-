@@ -50,7 +50,7 @@ getMoreusercomment(commentId){
     wx.setNavigationBarTitle({
       title: `${userDetail.userName}的评论`,
     })
-    console.log('评论回复',data )
+    // console.log('评论回复',data )
     this.setData({replay,userDetail,total})
         })
 },

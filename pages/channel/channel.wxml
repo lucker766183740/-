@@ -1,5 +1,5 @@
 <!--pages/channel/channel.wxml-->
-<view class="container" style="padding-top:140rpx">
+<view class="container" style="padding-top:160rpx">
   <!-- <view class="custom-tab-bar">
     <tabbar current="{{2}}" count="{{2}}"></tabbar>
   </view> -->
@@ -7,8 +7,8 @@
     <text data-active1="1" class="{{activeindex == 1 ? 'activeFont' : ''}}">首页</text>
     <text data-active1="2" class="{{activeindex == 2 ? 'activeFont' : ''}}">关注</text>
     <view class="release" catchtap="bindrelease">
-      <icon class="iconfont icon-pen-fill"></icon>
-      <text catchtap="bindrelease">发布</text>
+      <icon class="iconfont icon-pen-fill"></icon> 
+      <text catchtap="bindrelease" style="color:#f8f8f8;">发布</text>
     </view>
     <view class="underline {{isactive}}" ></view>
   </view>

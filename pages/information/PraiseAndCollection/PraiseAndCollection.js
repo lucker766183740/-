@@ -25,7 +25,7 @@ Page({
       this.setData({List})
         // 修改状态消息已读
       App.userContentType(type)
-      console.log('小程序赞/收藏/新增关注/评论与@消息列表：',data)
+      // console.log('小程序赞/收藏/新增关注/评论与@消息列表：',data)
       }
     }) 
   },

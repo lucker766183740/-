@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-
     "cord":"/components/cord/cord",
     "cardNext":"/components/cardNext/cardNext",
     "home-swiper":"/components/swiper/swiper",

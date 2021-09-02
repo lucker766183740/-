@@ -18,11 +18,13 @@
 }
 view{
     word-break:break-all; overflow:auto;
+    text-align: justify;
 }
 .wxParse-inline{
     display: inline;
     /* margin: 0 22px; */
     padding: 0;
+    /* text-align: start; */
 }
 /*//标题 */
 .wxParse-div{margin: 0;padding: 0;}
@@ -93,14 +95,12 @@ view{
 }
 
 .wxParse-img{
-    /*background-color: #efefef;*/
     overflow: hidden;
     position: relative;
-    /* top: 3px; */
-    /* left: 3px;
-    bottom: 3px; */
+    margin: 30rpx auto;
     box-shadow: 0px 0px 10px #888;
-    transform: scale(1);
+    left: 50%;
+    transform: translate(-50%, 0%) scale(1);
 }
 
 .wxParse-blockquote {

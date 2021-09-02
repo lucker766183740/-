@@ -43,7 +43,7 @@ Page({
         id,
         personalMessage:value
       },res=>{
-        console.log('修改用户签名接口调用成功：',res)
+        // console.log('修改用户签名接口调用成功：',res)
         if(res.data.code == 0){
           wx.showToast({
             title: '修改成功',

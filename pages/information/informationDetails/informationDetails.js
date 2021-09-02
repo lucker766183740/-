@@ -23,7 +23,7 @@ Page({
       if(data.code == 0 && data.msg == 'success'){
       let List = data.data.list
       this.setData({List})
-      console.log('小程序推送消息详情列表：' , List)
+      // console.log('小程序推送消息详情列表：' , List)
       }
     })
 },

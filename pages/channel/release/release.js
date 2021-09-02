@@ -176,7 +176,7 @@ Page({
       sourceType: ['album', 'camera'],
       camera: 'back',
       success (res) {
-        console.log(res)
+        // console.log(res)
         let tempFilePaths = res.tempFiles
         if(res.type == 'image'){
           // tempFilePath可以作为img标签的src属性显示图片
@@ -234,7 +234,7 @@ Page({
         this.videoUrl = imageUrl[0].name
         let reg = imageUrl[0].name.split(/\./g)
         let extension = reg[reg.length - 1]
-        console.log(reg , extension)
+        // console.log(reg , extension)
        if(extension == 'm4a' || extension == 'aac' || extension == 'mp3' || extension == 'wav'){ 
         this.data.imageUrl2 = imageUrl[0].tempFilePath
          this.fabu(2)
@@ -269,7 +269,7 @@ Page({
     let imageUrl2 = that.data.imageUrl2
     let imageUrl = that.data.imageurllist
     let { token } = wx.getStorageSync('token')
-    console.log(file)
+    // console.log(file)
     wx.uploadFile({
       filePath:file,
       name: 'file',
@@ -366,7 +366,7 @@ Page({
      tenantCode:App.globalData.tenantCode,// 租户编码
      },res=>{
        wx.hideLoading()
-      console.log('圈子发布接口调用成功',res)
+      // console.log('圈子发布接口调用成功',res)
        if(res.data.code == 0){
         wx.showModal({
           title:'提示',
@@ -411,7 +411,7 @@ Page({
           imageurllist:[file],
           upType:'audio'
         })
-        console.log(this.data.imageurllist)
+        // console.log(this.data.imageurllist)
       }else{
         wx.showModal({
           content:'请选择正确的音频格式，可选择 m4a/aac/mp3/wav 格式',

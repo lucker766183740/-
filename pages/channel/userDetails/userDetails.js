@@ -40,13 +40,21 @@ Page({
     let userId = options.userId
     let url = appUrl + 'informationpublish/app/info?id=' + id +'&userId=' + userId
     listen.request_n_get(url,{},({data})=>{
+      if(data.code == 0){
       let res = data.data
+      // console.log(res)
       let userDetailsList = []
       if(res.topicName){res.topicName = (res.topicName.split(','))}
       if(res.topicId){ res.topicId = (res.topicId.split(','))}
       if(res.imageUrl){ res.imageUrl = (res.imageUrl.split(','))} 
       userDetailsList.push(res)
       this.setData({userDetailsList})
+      }else{
+        wx.showToast({
+          title: data.msg,
+          icon:'none'
+        })
+      }
     })
   },
   // 获取用户评论详细信息
@@ -134,7 +142,6 @@ Page({
       fabiao:'fabiao',
       height
     })
-    console.log(e)
   },
   // 评论框失去焦点时
   bindblur(){

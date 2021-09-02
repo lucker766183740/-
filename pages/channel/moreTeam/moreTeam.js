@@ -66,7 +66,7 @@ Page({
     listen.request_n_get(url,{
       userId,page,limit
     },({data})=>{
-      console.log(data)
+      // console.log(data)
       wx.hideLoading()
       wx.hideNavigationBarLoading()
       wx.stopPullDownRefresh()

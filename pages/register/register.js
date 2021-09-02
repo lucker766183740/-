@@ -37,6 +37,10 @@ Page({
       {type:'密码', username:'请输入密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
       {type:'确认密码', username:'确认密码',value:'',redcolor:false,maxLength:'18',tt:'password',icon:''},
     ],
+    tourist:[
+      {type:'手机号码', username:'手机号码',value:'',redcolor:false,maxLength:'11',tt:'number',icon:''},
+      {type:'验证码', username:'验证码',value:'',redcolor:false,maxLength:'4',tt:'number',icon:''},
+    ],
   },
     /**
    * 生命周期函数--监听页面加载
@@ -55,6 +59,7 @@ Page({
   getinputValue(e){
     let userwhite = e.currentTarget.dataset.userwhite
     let ParentsList = this.data.ParentsList
+    let tourist = this.data.tourist
     let {value} = e.detail
     let activePage = this.data.activePage
     let teacherList = this.data.teacherList
@@ -127,17 +132,7 @@ Page({
         }else if(userwhite == '家长手机号码'  && v.type == '家长手机号码'){
           let reg = /^[1][34578][0-9]{9}$/ 
           v.value =  value 
-          // if(reg.test(value)){
-            v.redcolor = false
-          // }else{
-          //   v.redcolor = true
-          //   wx.showToast({
-          //     title: '手机号格式不正确',
-          //     icon:'none'
-          //   })
-          //   this.setData({teacherList})
-          //   return
-          // }
+          v.redcolor = false
         }else if(userwhite == '密码'  && v.type == '密码'){
           v.value = value
           password = v.value
@@ -203,6 +198,20 @@ Page({
        }
       })
       
+    }else if(activePage == 3){
+      tourist.forEach(v=>{
+        if(userwhite == '手机号码'  && v.type == '手机号码'){
+          let reg = /^[1][34578][0-9]{9}$/ 
+          v.value =  value 
+          v.redcolor = false
+        }else if(userwhite == '验证码'  && v.type == '验证码'){
+          v.value = value
+          if(v.value.trim()){
+           v.redcolor = false
+          }
+        }
+      })
+      this.setData({tourist})
     }
   },
   //发送验证码
@@ -223,12 +232,22 @@ Page({
           phone = v.value
         }
       })
+    }else if(this.data.activePage == 3){
+      this.data.tourist.forEach(v=>{
+        if(v.type =='手机号码'){
+          phone = v.value
+        }
+      })
     }
     let reg = /^[1][34578][0-9]{9}$/
     if(reg.test(phone) && codeisok){
-      this.setData({codeisok:false})
+      this.setData({
+        codeisok:false , 
+        codemsg:codemsg + 's'
+      })
       let timer = setInterval(() => {
-        this.setData({codemsg:codemsg-- + 's'})
+        codemsg-- 
+        this.setData({codemsg:codemsg + 's'})
     }, 1000);
       setTimeout(() => {
         clearInterval(timer)
@@ -239,9 +258,14 @@ Page({
       },res=>{
         console.log('获取验证码接口调用成功：',res)
   })
-    }else{
+    }else if(!reg.test(phone)){
       wx.showToast({
         title: '手机号格式有误',
+        icon:'none'
+      })
+    }else {
+      wx.showToast({
+        title: '请稍后再试',
         icon:'none'
       })
     }
@@ -275,7 +299,8 @@ Page({
       this.Registration(this.data.ParentsList , idenType)
     }else if(activePage == 2){
       this.Registration(this.data.studentList , idenType)
-
+    }else if(activePage == 3){
+      this.Registration(this.data.tourist , idenType)
     }
   },
 // 注册
@@ -296,6 +321,8 @@ Registration(List , identity){
     userType = '1'
   }else if(this.data.activePage == 2){
     userType = '0'
+  }else if(this.data.activePage == 3){
+    userType = '3'
   }
   //确定用户输入所有项都是正确的
   List.forEach((v,i)=>{
@@ -303,7 +330,7 @@ Registration(List , identity){
       realName = v.value
     }else  if(v.type == '学生教育ID'){
       educationId = v.value
-    }else if(v.type == '学生手机号码' || v.type == '教师手机号码' || v.type == '家长手机号码'){
+    }else if(v.type == '学生手机号码' || v.type == '教师手机号码' || v.type == '家长手机号码' || v.type == '手机号码'){
       mobile = v.value
     }else if(v.type == '身份证号码'){
       idCard = v.value
@@ -381,7 +408,7 @@ for(let i = 0;i<List.length; i++){ //非空判定
           icon:'none'
         })
       }
-      console.log('用户注册接口调用成功：',res)
+      // console.log('用户注册接口调用成功：',res)
     })
   }
 },

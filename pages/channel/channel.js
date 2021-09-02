@@ -54,6 +54,7 @@ Page({
      listen.request_n_get(url,{
        userId,page,limit
      },({data})=>{
+       if(data.code == 0){
        wx.hideLoading()
        wx.hideNavigationBarLoading()
       //  wx.stopPullDownRefresh()
@@ -61,7 +62,7 @@ Page({
        let total = data.data.total
       //  Teamlist = Teamlist.splice(10)
        let _userPublishList = data.data.list
-       console.log(_userPublishList)
+      //  console.log(_userPublishList)
         // topicName / topicId / imageUrl
         _userPublishList.forEach((item,index)=>{
           if(item.topicName){item.topicName = (item.topicName.split(','))}
@@ -80,7 +81,12 @@ Page({
         let userPublishList = this.data.userPublishList
         userPublishList.push(..._userPublishList)
       this.setData({userPublishList,Title,total})
-
+      }else{
+        wx.showToast({
+          title: data.msg,
+          icon:'none',
+        })
+      }
     })
   },
   //获取话题小组数据
@@ -124,13 +130,14 @@ Page({
     },({data})=>{
       let GZ_total = data.data.total
       let _userPublishList= data.data.list
+      console.log(_userPublishList)
       _userPublishList.forEach((item,index)=>{
         if(item.topicName){item.topicName = (item.topicName.split(','))}
         if(item.topicId){ item.topicId = (item.topicId.split(','))}
         if(item.imageUrl){ item.imageUrl = (item.imageUrl.split(','))} 
         item._title = item.title
         item._isshow = false
-        if((item.title.length + item.topicName.toString().length) > 55){
+        if((item.topicName && item.title.length + item.topicName.toString().length) > 55){
           item._title = (item.title + item.topicName.toString()).slice(0,55)
           item._isopen = true
         }else{

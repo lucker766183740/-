@@ -2,6 +2,6 @@
 <!--pages/information/NewsConcerns/NewConcerns.wxml-->
 <!-- 赞和收藏 -->
 <view class="NewConcerns">
-  <newcommment List="{{List}}" ></newcommment>
+  <newcommment List="{{List}}" Type="1"></newcommment>
 </view>
 

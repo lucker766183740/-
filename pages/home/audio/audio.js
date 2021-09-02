@@ -7,6 +7,8 @@ Page({
    */
   timeStamp:0,
   timeout:null,
+  musicCloseTimeout:null, // 播放定时器
+  newInevt:null,
   data: {
     isclose:'none',
     PlayList:appInstance.globalData.PlayList,
@@ -22,6 +24,17 @@ Page({
     good:true,//痛殴懂得时候不允许更新进度条
     chufa:false, // 是否触发播放位置清零
     playbackRate:1,//音频播放倍数
+    musicInterval:0, // 定时关闭播放时间 0 ？ 关闭 ...
+    timeOutisshow:false, // 弹出定时框
+    pageContainerData:[
+     { title:'5分钟',checked:false},
+     { title:'15分钟',checked:false},
+     { title:'30分钟',checked:false},
+     { title:'60分钟',checked:false},
+     { title:'听完本章节',checked:false}
+    ],
+    switchShow:false, // switch状态
+    radioTitle:'',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -34,7 +47,6 @@ Page({
     this.getAudioBackgroundManager(options)
     this.options = options
     this.getPlayaudioList()
-    
   },
   //滑块滑动一次
   handlechange(e){
@@ -49,11 +61,15 @@ Page({
       wx.getBackgroundAudioManager().seek((audioDuration / 100) * value)
       // 定时器  -- 定时获取首页currentTime数据然后更新到页面上
      if(!appInstance.globalData.musicInte){
+      let duration = 0
+      let current = 0
+      let isshow = false
+     let Time =  {}
       appInstance.globalData.musicInte = setInterval(() => {
-        let duration = appInstance.globalData.musicTimeTotal
-        let current = appInstance.globalData.currentTime
-        let isshow = appInstance.globalData.isPlay
-       let Time =  this.comporentent(current,duration)
+         duration = appInstance.globalData.musicTimeTotal
+         current = appInstance.globalData.currentTime
+         isshow = appInstance.globalData.isPlay
+        Time =  this.comporentent(current,duration)
        this.setData({
          isshow,
           duration : Time.newtotalTime , 
@@ -116,11 +132,15 @@ Page({
       wx.getBackgroundAudioManager().seek(this.currentTime)
       // 定时器  -- 定时获取首页currentTime数据然后更新到页面上
      if(!appInstance.globalData.musicInte){
+      let duration = 0
+      let current = 0
+      let isshow = false
+     let Time =  {}
       appInstance.globalData.musicInte = setInterval(() => {
-        let duration = appInstance.globalData.musicTimeTotal
-        let current = appInstance.globalData.currentTime
-        let isshow = appInstance.globalData.isPlay
-       let Time =  this.comporentent(current,duration)
+         duration = appInstance.globalData.musicTimeTotal
+         current = appInstance.globalData.currentTime
+         isshow = appInstance.globalData.isPlay
+        Time =  this.comporentent(current,duration)
        this.setData({
          isshow,
           duration : Time.newtotalTime , 
@@ -161,9 +181,11 @@ Page({
       clearTimeout(this.timeout)
       this.timeout = null
     }else {
+      let nowPlayaudio = ''
+      let musicId = ''
       this.timeout = setTimeout(() => {
-        let nowPlayaudio = e.currentTarget.dataset.nowplayaudio
-        let { musicId } = wx.getStorageSync('musicId')
+         nowPlayaudio = e.currentTarget.dataset.nowplayaudio
+          musicId  = wx.getStorageSync('musicId').musicId
         this.setData({isshow:true})
         if(nowPlayaudio !=  musicId){
           // wx.getBackgroundAudioManager().pause()
@@ -373,6 +395,156 @@ Page({
     })
       this.getAudioBackgroundManager({nowPlayaudio:musicId})
     },
+    //switch开关
+    bindSwitchChange(e){
+      let switchShow = e.detail.value
+      let radioTitle = this.data.radioTitle
+      let pageContainerData = this.data.pageContainerData
+      if(switchShow && !radioTitle){
+        pageContainerData.forEach((v,i)=>{
+          if(i == 0){
+            v.checked = true
+          }
+        })
+      this.timeintreval('5分钟')
+
+        this.setData({radioTitle:'5分钟'})
+      }
+      if(!switchShow){
+        pageContainerData.forEach((v,i)=>{
+          v.checked = false
+        })
+        if(  this.musicCloseTimeout ) { 
+          clearTimeout(  this.musicCloseTimeout  )
+          this.musicCloseTimeout = null
+        }
+        if( this.newInevt ) {
+          clearInterval(this.newInevt)
+          this.newInevt = null
+        }
+        this.setData({
+          radioTitle:'',
+          musicInterval:0
+        })
+      }
+      this.setData({switchShow , pageContainerData})
+    },
+    // 获取定时关闭选择得数据
+    bindRadioChange(e){
+      let radioTitle = e.detail.value
+      let pageContainerData = this.data.pageContainerData
+      pageContainerData.forEach((v,i)=>{
+        v.checked = false
+        if(radioTitle == v.title){
+          v.checked = true
+        }
+      })
+      if(radioTitle &&  !this.data.switchShow){
+        this.setData({switchShow:true})
+      }
+      this.timeintreval(radioTitle)
+      this.setData({radioTitle , pageContainerData})
+    },
+    //定时关闭
+    bindInterval(){
+      this.setData({
+        timeOutisshow:true
+      })
+    },
+    //调用定时器
+    timeintreval(radioTitle) {      
+      // getApp().globalData.switchTimeOut
+      let that = this
+      let pageContainerData = []
+      let switchTimeOut = {}
+      let musicInterval = this.data.musicInterval // 定时时间
+      let musicTimeTotal = 0
+      let currentTime = 0
+      // 如果用户重新选择时间 ， 那么先清除原来得定时器
+      if(  that.musicCloseTimeout ) { 
+        clearTimeout(  that.musicCloseTimeout  )
+        that.musicCloseTimeout = null
+      }
+      if( that.newInevt ) {
+        clearInterval(that.newInevt)
+        that.newInevt = null
+      }
+      if(radioTitle == '5分钟'){ //5分钟
+        musicInterval = 5
+      }else if(radioTitle == '15分钟'){ // 15分钟
+        musicInterval = 15
+      }else if(radioTitle == '30分钟'){ // 30分钟
+        musicInterval = 30
+      }else if(radioTitle == '60分钟'){ // 60分钟
+        musicInterval = 60
+      } 
+      that.musicCloseTimeout = setTimeout(() => {
+        that.musicCloseTimeout = null
+        pageContainerData = getApp().globalData.switchTimeOut.pageContainerData
+        pageContainerData.forEach(v=>{
+          v.checked = false
+        })
+          switchTimeOut =  { radioTitle:'' , musicInterval:0 , switchShow:false,pageContainerData}
+        getApp().globalData.switchTimeOut = switchTimeOut
+        that.setData({
+          radioTitle:switchTimeOut.radioTitle ,
+          musicInterval:switchTimeOut.musicInterval ,
+          switchShow:switchTimeOut.switchShow,
+          pageContainerData:switchTimeOut.pageContainerData
+        })
+        if(getApp().globalData.isPlay){
+          wx.getBackgroundAudioManager().pause()
+        }
+        that.setData({
+          musicInterval:0
+        })
+      }, musicInterval*60*1000);
+
+      if(radioTitle == '听完本章节'){ // 听完本章节
+        if(  that.musicCloseTimeout ) { 
+          clearTimeout(  that.musicCloseTimeout  )
+          that.musicCloseTimeout = null
+        }
+        musicInterval = '本章'
+        // 如果之前存在定时器 ， 那么先关闭定时器
+        that.newInevt = setInterval(() => {
+          musicTimeTotal = getApp().globalData.musicTimeTotal
+          currentTime = getApp().globalData.currentTime
+          if(parseInt(musicTimeTotal - 1 ) == parseInt(currentTime) ){
+            clearInterval(that.newInevt)
+            that.newInevt = null
+            pageContainerData = getApp().globalData.switchTimeOut.pageContainerData
+            pageContainerData.forEach(v=>{
+              v.checked = false
+            })
+            switchTimeOut =  { radioTitle:'' , musicInterval:0 , switchShow:false,pageContainerData}
+            getApp().globalData.switchTimeOut = switchTimeOut
+            that.setData({
+              radioTitle:switchTimeOut.radioTitle ,
+              musicInterval:switchTimeOut.musicInterval ,
+              switchShow:switchTimeOut.switchShow,
+              pageContainerData:switchTimeOut.pageContainerData
+            })
+            if(getApp().globalData.isPlay){
+              setTimeout(() => {
+                  wx.getBackgroundAudioManager().pause()
+              }, 1000);
+            }
+            that.setData({
+              musicInterval:0
+            })
+          }
+        }, 300);
+      }
+
+      that.setData({
+        musicInterval,
+        timeOutisshow:true
+      })
+      switchTimeOut = {radioTitle , musicInterval , switchShow:this.data.switchShow,pageContainerData:this.data.pageContainerData}
+      getApp().globalData.switchTimeOut = switchTimeOut
+          
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -392,11 +564,15 @@ Page({
     })
      // 定时器  -- 定时获取首页currentTime数据然后更新到页面上
      if(!appInstance.globalData.musicInte){
+      let duration = 0
+      let current = 0
+      let isshow = false
+     let Time =  {}
       appInstance.globalData.musicInte = setInterval(() => {
-        let duration = appInstance.globalData.musicTimeTotal
-        let current = appInstance.globalData.currentTime
-        let isshow = appInstance.globalData.isPlay
-       let Time =  this.comporentent(current,duration)
+         duration = appInstance.globalData.musicTimeTotal
+         current = appInstance.globalData.currentTime
+         isshow = appInstance.globalData.isPlay
+        Time =  this.comporentent(current,duration)
        this.setData({
           isshow,
           duration : Time.newtotalTime , 
@@ -404,6 +580,15 @@ Page({
           width:Time.width + ''     
         })
       }, 300);
+    }
+    let switchTimeOut = getApp().globalData.switchTimeOut
+    if(switchTimeOut.pageContainerData){
+      this.setData({
+        radioTitle:switchTimeOut.radioTitle ,
+        musicInterval:switchTimeOut.musicInterval ,
+        switchShow:switchTimeOut.switchShow,
+        pageContainerData:switchTimeOut.pageContainerData
+      })
     }
   },
 

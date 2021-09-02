@@ -37,6 +37,7 @@
   <view class="register"> 
     <text>如果你还没有账号，请先注册</text>
     <text class="btn"  catchtap="bindnavgetorregister">立即注册</text>
+    <!-- <text class="btn"  catchtap="bindnavtourist">立即注册</text> -->
   </view>
   <!-- <view class="register" style="line-height:20rpx;"> 
     <text class="btn" catchtap="bindvisSign">游客登录</text>

@@ -62,7 +62,7 @@ margin-left: 40rpx;
   box-sizing: border-box;
 }
 .moreImg{
-  width:32% !important;
+  width:31.8% !important;
   height: calc(750rpx / 3.5) !important;
   background-size: cover;
   border: 5rpx solid #fff;

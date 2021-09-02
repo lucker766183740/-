@@ -61,7 +61,7 @@ Page({
       if(data.code == 0){
         let userDetail = data.data.data
       userDetail._rankLevel = getApp().rankLevel(userDetail.score)
-      userDetail._haveAttention = data.data.haveAttention
+      userDetail.haveAttention = data.data.haveAttention
       wx.setNavigationBarTitle({
         title: userDetail.username,
       })
@@ -120,6 +120,7 @@ Page({
       userDetail.haveAttention = !userDetail.haveAttention
       isfollow = userDetail.haveAttention
     App.userFollow(id,type,isfollow)
+    console.log(userDetail , isfollow)
     this.setData({userDetail})
   },
   // 查看用户头像大图

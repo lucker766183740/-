@@ -42,7 +42,7 @@ currentView:0,
   touchend(e){
     let moveX = e.changedTouches[0].pageX - this.startPageX
     let maxPage = this.data.searchTitle.length - 1
-    if( Math.abs(moveX) >= 100 ){
+    if( Math.abs(moveX) >= 150 ){
       if (moveX > 0) {
         this.currentView = this.currentView != 0 ? this.currentView - 1 : 0;
       } else {

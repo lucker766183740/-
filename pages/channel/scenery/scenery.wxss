@@ -58,7 +58,7 @@ bottom: 30rpx; */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  text-shadow: 5rpx 1rpx black;
+  text-shadow: 1rpx 1rpx #aaa;
 }
 .details_text text+text{
   font-size: 28rpx;

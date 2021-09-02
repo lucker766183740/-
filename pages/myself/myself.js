@@ -21,7 +21,7 @@ Page({
       listen.request_n_get(url,{
         username
       },res=>{
-        console.log('获取用户信息接口',res)
+        // console.log('获取用户信息接口',res)
         if(res.data.code == 0){
           let userdata = res.data.data
           userdata._rankLevel = getApp().rankLevel(userdata.score)

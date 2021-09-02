@@ -23,12 +23,14 @@
         bindchanging="eventhandle" bindchange="handlechange" bindtouchstart="good" bindtouchend="goodend" value="{{width}}"></slider>
        <text>{{duration}}</text>
   </view>
-  <!-- 前进、后退、以及收藏按钮 -->
+  <!-- 前进、后退、以及倍速播放 、 定时关闭 -->
   <!-- <view class="audio-icon-button1">
     <icon class="iconfont icon-houtui" catchtap="bindhoutui"></icon> 
-    <view catchtap="bindplaybackRate" style="display: flex;align-items: center;"><text class="speed" style="border-color:{{playbackRate > 1 ? '#2596CF' : ''}};color:{{playbackRate > 1 ? '#2596CF' : ''}}">倍速 x{{playbackRate}}</text></view>
+    <icon class="iconfont icon-{{playbackRate == 1 ? 'beishu10' : (playbackRate == 1.5 ? 'beishu15' : 'beishu20')}}" style="color:{{playbackRate>1 ? '#2596CF':''}};" catchtap="bindplaybackRate"></icon> 
     <icon class="iconfont icon-qianjin" catchtap="bindqianjin"></icon>
-  </view> -->
+    <icon class="iconfont icon-dingshiguanbi" style="color:{{musicInterval != 0 ? '#2596CF' : ''}}" catchtap="bindInterval"></icon>
+    <text wx:if="{{musicInterval != 0}}" class="musicIntervalText" style="color:#2596CF;font-size:24rpx;padding-left:5rpx;right:{{musicInterval == '本章' ? '10rpx' : ''}}">{{musicInterval == '本章' ? musicInterval : musicInterval+'min'}}</text>
+  </view>  -->
   <!-- 上一曲、下一曲、播放、暂停、展开播放列icon -->
   <view class="audio-icon-button2">
     <icon style="color:{{isxinshow ? 'orange' : ''}}" bindtap="bindxinisshow" class="iconfont icon-{{isxinshow ? 'shixinwujiaoxing' : 'kongxinwujiaoxing'}}"></icon>
@@ -44,7 +46,7 @@
     <icon class="iconfont icon-caidan" catchtap="bindshownowPlayaudio"></icon>
   </view>
 </block>
-<!-- 弹窗 -->
+<!-- 播放列表弹窗 -->
 <view class="showNowPlay" style="display:{{isclose}}">
     <view class="showPlay_container">
       <!-- 关闭按钮 -->
@@ -75,4 +77,16 @@
     </scroll-view>
     </view>
   </view>
+
+  <!-- 定时器弹窗 -->
+  <page-container show="{{timeOutisshow}}" duration="300" round="{{true}}" position="bottom" bind:enter="bindenter">
+    <switch type="switch" style="float:right;margin:20rpx 20px 0 0;" bindchange="bindSwitchChange" checked="{{switchShow}}">{{switchShow ? '开' : '关'}}</switch>
+    <view style="margin-top:100rpx">
+      <radio-group style="margin-bottom:100rpx" bindchange="bindRadioChange" value="{{radioTitle}}">
+      <label wx:for="{{pageContainerData}}" wx:key="title" style="display:block;margin-left:40rpx;line-height:80rpx;">
+        <radio name="{{item.title}}" value="{{item.title}}" checked="{{item.checked}}">{{item.title}}</radio>
+      </label>
+      </radio-group>
+    </view>
+  </page-container>
 </view>
