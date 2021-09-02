@@ -8,7 +8,7 @@ Page({
   data: {
     isshow:true,
     isactive:'left-childactive',
-    list:['年纪','学校'],
+    list:[],
     rightList:[],
     currentindex:0,
   },
