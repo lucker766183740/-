@@ -11,7 +11,7 @@
     <image  wx:if="{{item.imageUrl.length == 1 && item.type == 0}}" mode="widthFix" src="{{item2}}" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="imageUrl" ></image>
     <view wx:if="{{item.imageUrl.length > 1 && item.type == 0}}" class="moreImg" style="background-image:url({{item2}})" catchtap="bindSeeLogimg" data-allUrl="{{item.imageUrl}}" data-url="{{item2}}" wx:for="{{item.imageUrl}}" wx:for-item="item2" wx:for-index="index2" wx:key="imageUrl" ></view>
     <video style="display:flex;margin:0 auto;" wx:if="{{item.type == 1 }}" src="{{item.imageUrl[0]}}"></video>
-    <audio style="display:flex;margin:0 auto;" wx:if="{{item.type == 2}}" src="{{item.imageUrl[0]}}" controls name="{{item.videoUrl}}"  poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" ></audio>
+    <audio style="display:flex;margin:0 auto;width:600rpx;" wx:if="{{item.type == 2}}" src="{{item.imageUrl[0]}}" controls name="{{item.videoUrl}}"  poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" ></audio>
     <view style="display:block;margin:20rpx 0"> 
       <view class="user-label" wx:for="{{item.topicName}}" wx:for-item="item2" wx:for-index="index2" wx:key="topicName">
       <text>#</text>

@@ -1,6 +1,6 @@
 <!--components/newcommment/newcomment.wxml-->
 <view class="container" wx:for="{{List}}" wx:key="id">
-  <view style="border-bottom: 1rpx solid #ddd;display:flex;padding-bottom:15rpx;" bindtap="bindnavigator" data-informationId="{{item.informationId}}">
+  <view style="border-bottom: 1rpx solid #ddd;display:flex;padding-bottom:15rpx;" bindtap="bindnavigator" data-informationId="{{item.informationId}}" data-typeItem="{{item.typeItem}}">
     <image  class="userimg" src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}" catchtap="bindnavgator" data-othId="{{item.creator}}" ></image>
     <view class="user-details">
       <text class="user-name">{{item.username}}</text>

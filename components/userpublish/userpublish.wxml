@@ -34,7 +34,7 @@
       </view>
       <!-- 音频 -->
       <view wx:if="{{item.type== 2}}" style="display:flex;margin-top: 20rpx;">
-        <audio style="margin:0 auto;" src="{{item.imageUrl[0]}}" controls  name="{{item.videoUrl}}"  poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" ></audio>
+        <audio  style="margin:0 auto;width:600rpx;" src="{{item.imageUrl[0]}}" controls  name="{{item.videoUrl}}"  poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" ></audio>
       </view>
       <!-- 视频 -->
       <view wx:if="{{item.type == 1}}"  style="display:flex;margin-top: 20rpx;">

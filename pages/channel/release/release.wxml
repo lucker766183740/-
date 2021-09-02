@@ -9,7 +9,7 @@
         <video src="{{imageurllist[0].tempFilePath}}"></video>
       </view>
       <view wx:if="{{upType == 'audio'}}" class="up_audio">
-        <audio src="{{imageurllist[0].tempFilePath}}" name="{{imageurllist[0].name}}" poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" controls></audio>
+        <audio  style="margin:0 auto;width:600rpx;" src="{{imageurllist[0].tempFilePath}}" name="{{imageurllist[0].name}}" poster="https://jcxm.xahrhz.com/youthListen/ting.jpg" controls></audio>
       </view>
       <view wx:if="{{imageurllist.length < 9 && iconJiaIsshow}}" class="release-icon" catchtap="bindchoice" ><icon class="iconfont icon-jia"></icon></view>
     </view>

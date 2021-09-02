@@ -357,6 +357,7 @@ Page({
          if(res.confirm){
           wx.setStorageSync('musicId', {})
           appInstance.globalData.isPlay = false
+          appInstance.globalData.musicId=''
           appInstance.getAudioBackMusic(false)
           wx.switchTab({
             url: '/pages/home/home',

@@ -80,7 +80,7 @@ App({
     }
     audio.startTime = that.globalData.currentTime*1
     audio.playbackRate = that.globalData.playbackRate
-    if(!isPlay)  return audio.pause()
+    if(!isPlay)  {audio.pause(); return; }
     new Promise(function(resolve , reject){
     //   listen.request_n_get(url,{},({data})=>{
     //     obj = data.data
