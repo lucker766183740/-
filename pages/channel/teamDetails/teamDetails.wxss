@@ -35,7 +35,7 @@ background: transparent;
   height: 100%;
   position: absolute;
   z-index: 99;
-  /* background-color:rgba(100, 100, 100, .1); */
+  background-color:rgba(100, 100, 100, .2);
 }
 .details_group{
   width: 300rpx;
