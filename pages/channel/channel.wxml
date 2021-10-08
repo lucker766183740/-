@@ -14,6 +14,7 @@
   </view>
   <!-- 圈子首页 -->
   <view wx:if="{{!GZshow}}">
+  <view style="height: 20rpx;width: 100%;"></view>
     <home-swiper swiperData="{{swiperData}}"></home-swiper>
     <listenTeam Teamlist="{{Teamlist}}"  all="{{true}}" Title="{{Title}}"></listenTeam>
     <view class="con"></view>

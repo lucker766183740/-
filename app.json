@@ -9,7 +9,6 @@
     "pages/information/information",
     "components/cord/cord",
     "components/cardNext/cardNext",
-    "pages/swiper/swiper",
     "components/cardSchool/cardSchool",
     "components/swiper/swiper",
     "components/listenTeam/listenTeam",

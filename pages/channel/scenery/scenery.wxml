@@ -4,7 +4,7 @@
     <icon class="iconfont icon-jiantou" catchtap="bingdnavgeback"></icon>
     <text class="title" wx:if="{{bgactive}}">@{{item.name}}</text>
   </view>
-  <view class="details-headerImage" style="background-image:url({{item.image}}) ; background-size: cover; margin-top: 130rpx;">
+  <view class="details-headerImage" style="background-image:url({{item.image}}) ; background-size: cover; margin-top: 160rpx;">
     <view class="bg_color"></view>
     <image src="{{item.headImage}}" catchtap="bindSeeLogimg" data-url="{{item.headImage}}" ></image>
     <view class="details_text">

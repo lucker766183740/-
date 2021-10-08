@@ -21,7 +21,17 @@
     </view>
     <view class="content">
       <text class="user_title">{{item.fromUser}} <text style="display:inline;color:#0068B7"> 回复 </text>{{item.toUser}}</text>
-      <text class="user_content myintro {{item.if_ishide ? 'hide' : ''}}"
+      <text class="user_content"
+      wx:if="{{item.if_ishide}}"
+        catchtap="bindothercontent"
+        data-informationId="{{item.informationId}}"
+        data-commentId="{{item.commentId}}"
+        data-userName="{{item.fromUser}}"
+        data-parentId="{{item.id}}"
+        data-touserid="{{item.fromUserId}}"
+       >{{item._content + '...'}}</text>
+       <text class="user_content"
+        wx:else
         catchtap="bindothercontent"
         data-informationId="{{item.informationId}}"
         data-commentId="{{item.commentId}}"
@@ -29,6 +39,9 @@
         data-parentId="{{item.id}}"
         data-touserid="{{item.fromUserId}}"
        >{{item.content}}</text>
+
+
+
        <text class="seeAll" wx:if="{{item.if_ishide}}" catchtap="bindChangeis_isshow" data-index="{{index}}">全部</text>
       <text class="user_dateTime">{{item.createDate}}</text>
     </view>

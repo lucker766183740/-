@@ -87,10 +87,8 @@ App({
     //     console.log(obj)
     //     resolve(obj)
     // })
-    console.log(data)
     resolve(data)
   }).then(function(obj){
-    console.log(obj)
     if(obj && !obj.audioUrl){
       audio.pause()
       wx.showToast({

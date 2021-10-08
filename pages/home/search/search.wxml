@@ -7,17 +7,17 @@
   </view>
 
   <view class="search_title"  wx:if="{{page}}">
-    <text wx:for="{{searchTitle}}" class="{{index == isindex ? isactive : ''}}" data-isindex="{{index}}" catchtap="classcheage">{{item}}</text>
+    <text wx:for="{{searchTitle}}" class="{{index == isindex ? isactive : ''}}" wx:key="index" data-isindex="{{index}}" catchtap="classcheage">{{item}}</text>
   </view>
   <scroll-view class="scroll_con" scroll-x="true" wx:if="{{page}}"
   scroll-with-animation="true" scroll-into-view="{{toView}}"
    bindtouchstart="touchstart" bindtouchend="touchend">
-    <view class="search_coll" wx:for="{{searchTitle}}" id="card_{{index}}">
+    <view class="search_coll" wx:for="{{searchTitle}}" wx:key="index" id="card_{{index}}">
 
         <!-- 图书 -->
     <block wx:if="{{index == 0 && isindex == 0 && bookList.length > 0}}">
         <view class="search_book_container">
-          <view  class="search_book" wx:for="{{bookList}}" wx:for-item="item" wx:for-index="index"  catchtap="bindnavtorDetail" data-bookId="{{item.id}}">
+          <view  class="search_book" wx:for="{{bookList}}" wx:for-item="item" wx:for-index="index" wx:key="index"  catchtap="bindnavtorDetail" data-bookId="{{item.id}}">
             <image src="{{item.picture}}"></image>
             <view>{{item.name}}</view>
           </view>
@@ -25,7 +25,7 @@
     </block>
         <!-- 用户 -->
     <block wx:if="{{index == 1 && userList.length > 0 && isindex == 1}}">
-      <view class="search_user_container" wx:for="{{userList}}"  catchtap="bindnavtoruserdetail" data-othId="{{item.id}}">
+      <view class="search_user_container" wx:for="{{userList}}" wx:key="index"  catchtap="bindnavtoruserdetail" data-othId="{{item.id}}">
         <image src="{{item.headUrl ? item.headUrl : '/image/headUrl.jpg'}}"></image>
         <text>{{item.username}}</text>
       </view>
@@ -40,7 +40,7 @@
 
   <!-- 频道页面跳转时只显示图书 -->
   <view class="search_book_container" wx:else style="margin-top:40rpx;">
-    <view  class="search_book" wx:for="{{bookList}}" wx:for-item="item" wx:for-index="index"  catchtap="bindnavtorDetail" data-bookId="{{item.id}}">
+    <view  class="search_book" wx:for="{{bookList}}" wx:for-item="item" wx:for-index="index" wx:key="index"  catchtap="bindnavtorDetail" data-bookId="{{item.id}}">
       <image src="{{item.picture}}"></image>
       <view>{{item.name}}</view>
     </view>

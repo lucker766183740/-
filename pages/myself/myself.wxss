@@ -6,7 +6,7 @@
 
   /* background-image: url('https://zxdfedu.oss-accelerate.aliyuncs.com/image/20210722/0224c21a85cf4e45b86ca7cf9d3a8efc.jpg'); */
   text-align: center;
-  padding-top: 70rpx;
+  padding-top: 100rpx;
   color: #f8f8f8;
 }
 .myself-myimg{

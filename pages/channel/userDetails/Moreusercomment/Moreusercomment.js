@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     this.options = options
     this.getMoreusercomment(options.commentId)
-    this.if_ishide()
+    // this.if_ishide()
   },
 // 获取更多回复评论
 getMoreusercomment(commentId){
@@ -47,6 +47,14 @@ getMoreusercomment(commentId){
     let replay = this.data.replay
     replay.push(...data.data.list.list) 
     let total = data.data.list.total
+    replay.forEach(v=>{
+      console.log(v.content.length)
+      v.if_ishide = false
+      if(v.content.length > 33){
+        v.if_ishide = true
+        v._content = v.content.substr(0,33)
+      }
+    })
     wx.setNavigationBarTitle({
       title: `${userDetail.userName}的评论`,
     })
@@ -155,29 +163,30 @@ bindnavgetor(e){
   })
 },
 //判断文字显示隐藏
-if_ishide(){
-    let that = this
-    let replay = that.data.replay
-    let query = wx.createSelectorQuery()
-    wx.showLoading({
-      title: '加载中...',
-    })
-    setTimeout(() => {
-      query.selectAll('.myintro').boundingClientRect(function(rect){
-        if(rect){
-          rect.forEach((v,i)=>{
-            if(v.height > 40){
-              replay[i].if_ishide = true
-            }else{
-              replay[i].if_ishide = false
-            }
-          })
-        }
-        that.setData({replay})
-        wx.hideLoading()
-      }).exec()
-    }, 500);
-  },
+// if_ishide(){
+//     let that = this
+//     let replay = that.data.replay
+//     let query = wx.createSelectorQuery()
+//     wx.showLoading({
+//       title: '加载中...',
+//     })
+//     setTimeout(() => {
+//       query.selectAll('.myintro').boundingClientRect(function(rect){
+//         if(rect){
+//           rect.forEach((v,i)=>{
+//             console.log(v)
+//             if(v.height > 40){
+//               replay[i].if_ishide = true
+//             }else{
+//               replay[i].if_ishide = false
+//             }
+//           })
+//         }
+//         that.setData({replay})
+//         wx.hideLoading()
+//       }).exec()
+//     }, 500);
+//   },
     //点去切换文字多行显示 、 隐藏
     bindChangeis_isshow(e){
       let { index } = e.currentTarget.dataset

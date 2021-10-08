@@ -10,10 +10,10 @@
   <view class="circle-container2">
     <scroll-view class="circle-left" scroll-y >
       <block wx:for="{{list}}" wx:key="id">
-      <view class="left-child {{item.id === currentindex ? isactive:''}}"  data-currentindex="{{item.id}}"  bindtap="bindactive">
-        <text>{{item.name}}</text>
-      </view>
-    </block>
+        <view class="left-child {{item.id === currentindex ? isactive:''}}"  data-currentindex="{{item.id}}"  bindtap="bindactive">
+          <text>{{item.name}}</text>
+        </view>
+      </block>
     </scroll-view>
     <scroll-view class="circle-right" scroll-y >
      <cardSchool rightList="{{rightList}}"></cardSchool>

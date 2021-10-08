@@ -1,6 +1,0 @@
-<!--pages/home/swiper/swiper.wxml-->
-<swiper indicator-dots indicator-color="#ccc" indicator-active-color="red" autoplay circular>
-  <swiper-item><image src="/image/icon/wo-de-red.png"></image></swiper-item>
-  <swiper-item><image src="/image/icon/wo-de-red.png"></image></swiper-item>
-  <swiper-item><image src="/image/icon/wo-de-red.png"></image></swiper-item>
-</swiper>

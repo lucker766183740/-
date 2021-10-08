@@ -15,11 +15,11 @@ align-items: center;
   display: block;
   background-color: #fff;
   top: 0;
-  height: 130rpx;
+  height: 160rpx;
   z-index: 999999;
 }
 .icon-jiantou{
-  margin: 70rpx 0 0 15rpx;
+  margin: 100rpx 0 0 15rpx;
   font-weight: bold;
    transform: rotate(180deg);
 }
@@ -27,7 +27,7 @@ align-items: center;
   width: 70rpx;
   height: 70rpx;
   position: fixed;
-  top: 52rpx;
+  top: 82rpx;
   left: 80rpx;
   border-radius: 50%;
 }
@@ -38,14 +38,14 @@ align-items: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 position: fixed;
-top: 68rpx;
+top: 98rpx;
 left: 180rpx;
 font-size: 28rpx;
 }
 .user-guanzhu{
   display: inline-block;
   position: fixed;
-  top: 65rpx;
+  top: 95rpx;
   left: 420rpx;
   border: 2rpx solid #555;
   /* color: #DB2425; */

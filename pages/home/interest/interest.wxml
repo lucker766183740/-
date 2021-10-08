@@ -1,11 +1,9 @@
 <!--pages/home/interest/interest.wxml-->
 <view class="container">
-  <view class="interest" wx:for="{{list}}" wx:for-item="item1" wx:for-index="index1">
+  <view class="interest" wx:for="{{list}}" wx:for-item="item1" wx:for-index="index1" wx:key="index1">
     <view class="interest_title">{{item1.name}}</view>
     <view class="interest_content">
-      <block    wx:for="{{item1.content}}" wx:for-item="item2"    wx:for-index="index2">
-
-
+      <block wx:for="{{item1.content}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
       <text 
       data-setisactive1="{{index1}}"
       data-setisactive2="{{index2}}"

@@ -5,18 +5,18 @@
   width: 100%;
   position: fixed;
   top: 0;
-  height: 130rpx;
+  height: 160rpx;
   z-index: 999;
 }
 .title{
   position: absolute;
-  top: 70rpx;
+  top: 100rpx;
   left: 20%;
   font-weight: bold;
   color: #555;
 }
 .icon-jiantou{
-margin: 70rpx 0 0 15rpx;
+margin: 100rpx 0 0 15rpx;
 font-weight: bold;
  transform: rotate(180deg);
 }
